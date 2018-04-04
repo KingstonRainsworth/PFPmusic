@@ -56,7 +56,7 @@ type Msg
 
 update : Msg -> Model -> Model
 update msg model = case msg of
-  Reset -> {model | value1 = 0, value2 = 0, value 3 = 0, value 4 = 0}
+  Reset -> {model | value1 = 0, value2 = 0, value3 = 0, value4 = 0}
   --Prop1 prop1 -> ({model | value1 = Result.withDefault 0 (String.toFloat prop1)}, Cmd.none)
   Prop1 prop1 -> {model | value1 = Result.withDefault 0 (String.toFloat prop1)}
   Prop2 prop2 -> {model | value2 = Result.withDefault 0 (String.toFloat prop2)}
@@ -74,7 +74,7 @@ view model =
     , button [ onClick Reset ] [ text "Reset" ]
     , button [ onClick Generate ] [text "Generate"]
     , viewCheck model
-    , h1 [] [text "Generating with value: ", model.value1, model.value2 ,model.value3 ,model.value4]
+    , h1 [] [text(toString model)]
     ]
 
 viewCheck : Model -> Html Msg
