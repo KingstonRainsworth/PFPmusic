@@ -1,3 +1,4 @@
+module MusicMakerProject exposing (..)
 import Random exposing (Generator, Seed)
 --warnings
 -- if the 2nd and third notes are all 1 half step apart turn off diminished chords
@@ -202,7 +203,7 @@ melodyCreatorMainHelper lf f =
 
 probHelpMelodyMain :KeySignatureSuggestion -> ProbOutKey-> ProbInKey -> KeySignature -> ProbOctaveMelody ->List Float ->List Int -> List Float
 probHelpMelodyMain kss pok pik ks pom pmr lr =
-  let List kss1 = keySignatureHelperhandler kss in
+  let kss1 = keySignatureHelperhandler kss in
   case lr of
     [] -> pmr
     x::list_ -> List.append pmr [((octaveControlMelody ks pom x * sameKeyMelodyProb kss1 pok pik x ) + (Just List.tail pmr) ) ]
@@ -244,7 +245,7 @@ sameKeyMelodyProb kss outKey inkey key note =
 
 getProbTypeChord : Int -> ProbTypeChord -> Float
 getProbTypeChord x ptc = case x of
-        1 ->    ptc. proot
+        1 ->    ptc.proot
         2 ->    ptc.pseveth
         3 ->    ptc.pninth
         4 ->    ptc.peleventh
@@ -292,23 +293,23 @@ chordProbHelper :List List Int -> ProbAddOnChord -> ProbRootChord -> ProbApplied
 chordProbHelper lc paoc prc pac ptc ac rc tc aoc =
   case lc of
     [] ->
-  let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc)
-  p -- dont delete
+      let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc) in
+      p -- dont delete
 
 chordProbListGenerator :KeySignatureSuggestion -> List Float -> List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> List Float
 chordProbListGenerator kss lc paoc prc pac ptc ac rc tc aoc =
   case lc of
     [] -> lf
-    x::lc case x of
+    x::lc -> case x of
       [] -> chordProbListGenerator lc paoc prc pac ptc ac rc tc aoc
       [_,_,_] -> chordProbLoop kss x
 
 --this is where i left off-------------- chordProbFindMelodyNotes need to check when the chord and notes overlap then chordProbLoop
--- checks the chord its working on to see if it has, multiply one in for each note.  
+-- checks the chord its working on to see if it has, multiply one in for each note.
 
 
-chordProbFindMelodyNotes :
-chordProbFindMelodyNotes
+{-chordProbFindMelodyNotes :
+chordProbFindMelodyNotes-}
 
 chordProbLoop : ProbOutChord -> ProbInChord -> KeySignatureSuggestion -> List Int -> Float
 chordProbLoop poc pic kss x =
@@ -341,8 +342,8 @@ chordListCreatorLoop kss lc ac rc tc aoc =
 chordListCreatorMain: KeySignatureSuggestion -> List List Int ->  Int -> Int -> Int -> Int -> List List Int
 chordListCreatorMain kss lc ac rc tc aoc  =
   let app = chordListCreatorApplied kss ac in
-  let fr = chordListCreatorFindRoot kss rc
-  let lc1 = chordListCreatorAllElse lc kss fr app ac rc tc aoc
+  let fr = chordListCreatorFindRoot kss rc in
+  let lc1 = chordListCreatorAllElse lc kss fr app ac rc tc aoc in
   lc1
 
 chordListCreatorAppliedHelper : Int -> Int -> Int -> KeySignatureSuggestion -> Int
@@ -380,70 +381,71 @@ chordListCreatorAllElse lc kss fr app ac rc tc aoc  =
           1 -> []
           2 -> []
           3 -> []
-          4 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
-                List.append lc temp
+          4 ->
+            let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
+            List.append lc temp
       2 -> case aoc of
           0 -> Nil -- change to empty sets
           1 -> Nil
           2 -> Nil
           3 -> Nil
-          4 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
                 List.append lc temp
       3 -> case aoc of
           0 -> Nil
           1 -> Nil
           2 -> Nil
           3 -> Nil
-          4 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
                 List.append lc temp
       4 -> case aoc of
           0 -> Nil
           1 -> Nil
           2 -> Nil
           3 -> Nil
-          4 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
                  List.append lc temp
   else
     case tc of
       1 -> case aoc of
-        0 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
               List.append lc temp
-        1 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
               List.append lc temp
-        2 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
               List.append lc temp
-        3 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1)]
+        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1)]
                 List.append lc temp
-        4 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
+        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
               List.append lc temp
       2 -> case aoc of
-        0 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        1 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        2 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        3 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        4 -> let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
       3 -> case aoc of
-        0 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
         1 -> Nil
         2 -> Nil
-        3 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        4 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
       4 -> case aoc of
-        0 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
         1 -> Nil
         2 -> Nil
-        3 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
-        4 ->  let List temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
               List.append lc temp
 
 
