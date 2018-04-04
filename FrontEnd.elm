@@ -48,18 +48,20 @@ type Msg
     Prop2 String |
     Prop3 String |
     Prop4 String |
-    Reset | Generate |
-    MouseMsg Mouse.Position |
-    KeyMsg Keyboard.KeyCode
+    Reset |
+    Generate
+    --|
+  --  MouseMsg Mouse.Position |
+  --  KeyMsg Keyboard.KeyCode
 
 update : Msg -> Model -> Model
 update msg model = case msg of
+  Reset -> {model | value1 = 0, value2 = 0, value 3 = 0, value 4 = 0}
   --Prop1 prop1 -> ({model | value1 = Result.withDefault 0 (String.toFloat prop1)}, Cmd.none)
   Prop1 prop1 -> {model | value1 = Result.withDefault 0 (String.toFloat prop1)}
   Prop2 prop2 -> {model | value2 = Result.withDefault 0 (String.toFloat prop2)}
   Prop3 prop3 -> {model | value3 = Result.withDefault 0 (String.toFloat prop3)}
   Prop4 prop4 -> {model | value4 = Result.withDefault 0 (String.toFloat prop4)}
-  Reset -> initialModel
   _ -> Debug.crash "TODO"
 
 view : Model -> Html Msg
@@ -70,8 +72,9 @@ view model =
     , input [ type_ "text", placeholder "value3", onInput Prop3 ] []
     , input [ type_ "text", placeholder "value4", onInput Prop4 ] []
     , button [ onClick Reset ] [ text "Reset" ]
-    , button [onClick Generate] [text "Generate"]
+    , button [ onClick Generate ] [text "Generate"]
     , viewCheck model
+    , h1 [] [text "Generating with value: ", model.value1, model.value2 ,model.value3 ,model.value4]
     ]
 
 viewCheck : Model -> Html Msg
