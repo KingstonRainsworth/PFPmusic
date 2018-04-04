@@ -69,7 +69,7 @@ view model =
     , input [ type_ "text", placeholder "value2", onInput Prop2 ] []
     , input [ type_ "text", placeholder "value3", onInput Prop3 ] []
     , input [ type_ "text", placeholder "value4", onInput Prop4 ] []
-    ,  div [] button [ onClick Reset ] [ text "Reset" ]
+    , button [ onClick Reset ] [ text "Reset" ]
     , button [onClick Generate] [text "Generate"]
     , viewCheck model
     ]
