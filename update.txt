@@ -1,0 +1,5 @@
+we have started to create a music maker that will use user input and predetermined musicality to generate a 
+musical composition for the piano.  it is only partially finished the chord processing section which is almost 
+complete is the last step before the music genereator portion is finished some fine tuing with the ui needs to 
+be completed.  the MusicMakerproject.elm file doesnt compile at this time, theres a choice that needs to be 
+made with regaurds to how a particulaar type will work before that can move forward.  
