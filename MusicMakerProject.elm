@@ -1,3 +1,4 @@
+
 module MusicMakerProject exposing (..)
 import Random exposing (Generator, Seed)
 --warnings
@@ -12,18 +13,49 @@ type alias ProbOutKey = {ok : Float} -- prob that melody note is out key used
 type alias ProbInKey = {ik : Float} -- probablility that melody note is in key
 type alias ProbOutChord = {oc : Float}
 type alias ProbInChord = {ic : Float} -- probability chord includes notes from melody in chord
+type alias ProbRestMelody = {prm : Float}
+type alias ProbRestChord = {prc : Float}
+
+type alias RNGSeed = {rngs : Int }
+
+type alias ProbChordMelodyCorralation = { pcmc : Float} -- corralation between how likely chords with the melody with be present
 type KeySignature = A|AS|B|C|CS|D|DS|E|F|FS|G|GS  --12  no flats only sharps or pick your own
 --type alias Key = { key : KeySignature}
 type alias KeySignatureSuggestion = {ksp : List Int}
+
 type alias ProbMR = { mw : Float -- melody rhythm
-          ,     mh : Float
-          ,     mq : Float
-          ,     me : Float
-          ,     ms : Float}
+          ,     m2 : Float
+          ,     m3 : Float
+          ,     m4 : Float
+          ,     m5 : Float
+          ,     m6 : Float
+          ,     m7 : Float
+          ,     m8 : Float
+          ,     m9 : Float
+          ,     m10 : Float
+          ,     m11 : Float
+          ,     m12 : Float
+          ,     m13 : Float
+          ,     m14 : Float
+          ,     m15 : Float
+          ,     m16 : Float}
 
 type alias ProbCR = { cw : Float -- chord rhythm
-          ,     ch : Float
-          ,     cq : Float}
+          ,     c2 : Float
+          ,     c3 : Float
+          ,     c4 : Float
+          ,     c5 : Float
+          ,     c6 : Float
+          ,     c7 : Float
+          ,     c8 : Float
+          ,     c9 : Float
+          ,     c10 : Float
+          ,     c11 : Float
+          ,     c12 : Float
+          ,     c13 : Float
+          ,     c14 : Float
+          ,     c15 : Float
+          ,     c16 : Float}
 
 type alias ProbOctaveMelody = { o1 : Float --
           ,     o2 : Float
@@ -61,14 +93,14 @@ type alias ProbAddOnChord = { pnao : Float
           ,     pAug  : Float
           ,     pDim  : Float}
 
-
+-- im removing type Duration and replacing it with a int 1-16 time
 type Dur = W|H|Q|EI|S
 
 type alias Note = Int
 
 type alias ChordR = List Dur
 
-type alias Melody = List Note
+type alias Melody = List Int
 
 type alias Chord = List (Note,Note,Note)
 
@@ -84,7 +116,7 @@ floatGenerator se low high  =
     let g = Random.float low high in
     let (n, s2) = Random.step g se in
     (s2 , n)
-
+{-
 calculateDur : Dur -> Int
 calculateDur d =
   case d of
@@ -93,6 +125,7 @@ calculateDur d =
     Q -> 4
     EI -> 2
     S -> 1
+-}
 
 cycleThroughR : MelodyR -> Int -> Int
 cycleThroughR list num =
@@ -100,7 +133,17 @@ cycleThroughR list num =
     [] -> num
   --  [x] -> cycleThroughR [] (calculateDur x + num)
   --  [x, y] -> cycleThroughR y (calculateDur x + num)
-    x::list -> cycleThroughR list ( calculateDur x + num)
+    x::list_ -> if num <= 0 then x
+      else cycleThroughR list_ ( num - x)
+
+cycleThroughM : MelodyR -> Melody -> Int -> Int -- used in chord section
+cycleThroughM list lim num =
+  case list of
+    [] -> num --shouldnt happen
+    x::list_ -> case lim of
+      []-> num --shouldnt happen
+      y::list2_ -> if num <= 0 then y
+        else cycleThroughM list_ list2_ (x + num)
 
 --------------Melody Rhythm code section -------------------------------------------------------------
 keySignatureNeumericalHandler : KeySignature -> Int
@@ -119,31 +162,47 @@ keySignatureNeumericalHandler k = case k of
   GS -> 11
 
 
-getProbMR : Dur -> ProbMR -> Float
+getProbMR : Int -> ProbMR -> Float
 getProbMR y x = case y of
-  W -> x.mw
-  H -> x.mh
-  Q -> x.mq
-  EI -> x.me
-  S -> x.ms
+  1 -> x.mw
+  2 -> x.m2
+  3 -> x.m3
+  4 -> x.m4
+  5 -> x.m5
+  6 -> x.m6
+  7 -> x.m7
+  8 -> x.m8
+  9 -> x.m9
+  10 -> x.m10
+  11 -> x.m11
+  12 -> x.m12
+  13 -> x.m13
+  14 -> x.m14
+  15 -> x.m15
+  16 -> x.m16
+
+melodyRhythmHelper : List  -> List Int -> Float  -> ProbMR -> (List Float, Int)
+melodyRhythmHelepr lf li total pmr
+  case li of
+    [] -> (lf, total)
+    x::list_ -> melodyRhythmHelper (List.append lf (probMR x pmr)) list_ (total + probMR x pmr) pmr
+
+melodyRhythmDecider : List Int -> Float -> Int
+melodyRhythmDecider li prob =
+  case li of
+    [] -> Debug.crash "float rythm decider"
+    x::list_ -> if x > prob then x
+      else melodyRhythmDecider list_ prob
 
 melodyRhythm : Seed -> MelodyR ->ProbMR -> MelodyR
 melodyRhythm se mr pmr =
   let do = cycleThroughR mr 0 in
-  if do < 240 then
-    let pw = getProbMR W pmr in
-    let ph = getProbMR H pmr in
-    let pq = getProbMR Q pmr in
-    let pei = getProbMR EI pmr in
-    let ps = getProbMR S pmr in
-    let pt = pw + ph + pq + pei + ps in
+  if do <= 240 then
+    let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
+    let lf pt = melodyRhythmHelper [] arra 0.0 pmr
+    let dn = melodyRhythmDecider arra
     let (s2, rn) = floatGenerator se 0.0 pt in
-    if rn < pw then List.append mr [W]
-      else if rn < ph then List.append mr [H]
-        else if rn < pq then List.append mr [Q]
-          else if rn < pei then List.append mr [EI]
-            else List.append mr [S]
-
+    List.append mr (melodyRhythmDecider arra rn)
   else
     let  hi = (cycleThroughR mr 0 )- 240 in
     List.append mr [hi]
@@ -152,22 +211,51 @@ melodyRhythm se mr pmr =
 --------------end of Melody Rhythm code Section ---------------------------------
 
 --------------start of Chord Rhythm code section---------------------------------
-getProbCR : Dur -> ProbCR -> Float
+getProbCR : Int -> ProbCR -> Float
 getProbCR y x = case y of
-  W -> x.cw
-  H -> x.ch
-  Q -> x.cq
+  1 -> x.cw
+  2 -> x.c2
+  3 -> x.c3
+  4 -> x.c4
+  5 -> x.c5
+  6 -> x.c6
+  7 -> x.c7
+  8 -> x.c8
+  9 -> x.c9
+  10 -> x.c10
+  11 -> x.c11
+  12 -> x.c12
+  13 -> x.c13
+  14 -> x.c14
+  15 -> x.c15
+  16 -> x.c16
 
-chordRhythm : Seed -> ChordR -> ProbCR -> ChordR
-chordRhythm se cr pcr =
-    let pw = getProbCR W pcr in
-    let ph = getProbCR H pcr in
-    let pq = getProbCR Q pcr in
-    let pt = pw + ph + pq in -- not goin to work needs to be tail
+chordRhythmHelper : List  -> List Int -> Float  -> ProbCR -> (List Float, Int)
+chordRhythmHelepr lf li total pmr
+  case li of
+    [] -> (lf, total)
+    x::list_ -> chordRhythmHelper (List.append lf (probCR x pmr)) list_ (total + probCR x pmr) pmr
+
+chordRhythmDecider : List Int -> Float -> Int
+chordRhythmDecider li prob =
+  case li of
+    [] -> Debug.crash "chord rythm decider"
+    x::list_ -> if x > prob then x
+      else chordRhythmDecider list_ prob
+
+chordRhythm : Seed -> ChordR ->ProbCR -> ChordR
+chordyRhythm se mr pmr =
+  let do = cycleThroughR mr 0 in
+  if do <= 240 then
+    let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
+    let lf pt = chordRhythmHelper [] arra 0.0 pmr
+    let dn = chordRhythmDecider arra
     let (s2, rn) = floatGenerator se 0.0 pt in
-    if rn < pw then List.append cr [W]
-      else if rn < ph then List.append cr [H]
-        else List.append cr [Q]
+    List.append mr (chordRhythmDecider arra rn)
+  else
+    let  hi = (cycleThroughR mr 0 )- 240 in
+    List.append mr [hi]
+
 
 -------end code rhythm section-------------------------------------------
 
@@ -241,7 +329,7 @@ sameKeyMelodyProb kss outKey inkey key note =
               else outkey
 
 --- start chord decision creator--------------------------------------------------------------------
-
+--- Still Working On this part ---------------------------------------------------------------------
 
 getProbTypeChord : Int -> ProbTypeChord -> Float
 getProbTypeChord x ptc = case x of
@@ -276,62 +364,99 @@ getProbAddOnChord x ptc = case x of
         4 ->    ptc.pDim
 
 
-chordCreatorMain :ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> ChordR -> KeySignatureSuggestion -> Chord
-chordCreatorMain paoc prc pac ptc cr kss =
+
+
+
+
+
+chordCreatorMain :Seed ->ProbRestChord -> Chord -> Melody -> MelodyR ->  ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> ChordR -> KeySignatureSuggestion -> Chord --picks chord from prob initiate loc as 0
+chordCreatorMain s2 prestc c m mr paoc prc pac ptc loc cr kss =
   let lc = [[]] in
   let lc1 = chordListCreatorLoop kss lc 1 0 1 0 in
-  chordProbMain paoc prc pac ptc cr lc1
+  case cr of
+    [] -> c
+    x::list_ ->   let lf = chordProbMain m mr cr paoc prc pac ptc (loc+x) 1 0 1 0 cr cr  lc1
+                  List.append lf prestc
+                  List.append lc1 []
+                  let pt = Just (List.tail lf) in
+                  let (s2, rn) = floatGenerator se 0.0 pt in
+                  List.append c (chordListCycleThrough  lc1 (chordCreatorDecider lf rn 0))
 
 
-
-chordProbMain :ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord ->  Int -> Int -> Int -> Int -> List Float -> ChordR -> List List Int -> List Float
-chordProbMain paoc prc pac ptc ac rc tc aoc lf cr lc = case cr of
-   [] -> lf
-   x::cr -> chordProbMain lc paoc prc pac pt (List.append lf (chordProbHelper ))
-
-chordProbHelper :List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> Float
-chordProbHelper lc paoc prc pac ptc ac rc tc aoc =
+chordListCycleThrough : List (List Int) -> Int -> List Int
+chordListCycleThrough lc num =
   case lc of
-    [] ->
-      let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc) in
-      p -- dont delete
+    [] -> num
+    x::list_ -> if num == 0 then x
+      else chordListCycleThrough list_ (num - 1)
 
-chordProbListGenerator :KeySignatureSuggestion -> List Float -> List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> List Float
-chordProbListGenerator kss lc paoc prc pac ptc ac rc tc aoc =
+
+chordCreatorDecider : List Float -> Float ->Int -> Int
+chordCreatorDecider probs prob loc =
+  case probs of
+    []-> Empty
+    x::list_ -> if x >= prob then loc
+      else chordCreatorDecider list_ prob loc
+
+
+
+
+chordProbMain :Melody -> MelodyR -> ChordR -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord ->Int ->  Int -> Int -> Int -> Int -> List Float -> ChordR -> ChordR -> List List Int -> List Float --run through list chords
+chordProbMain m mr cr paoc prc pac ptc loc ac rc tc aoc lf cr cruc lc =
+    case lc of
+       [] -> 0
+       y::list_ -> chordProbMain paoc prc pac ptc loc ac r tc aoc (List.append lf ((chordProbHelper m mr cruc x paoc prc pac ptc loc ac rc tc aoc  ))+y) cr_ lc
+
+
+chordTypeListLoop : Int -> Int -> Int -> Int -> (Int,Int,Int,Int)
+chordTypeListLoop lc ac rc tc aoc =
+  if aoc < 4 then ac rc tc (aoc + 1)
+    else if tc < 4 then ac rc (tc + 1) 0
+        else if rc < 6 then ac (rc + 1) 1 0
+            else if ac < 4 then (ac +1) 0 1 0
+  else lc
+
+chordProbHelper :Melody -> MelodyR -> ChordR ->List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> Int -> Float -- returns the prob for chord x
+chordProbHelper m mr cr lc paoc prc pac ptc loc ac rc tc aoc =
+  let cc = chordProbFindMelodyNotes [] loc 0 m mr cr in
   case lc of
-    [] -> lf
-    x::lc -> case x of
-      [] -> chordProbListGenerator lc paoc prc pac ptc ac rc tc aoc
-      [_,_,_] -> chordProbLoop kss x
+    [] -> lc
+    x :: list_
+      let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc) * (chordProbMelodyCorralation) in
+      p -- dont delete needs to append to a list
 
---this is where i left off-------------- chordProbFindMelodyNotes need to check when the chord and notes overlap then chordProbLoop
--- checks the chord its working on to see if it has, multiply one in for each note.
+chordProbMelodyCorralation :  ProbOutChord -> ProbInChord -> List Int -> Float -> MelodyR -> ChordR -> List Int -> Float -- loc is int time where we are in the song chs is hte list of notes of hte chord
+chordProbMelodyCorralation poc pic mell prob mr cr chs =
+  case chs of
+    []-> prob
+    x::list_ -> let mn ml = chordProbMelodyCorralationSecondLoop mell
+                chordProbMelodyCorralation ml (prob * (chordProbLoop poc pic mn x)) mr cr list_
+
+chordProbMelodyCorralationSecondLoop :List Int -> (Int, List Int)
+chordProbMelodyCorralationSecondLoop = mn
+  case mn of
+    [] -> []
+    x::list -> (x, list)
+
+chordProbLoop : ProbOutChord -> ProbInChord -> Int -> Int -> Float
+chordProbLoop outkey inkey notem notec =
+    let temp = notem % 12 in
+    let temp2 = notec % 12 in
+    if temp == temp2 then inkey
+      else outkey
+
+chordProbFindMelodyNotes : List Int -> Int -> Int -> Melody -> MelodyR -> ChordR -> List Int -- this returns the list of notes that the chord overlap with
+chordProbFindMelodyNotes nsf loc counter mr cr =
+  case mr of
+    []-> nsf
+    x::list_ -> if counter >= loc + x then List.append nsf (cycleThroughM mr m counter)
+      else if counter >= loc then nsf
+        else chordProbFindMelodyNotes nsf loc (counter + x) m mr cr
 
 
-{-chordProbFindMelodyNotes :
-chordProbFindMelodyNotes-}
-
-chordProbLoop : ProbOutChord -> ProbInChord -> KeySignatureSuggestion -> List Int -> Float
-chordProbLoop poc pic kss x =
-    let temp = (note + (keySignatureNeumericalHandler key)) - 11 in
-    let tem1 te1 = x::kss in
-    let tem2 te2 = x::te1 in
-    let tem3 te3 = x::te2 in
-    let tem4 te4 = x::te3 in
-    let tem5 te5 = x::te4 in
-    let tem6 te6 = x::te5 in
-    if (temp % (tem1+12)) == 0 then inkey
-      else if (temp % tem2) == 0 then inkey
-        else if (temp % tem3) == 0 then inkey
-          else if (temp % tem4) == 0 then inkey
-            else if (temp % tem5) == 0 then inkey
-              else if (temp % tem6) == 0 then inkey
-                else if (temp % te6) == 0 then inkey
-                else outkey
 
 
-
-chordListCreatorLoop : KeySignatureSuggestion -> List List Int ->  Int -> Int -> Int -> Int -> List List Int
+chordListCreatorLoop : KeySignatureSuggestion -> List List Int ->  Int -> Int -> Int -> Int -> List List Int -- this may need to be revuiesd so all numbers after are 0 !!!!!!!!!!!!!!!!!!!!!
 chordListCreatorLoop kss lc ac rc tc aoc =
   if aoc < 4 then chordListCreatorMain kss lc ac rc tc (aoc + 1)
     else if tc < 4 then chordListCreatorMain kss lc ac rc (tc + 1) aoc
@@ -357,7 +482,6 @@ chordListCreatorAppliedHelper lo hi ans kss =
         [] -> Empty
         x::kss -> chordListCreatorAppliedHelper (lo + 1) hi (ans + x) kss
 
-
 chordListCreatorApplied : KeySignatureSuggestion -> Int  -> Int
 chordListCreatorApplied kss ac  =
   case ac of
@@ -369,8 +493,6 @@ chordListCreatorApplied kss ac  =
 chordListCreatorFindRoot : KeySignatureSuggestion -> Int -> Int
 chordListCreatorFindRoot kss rc =
   chordListCreatorAppliedHelper 0 rc 0 kss
-
-
 
 chordListCreatorAllElse : List List Int -> KeySignatureSuggestion -> Int -> Int -> Int -> Int -> Int -> Int -> List List Int -- fr = found root lots here
 chordListCreatorAllElse lc kss fr app ac rc tc aoc  =
