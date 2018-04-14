@@ -1,3 +1,6 @@
+-- things that are going to create problems
+---random generator seeds are not passed through
+
 
 module MusicMakerProject exposing (..)
 import Random exposing (Generator, Seed)
@@ -15,6 +18,43 @@ type alias ProbOutChord = {oc : Float}
 type alias ProbInChord = {ic : Float} -- probability chord includes notes from melody in chord
 type alias ProbRestMelody = {prm : Float}
 type alias ProbRestChord = {prc : Float}
+
+
+--------patternization inputs ------------------------------------------------------
+{-type alias ProbPatternMatch = {ppm : Float} -- probability that the next note is a pattern
+type alias ProbNoPatternMatch = {pnpm : Float}-}
+type alias ProbInterPatternization = { pip : Float} -- likelihood of patterns in patterns *********0-1
+type alias ProbPatternSizeAppear =
+                {p4 : Float --probability that a particualr pattern will apear
+          ,      p8 : Float
+          ,      p12 : Float--odd number for 3/4 of 1/2 measure
+          ,      p16 : Float
+          ,      p32 : Float
+          ,      p64 : Float
+          ,      p128 : Float
+          ,      p256 : Float}
+
+type alias ProbPatternizationAppear =
+                {pz4 : Float --probability that a particualr pattern will apear in a pattern
+          ,      pz8 : Float
+          ,      pz12 : Float--odd number for 3/4 of 1/2 measure
+          ,      pz16 : Float
+          ,      pz32 : Float
+          ,      pz64 : Float
+          ,      pz128 : Float}
+
+type alias NumPatternSize =
+                {n4 : Int --number of a particualr pattern to make
+          ,      n8 : Int
+          ,      n12 : Int
+          ,      n16 : Int
+          ,      n32 : Int
+          ,      n64 : Int
+          ,      n128 : Int
+          ,      n256 : Int }
+
+type alias PatternList = List (List (List Int)) -- list that holds patterns
+
 
 type alias RNGSeed = {rngs : Int }
 
@@ -126,6 +166,11 @@ calculateDur d =
     EI -> 2
     S -> 1
 -}
+totalMR : Int -> MelodyR -> Int
+totalMR tot mr =
+  case mr of
+    [] -> tot
+    x::list_ -> totalMR (tot + x) list_
 
 cycleThroughR : MelodyR -> Int -> Int
 cycleThroughR list num =
@@ -144,6 +189,219 @@ cycleThroughM list lim num =
       []-> num --shouldnt happen
       y::list2_ -> if num <= 0 then y
         else cycleThroughM list_ list2_ (x + num)
+
+-------------------------------Main-------------------------------------------------
+
+
+main : -- input EVERYTHING
+main      =
+let ppa = patternCreator --stuff here
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------ start program flow section --------------------------------------
+
+workFlowMain : -> (MelodyR, ChordR, Melody, Chord)
+workFlowMain   =
+
+workFlowMainLoop : PatternList -> Int -> Int-> MelodyR -> ChordR -> Melody -> Chord -> (MelodyR, ChordR, Melody, Chord)
+workFlowMainLoop pl siz maxsiz mr cr m c  =
+  if (maxsiz - siz) < 4 then let tmr = melodyRhythm 0 siz se mr pmr in
+                        List.append pat [tmr]  -- not sure how pat list lsit is going to work
+                        let tcr = chordRhythm 0 siz se cr pcr
+                        List.append pat [tcr]
+                        let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+                        List.append pat [tm]
+                        let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss in
+                        List.append pat [tc]
+                        (mr,cr,m,c)
+  else
+    let lf total = workFlowListGenerator 0 siz ppsa [] pl in
+    let (s2, rn) = floatGenerator se 0.0 total in
+    let ans = workFlowDecidePattern pl rn lf
+    case ans of       -----------------------------------not sure this si the best way to do this
+      x::y::z::t -> List.append mr x
+                    List.append cr y
+                    List.append m z
+                    List.append c t
+                    workFlowMainLoop pl (siz + totalMR x 0)
+
+
+
+workFlowDecidePattern : PatternList -> Float -> List Float -> List (List Int)
+workFlowDecidePattern pl rn lf =
+  case pl of
+    [] -> []
+    x::list_ -> case lf of
+                  [] -> []
+                  y::lf1 -> if y > rn then x
+                    else workFlowDecidePattern list_ rn lf1
+
+getProbPatternSizeAppear : ProbPatternSizeAppear -> Int -> Float
+getProbPatternSizeAppear ppa num =
+  case num of
+    4 -> ppa.p4
+    8 -> ppa.p8
+    12 -> ppa.p12
+    16 -> ppa.p16
+    32 -> ppa.p32
+    64 -> ppa.p64
+    128 -> ppa.p128
+    256 -> ppa.p256
+
+workFlowFloatListGenerator : Float -> Int -> ProbPatternSizeAppear -> List Float ->  PatternList -> (List Float, Float)  --- possible error in how y works
+workFlowFloatListGenerator total siz ppsa lf pl =
+  case pl of
+    [] -> (lf,total)
+    [x]::list_ -> [y]::x
+                  if (List.length y) > siz then List.append lf 0 workFlowFloatListGenerator total siz ppsa lf list_
+                    else List.append lf ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf loc)
+                     workFlowFloatListGenerator ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf loc) siz ppsa lf list_
+
+
+workFlowListCreatorFixFloatListLoop : List Float -> Int -> Float
+workFlowListCreatorFixFloatListLoop lf loc =
+  case lf of
+    [] -> 0.0
+    x::list_ -> if loc <= 0 then x
+                else workFlowListCreatorFixFloatListLoop  list_ (loc -1)
+
+
+
+
+
+
+
+
+
+
+
+
+------------------------------ start pattern section ----------------------------------------------
+
+getProbPatternizationAppear : ProbPatternizationAppear -> Int -> Float
+getProbPatternizationAppear ppa num =
+  case num of
+    4 -> ppa.pz4
+    8 -> ppa.pz8
+    12 -> ppa.pz12
+    16 -> ppa.pz416
+    32 -> ppa.pz32
+    64 -> ppa.pz64
+    128 -> ppa.pz128
+
+patternCreatorMain : -> (Int)
+patternCreatorMain =
+
+
+findPatternToMatchListCreator : Int -> Float -> Int -> PatternList -> List Float -> ProbPatternizationAppear -> (List Float, Float) -- returns lsit of float probabilities
+findPatternToMatchListCreator loc total siz pl lf ppa =
+  case pl of
+    [] -> (lf,total)
+    [x]::list_ -> [y]::x
+                if List.length y >= siz then List.append lf 0.0 (findPatternToMatchListCreator total siz list_ lf ppa)
+                  else  List.append lf ((getProbPatternizationAppear ppa (List.length y)) + findPatternToMatchListCreatorFixFloatListLoop lf loc ))   -------------------loc might be in the wrong place may need to be loc  -1
+                        findPatternToMatchListCreator (total+(getProbPatternizationAppear ppa (List.length y))+ findPatternToMatchListCreatorFixFloatListLoop lf loc ) siz list_ lf ppa
+
+findPatternToMatchListCreatorFixFloatListLoop : List Float -> Int -> Float
+findPatternToMatchListCreatorFixFloatListLoop lf loc =
+  case lf of
+    [] -> 0.0
+    x::list_ -> if loc <= 0 then x
+                else findPatternToMatchListCreatorFixFloatListLoop  list_ (loc -1)
+
+
+
+findPatternMatchCycle : List Float -> Float -> Int -- takes lsit of probabilities and returns
+findPatternMatchCycle lf num =
+  case lf of
+    [] -> lf
+    x::list_ -> if x <= num then num
+      else findPatternMatchCycle list_ num
+
+findPatternCycle : PatternList -> Int -> List (List Int)
+findPatternCycle pl num =
+  case pl of
+    [] -> pl
+    x::list_ -> if num =< 0 then x
+      else findPatternMatchCycle list_ (num - 1)
+
+findPatternToMatch : Float -> Seed -> List Float -> ProbPatternizationAppear-> PatternList -> List (List Int) --takes the size or remaining space and calculates the probs for mathcing each pattern in list float form
+findPatternToMatch total se lf ppa pl siz =
+      let (s2, rn) = floatGenerator se 0.0 total in
+      let ans = findPatternMatchCycle lf rn in
+      findPatternCycle pl ans
+
+
+
+
+findPatternToMatchMain :  Seed -> Int -> ProbPatternizationAppear-> ->List(List Int)
+findPatternToMatchMain se siz ppa pl siz =
+  let (lf,total) = findPatternToMatchListCreator  0.0 siz pl [] ppa
+  findPatternToMatch total se lf ppa pl siz
+
+patternCreator :
+     ProbRestChord -> Chord -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int   -- int is loc
+  -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> KeySignature -> ProbOctaveMelody -> Melody
+  -> ChordR -> ProbCR
+  -> MelodyR -> ProbMR
+  ->ProbInterPatternization -> Seed -> Int -> PatternList-> Int ->PatternList
+patternCreator prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se siz pat numpatsize =
+  if siz == 4 then
+    case numpatsize of
+      0 -> pat
+      _ ->  let tmr = melodyRhythm 0 siz se mr pmr in
+            List.append pat [tmr]  -- not sure how pat list lsit is going to work
+            let tcr = chordRhythm 0 siz se cr pcr
+            List.append pat [tcr]
+            let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+            List.append pat [tm]
+            let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss
+            List.append pat [tc]
+            patternCreator8 prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr se siz pat (numpatsize -1)
+  else
+    let (s2, rn) = floatGenerator se 0.0 1.0 in
+    if rn <= pip then
+      findPatternToMatch ...
+
+
+    else
+      case numpatsize of
+        0 -> pat
+        _ ->  let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in   -----needs to be here becuase otherwise it would do melody for whole thing instead of 1 note
+              let lf pt = melodyRhythmHelper [] arra 0.0 pmr
+              let dn = melodyRhythmDecider arra
+              let (s2, rn) = floatGenerator se 0.0 pt in
+              let nn =  (melodyRhythmDecider arra rn) in
+
+              let tmr = melodyRhythm 0 nn se mr pmr in
+              List.append pat [tmr]  -- not sure how pat list lsit is going to work
+              let tcr = chordRhythm 0 nn se cr pcr                                   ----------------------------------------------------logic error runs again wont be 0
+              List.append pat [tcr]
+              let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+              List.append pat [tm]
+              let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss
+              List.append pat [tc]
+              patternCreator8 prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr se siz pat (numpatsize -1)
+
+
 
 --------------Melody Rhythm code section -------------------------------------------------------------
 keySignatureNeumericalHandler : KeySignature -> Int
@@ -181,6 +439,8 @@ getProbMR y x = case y of
   15 -> x.m15
   16 -> x.m16
 
+
+
 melodyRhythmHelper : List  -> List Int -> Float  -> ProbMR -> (List Float, Int)
 melodyRhythmHelepr lf li total pmr
   case li of
@@ -194,23 +454,26 @@ melodyRhythmDecider li prob =
     x::list_ -> if x > prob then x
       else melodyRhythmDecider list_ prob
 
-melodyRhythm : Seed -> MelodyR ->ProbMR -> MelodyR
-melodyRhythm se mr pmr =
-  let do = cycleThroughR mr 0 in
-  if do <= 240 then
+melodyRhythm : Int -> Int -> Seed -> MelodyR ->ProbMR -> MelodyR --main of MR siz is the number of counts of the trick being created
+melodyRhythm siz maxnote se mr pmr =
+  let do = totalMR 0 mr in
+  if do <= (maxnote - siz) then
     let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
     let lf pt = melodyRhythmHelper [] arra 0.0 pmr
     let dn = melodyRhythmDecider arra
     let (s2, rn) = floatGenerator se 0.0 pt in
-    List.append mr (melodyRhythmDecider arra rn)
+    let nn =  (melodyRhythmDecider arra rn) in
+    List.append mr nn
+    melodyRhythm (siz + nn) maxnote se mr pmr
   else
-    let  hi = (cycleThroughR mr 0 )- 240 in
+    let  hi = (cycleThroughR mr 0 )- ( maxnote - siz) in
     List.append mr [hi]
     -- remove last number calculate whats needed and put that in
 
 --------------end of Melody Rhythm code Section ---------------------------------
 
 --------------start of Chord Rhythm code section---------------------------------
+-------cr being called mr ecasue of lazy coding
 getProbCR : Int -> ProbCR -> Float
 getProbCR y x = case y of
   1 -> x.cw
@@ -243,17 +506,19 @@ chordRhythmDecider li prob =
     x::list_ -> if x > prob then x
       else chordRhythmDecider list_ prob
 
-chordRhythm : Seed -> ChordR ->ProbCR -> ChordR
-chordyRhythm se mr pmr =
+chordRhythm : Int -> Int -> Seed -> ChordR ->ProbCR -> ChordR -- main of CR
+chordRhythm siz maxnote se mr pmr =
   let do = cycleThroughR mr 0 in
-  if do <= 240 then
+  if do <= (maxnote - siz) then
     let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
     let lf pt = chordRhythmHelper [] arra 0.0 pmr
     let dn = chordRhythmDecider arra
     let (s2, rn) = floatGenerator se 0.0 pt in
-    List.append mr (chordRhythmDecider arra rn)
+    let cn = chordRhythmDecider arra rn in
+    List.append mr cn
+    chordRhythm  (siz + cn) maxnote se cr pmr
   else
-    let  hi = (cycleThroughR mr 0 )- 240 in
+    let  hi = (cycleThroughR mr 0 ) - (maxnote - siz) in
     List.append mr [hi]
 
 
