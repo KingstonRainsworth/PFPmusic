@@ -330,10 +330,10 @@ getProbPatternizationAppear ppa num =
     32 -> ppa.pz32
     64 -> ppa.pz64
     128 -> ppa.pz128
-
+{-
 patternCreatorMain : -> (Int)
 patternCreatorMain =
-
+-}
 
 findPatternToMatchListCreator : Int -> Float -> Int -> PatternList -> List Float -> ProbPatternizationAppear -> (List Float, Float) -- returns lsit of float probabilities
 findPatternToMatchListCreator loc total siz pl lf ppa =
@@ -679,7 +679,6 @@ chordListCycleThrough lc num =
     x::list_ -> if num == 0 then x
       else chordListCycleThrough list_ (num - 1)
 
-
 chordCreatorDecider : List Float -> Float ->Int -> Int
 chordCreatorDecider probs prob loc =
   case probs of
@@ -687,15 +686,11 @@ chordCreatorDecider probs prob loc =
     x::list_ -> if x >= prob then loc
       else chordCreatorDecider list_ prob loc
 
-
-
-
 chordProbMain :Melody -> MelodyR -> ChordR -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord ->Int ->  Int -> Int -> Int -> Int -> List Float -> ChordR -> ChordR -> List List Int -> List Float --run through list chords
 chordProbMain m mr cr paoc prc pac ptc loc ac rc tc aoc lf cr cruc lc =
     case lc of
        [] -> 0
        y::list_ -> chordProbMain paoc prc pac ptc loc ac r tc aoc (List.append lf ((chordProbHelper m mr cruc x paoc prc pac ptc loc ac rc tc aoc  ))+y) cr_ lc
-
 
 chordTypeListLoop : Int -> Int -> Int -> Int -> (Int,Int,Int,Int)
 chordTypeListLoop lc ac rc tc aoc =
