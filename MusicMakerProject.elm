@@ -197,8 +197,14 @@ cycleThroughM list lim num =
 
 main : -- input EVERYTHING
 main      =
-let ppa = patternCreator --stuff here
-
+  let ppa = patternCreator --stuff here
+  let m = []
+  let c = []
+  let mr = []
+  let cr = []
+  workFlowMainLoop --stuff here
+  startAtRoot --stuff where
+  endAtRoot -- stuff here
 
 
 
