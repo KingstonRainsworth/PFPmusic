@@ -31,7 +31,7 @@ type alias Model =
     probpatternization = ProbPatternization.Model,
     numpatzise = Numpatsize.Model
     ksp : KeySignature.Model,
-    probmr : ProbNR.Model,
+    probmr : ProbMR.Model,
     probcr : ProbCR.Model,
     proboctavemelody : ProbOctave.Model,
     proboctavechord : ProbOctaveChord.Model,
@@ -55,3 +55,5 @@ type Msg
   | ProbApChordMsg : ProbApplied.Msg,
   | ProbRootMSgMsg : ProbRoot.Msg
   | ProbAddOn : ProbAddOn.Msg
+  | Randomize
+  | Default

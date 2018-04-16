@@ -12,15 +12,6 @@ import Mouse
 --import Svg.Attributes exposing (..)
 ----------------------------------------------------------------------------
 
---main : Program Never Model Msg
-main =
-    Html.beginnerProgram
-      { model  = initialModel
-      , view = view
-      , update = update
-      --, subscriptions = subscriptions
-      }
-
 type alias Model =
   {
     ok : Float ,
@@ -50,6 +41,9 @@ initialModel = {
   pcmc = 0 ,
   cw = 0
 }
+
+type Msg =
+  Set | Reset
 
 {-subscriptions : Model -> Sub Msg
 subscriptions model =
