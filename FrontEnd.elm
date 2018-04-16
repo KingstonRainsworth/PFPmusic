@@ -74,7 +74,7 @@ view model =
     , button [ onClick Reset ] [ text "Reset" ]
     , button [ onClick Generate ] [text "Generate"]
     , viewCheck model
-    , h1 [] [text(toString model)]
+    , p [] [text(toString model)]
     ]
 
 viewCheck : Model -> Html Msg
