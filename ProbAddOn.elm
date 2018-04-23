@@ -28,5 +28,4 @@ init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
 
 type Msg =
-    Set
-  | Reset
+  Set | Reset | Random

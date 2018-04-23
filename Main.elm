@@ -17,19 +17,19 @@ import Mouse
 
 --main : Program Never Model Msg
 main =
-    Html.beginnerProgram
+    Html.progran
       { model  = initialModel
       , view = view
       , update = update
-      --, subscriptions = subscriptions
+      , subscriptions = \_ -> Sub.none
       }
 
 type alias Model =
   {
     coreval : CoreVal.Model,
-    probpatternsize = ProbPatternSize.Model,
-    probpatternization = ProbPatternization.Model,
-    numpatzise = Numpatsize.Model
+    probpatternsize : ProbPatternSize.Model,
+    probpatternization : ProbPatternization.Model,
+    numpatzise : Numpatsize.Model
     ksp : KeySignature.Model,
     probmr : ProbMR.Model,
     probcr : ProbCR.Model,
@@ -42,18 +42,92 @@ type alias Model =
   }
 
 type Msg
-  = CoreValMsg Coreval.Msg
+  = CoreValMsg CoreVal.Msg
   | ProbPatSizeMsg ProbPatternSize.Msg
   | ProbPatizeMsg = ProbPatternization.Msg,
   | NumPatSizeMsg = Numpatsize.Msg
   | KSPMsg : KeySignature.Msg,
-  | ProbmrMsg : ProbNR.Msg,
+  | ProbmrMsg : ProbMR.Msg,
   | ProbcrMsg : ProbCR.Msg,
   | ProbOcMelMsg : ProbOctave.Msg,
   | ProbOcChordMsg : ProbOctaveChord.Msg,
   | ProbTypeChordMsg : ProbType.Msg,
   | ProbApChordMsg : ProbApplied.Msg,
-  | ProbRootMSgMsg : ProbRoot.Msg
-  | ProbAddOn : ProbAddOn.Msg
+  | ProbRootMsg : ProbRoot.Msg
+  | ProbAddOnMsg : ProbAddOn.Msg
   | Randomize
   | Default
+
+initialModel : Model =
+  {
+    coreval = CoreVal.init,
+    probpatternsize = ProbPatternSize.init,
+    probpatternization = ProbPatternization.init,
+    numpatzise = Numpatsize.init
+    ksp = KeySignature.init,
+    probmr = ProbMR.init,
+    probcr = ProbCR.init,
+    proboctavemelody = ProbOctave.init,
+    proboctavechord = ProbOctaveChord.init,
+    probtypechord = ProbType.init,
+    probappliechord = ProbApplied.init,
+    probroot = ProbRoot.init
+    probaddon = ProbAddOn.init
+  }
+
+update : Msg -> Model -> ( Model, Cmd Msg )
+update msg model = case msg of
+  CoreValMsg m ->
+    let (subMod,subCmd) = CoreVal.update m model.coreval in
+    { model | coreval = subMod }
+                    ! [ Cmd.map CoreValMsg subCmd ]
+  ProbPatSizeMsg m ->
+    let (subMod,subCmd) = ProbPatternSize.update m model.probpatternsize in
+    { model | probpatternsize = subMod }
+                    ! [ Cmd.map ProbPatSizeMsg subCmd ]
+  ProbPatizeMsg m ->
+    let (subMod,subCmd) = ProbPatternization.update m model.probpatternization in
+    { model | probpatternization = subMod }
+                    ! [ Cmd.map ProbPatizeMsg subCmd ]
+  NumPatSizeMsg m ->
+    let (subMod,subCmd) = Numpatsize.update m model.numpatzise in
+    { model | numpatzise = subMod }
+                    ! [ Cmd.map NumPatSizeMsg subCmd ]
+  KSPMsg m ->
+    let (subMod,subCmd) = KeySignature.update m model.ksp in
+    { model | ksp = subMod }
+                    ! [ Cmd.map KSPMsg subCmd ]
+  ProbmrMsg m ->
+    let (subMod,subCmd) = ProbMR.update m model.probmr in
+    { model | probmr = subMod }
+                    ! [ Cmd.map ProbmrMsg subCmd ]
+  ProbcrMsg m ->
+    let (subMod,subCmd) = ProbCR.update m model.probcr in
+    { model | probcr = subMod }
+                    ! [ Cmd.map ProbcrMsg subCmd ]
+  ProbOcMelMsg m ->
+    let (subMod,subCmd) = ProbOctave.update m model.proboctavemelody in
+    { model | proboctavemelody = subMod }
+                    ! [ Cmd.map ProbOcMelMsg subCmd ]
+  ProbOcChordMsg m ->
+    let (subMod,subCmd) = ProbOctaveChord.update m model.proboctavechord in
+    { model | proboctavechord = subMod }
+                    ! [ Cmd.map ProbOcChordMsg subCmd ]
+  ProbTypeChordMsg m ->
+    let (subMod,subCmd) = ProbType.update m model.probtypechord in
+    { model | probtypechord = subMod }
+                    ! [ Cmd.map ProbTypeChordMsg subCmd ]
+  ProbApChordMsg m ->
+    let (subMod,subCmd) = ProbApplied.update m model.probappliechord in
+    { model | probappliechord = subMod }
+                    ! [ Cmd.map ProbApChordMsg subCmd ]
+  ProbRootMsg m ->
+    let (subMod,subCmd) = ProbRoot.update m model.probroot in
+    { model | probroot = subMod }
+                    ! [ Cmd.map ProbRootMsg subCmd ]
+  ProbAddOnMsg m ->
+    let (subMod,subCmd) = ProbAddOn.update m model.probaddon in
+    { model | probaddon = subMod }
+                    ! [ Cmd.map ProbAddOnMsg subCmd ]
+  Randomize ->
+    let (randmod,cmd) = (update (CoreValMsg Random) model)

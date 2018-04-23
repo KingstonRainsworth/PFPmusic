@@ -1,7 +1,7 @@
 module ProbRoot exposing (..)
 -- Set up package, not all are needed -----------------------------------------
 
---import Random exposing (Generator, Seed)
+import Random exposing (Generator, Seed)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
@@ -32,5 +32,4 @@ init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
 
 type Msg =
-    Set
-  | Reset
+  Set | Reset | Random

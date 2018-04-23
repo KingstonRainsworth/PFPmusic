@@ -2,12 +2,10 @@ module CoreVal exposing (..)
 
 -- Set up package, not all are needed -----------------------------------------
 
---import Random exposing (Generator, Seed)
+import Random exposing (Generator, Seed)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
-import Keyboard
-import Mouse
 --import Svg exposing (..)
 --import Svg.Attributes exposing (..)
 ----------------------------------------------------------------------------
@@ -43,7 +41,7 @@ initialModel = {
 }
 
 type Msg =
-  Set | Reset
+  Set | Reset | Random
 
 {-subscriptions : Model -> Sub Msg
 subscriptions model =
