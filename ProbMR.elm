@@ -29,22 +29,22 @@ type alias Model =
 
 initialModel : Model
 initialModel =
-{     mw = 0 -- melody rhythm
-,     m2 = 0
-,     m3 = 0
-,     m4 = 0
-,     m5 = 0
-,     m6 = 0
-,     m7 = 0
-,     m8 = 0
-,     m9 = 0
-,     m10 = 0
-,     m11 = 0
-,     m12 = 0
-,     m13 = 0
-,     m14 = 0
-,     m15 = 0
-,     m16 = 0     }
+  {     mw = 0 -- melody rhythm
+  ,     m2 = 0
+  ,     m3 = 0
+  ,     m4 = 0
+  ,     m5 = 0
+  ,     m6 = 0
+  ,     m7 = 0
+  ,     m8 = 0
+  ,     m9 = 0
+  ,     m10 = 0
+  ,     m11 = 0
+  ,     m12 = 0
+  ,     m13 = 0
+  ,     m14 = 0
+  ,     m15 = 0
+  ,     m16 = 0     }
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)

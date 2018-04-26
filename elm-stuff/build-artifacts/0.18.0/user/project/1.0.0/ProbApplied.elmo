@@ -1,0 +1,9 @@
+var _user$project$ProbApplied$initialModel = {pac1: 0, pac4: 0, pac5: 0, pac7: 0};
+var _user$project$ProbApplied$init = {ctor: '_Tuple2', _0: _user$project$ProbApplied$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$ProbApplied$Model = F4(
+	function (a, b, c, d) {
+		return {pac1: a, pac4: b, pac5: c, pac7: d};
+	});
+var _user$project$ProbApplied$Random = {ctor: 'Random'};
+var _user$project$ProbApplied$Reset = {ctor: 'Reset'};
+var _user$project$ProbApplied$Set = {ctor: 'Set'};

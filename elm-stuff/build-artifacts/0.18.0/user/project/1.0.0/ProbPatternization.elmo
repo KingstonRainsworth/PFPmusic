@@ -1,0 +1,9 @@
+var _user$project$ProbPatternization$initialModel = {pz4: 0, pz8: 0, pz12: 0, pz16: 0, pz32: 0, pz64: 0, pz128: 0};
+var _user$project$ProbPatternization$init = {ctor: '_Tuple2', _0: _user$project$ProbPatternization$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$ProbPatternization$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {pz4: a, pz8: b, pz12: c, pz16: d, pz32: e, pz64: f, pz128: g};
+	});
+var _user$project$ProbPatternization$Random = {ctor: 'Random'};
+var _user$project$ProbPatternization$Reset = {ctor: 'Reset'};
+var _user$project$ProbPatternization$Set = {ctor: 'Set'};

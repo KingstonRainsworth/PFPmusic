@@ -12,7 +12,7 @@ import Mouse
 type alias Model =
   { pnao : Float
   , psus2 : Float
-  , psus4 : FLoat
+  , psus4 : Float
   , pAug  : Float
   , pDim  : Float }
 

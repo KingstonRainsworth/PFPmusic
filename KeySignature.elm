@@ -10,33 +10,32 @@ import Mouse
 ----------------------------------------------------------------------------
 
 type alias Model =
-  {Key1 : Int
-  ,Key2 : Int
-  ,Key3 : Int
-  ,Key4 : Int
-  ,Key5 : Int
-  ,Key6 : Int
-  ,Key7 : Int
-  ,Key8 : Int
-  ,Key9 : Int
-  ,Key10 : Int
-  ,Key11 : Int
-  ,Key12 : Int}
+  {key1 : Int
+  ,key2 : Int
+  ,key3 : Int
+  ,key4 : Int
+  ,key5 : Int
+  ,key6 : Int
+  ,key7 : Int
+  ,key8 : Int
+  ,key9 : Int
+  ,key10 : Int
+  ,key11 : Int
+  ,key12 : Int}
 
 initialModel : Model
-initialModel =
-  {Key1 = 0
-  ,Key2 = 0
-  ,Key3 = 0
-  ,Key4 = 0
-  ,Key5 = 0
-  ,Key6 = 0
-  ,Key7 = 0
-  ,Key8 = 0
-  ,Key9 = 0
-  ,Key10 = 0
-  ,Key11 = 0
-  ,Key12 = 0}
+initialModel ={ key1 = 0
+  ,key2 = 0
+  ,key3 = 0
+  ,key4 = 0
+  ,key5 = 0
+  ,key6 = 0
+  ,key7 = 0
+  ,key8 = 0
+  ,key9 = 0
+  ,key10 = 0
+  ,key11 = 0
+  ,key12 = 0}
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)

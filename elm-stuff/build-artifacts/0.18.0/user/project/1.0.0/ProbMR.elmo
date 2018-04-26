@@ -1,0 +1,38 @@
+var _user$project$ProbMR$initialModel = {mw: 0, m2: 0, m3: 0, m4: 0, m5: 0, m6: 0, m7: 0, m8: 0, m9: 0, m10: 0, m11: 0, m12: 0, m13: 0, m14: 0, m15: 0, m16: 0};
+var _user$project$ProbMR$init = {ctor: '_Tuple2', _0: _user$project$ProbMR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$ProbMR$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return function (p) {
+																return {mw: a, m2: b, m3: c, m4: d, m5: e, m6: f, m7: g, m8: h, m9: i, m10: j, m11: k, m12: l, m13: m, m14: n, m15: o, m16: p};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$ProbMR$Random = {ctor: 'Random'};
+var _user$project$ProbMR$Reset = {ctor: 'Reset'};
+var _user$project$ProbMR$Set = {ctor: 'Set'};

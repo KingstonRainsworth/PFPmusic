@@ -196,7 +196,7 @@ cycleThroughM list lim num =
 
 
 main : -- input EVERYTHING
-main      =
+main=
   let ppa = patternCreator --stuff here
   let m = []
   let c = []

@@ -1,0 +1,9 @@
+var _user$project$ProbOctave$initialModel = {o1: 0, o2: 0, o3: 0, o4: 0, o5: 0, o6: 0};
+var _user$project$ProbOctave$init = {ctor: '_Tuple2', _0: _user$project$ProbOctave$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+var _user$project$ProbOctave$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {o1: a, o2: b, o3: c, o4: d, o5: e, o6: f};
+	});
+var _user$project$ProbOctave$Random = {ctor: 'Random'};
+var _user$project$ProbOctave$Reset = {ctor: 'Reset'};
+var _user$project$ProbOctave$Set = {ctor: 'Set'};

@@ -1,0 +1,100 @@
+var _user$project$CoreVal$floatCreator = F2(
+	function (seed, fg) {
+		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
+		var f = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: f, _1: s2};
+	});
+var _user$project$CoreVal$boolCreator = F2(
+	function (seed, bg) {
+		var _p1 = A2(_elm_lang$core$Random$step, bg, seed);
+		var b = _p1._0;
+		var s2 = _p1._1;
+		return {ctor: '_Tuple2', _0: b, _1: s2};
+	});
+var _user$project$CoreVal$coinFlip = _elm_lang$core$Random$bool;
+var _user$project$CoreVal$probability = A2(_elm_lang$core$Random$float, 0, 1);
+var _user$project$CoreVal$initialModel = {
+	seed: _elm_lang$core$Random$initialSeed(5),
+	ok: 0,
+	ik: 0,
+	oc: 0,
+	ic: 0,
+	prm: 0,
+	prc: 0,
+	sar: false,
+	ear: false,
+	pip: 0,
+	pcmc: 0,
+	cw: 0
+};
+var _user$project$CoreVal$update = F2(
+	function (msg, model) {
+		var _p2 = msg;
+		switch (_p2.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$CoreVal$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var cwn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var pcmcm = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var pipn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var earn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$boolCreator, model.seed, _user$project$CoreVal$coinFlip));
+				var sarn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$boolCreator, model.seed, _user$project$CoreVal$coinFlip));
+				var prcn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var prmn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var icn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var ocn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var ikn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var okn = _elm_lang$core$Tuple$first(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var seedn = _elm_lang$core$Tuple$second(
+					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{seed: seedn, ok: okn, ik: ikn, oc: ocn, ic: icn, prm: prmn, prc: prcn, sar: sarn, ear: earn, pip: pipn, pcmc: pcmcm, cw: cwn}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
+	});
+var _user$project$CoreVal$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return {seed: a, ok: b, ik: c, oc: d, ic: e, prm: f, prc: g, sar: h, ear: i, pip: j, pcmc: k, cw: l};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$CoreVal$Random = {ctor: 'Random'};
+var _user$project$CoreVal$Reset = {ctor: 'Reset'};
+var _user$project$CoreVal$Set = {ctor: 'Set'};

@@ -3,10 +3,24 @@ module FrontEnd exposing (..)
 -- Set up package, not all are needed -----------------------------------------
 
 --import Random exposing (Generator, Seed)
+import CoreVal exposing (..)
+import ProbPatternSize exposing (..)
+import ProbPatternization exposing (..)
+import Numpatsize exposing (..)
+import KeySignature exposing (..)
+import ProbMR exposing (..)
+import ProbCR exposing (..)
+import ProbOctave exposing (..)
+import ProbOctaveChord exposing (..)
+import ProbType exposing (..)
+import ProbApplied exposing (..)
+import ProbRoot exposing (..)
+import ProbAddOn exposing (..)
+--
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
-import MusicMakerProject as MMP
+--import MusicMakerProject as MMP
 import Keyboard
 import Mouse
 --import Svg exposing (..)
@@ -15,7 +29,7 @@ import Mouse
 
 ----------------------------------------------------------------------------
 
---main : Program Never Model Msg
+main : Program Never Model Msg
 main =
     Html.progran
       { model  = initialModel
@@ -29,7 +43,7 @@ type alias Model =
     coreval : CoreVal.Model,
     probpatternsize : ProbPatternSize.Model,
     probpatternization : ProbPatternization.Model,
-    numpatzise : Numpatsize.Model
+    numpatzise : Numpatsize.Model,
     ksp : KeySignature.Model,
     probmr : ProbMR.Model,
     probcr : ProbCR.Model,
@@ -37,33 +51,34 @@ type alias Model =
     proboctavechord : ProbOctaveChord.Model,
     probtypechord : ProbType.Model,
     probappliechord : ProbApplied.Model,
-    probroot : ProbRoot.Model
+    probroot : ProbRoot.Model,
     probaddon : ProbAddOn.Model
   }
 
 type Msg
   = CoreValMsg CoreVal.Msg
   | ProbPatSizeMsg ProbPatternSize.Msg
-  | ProbPatizeMsg = ProbPatternization.Msg,
-  | NumPatSizeMsg = Numpatsize.Msg
-  | KSPMsg : KeySignature.Msg,
-  | ProbmrMsg : ProbMR.Msg,
-  | ProbcrMsg : ProbCR.Msg,
-  | ProbOcMelMsg : ProbOctave.Msg,
-  | ProbOcChordMsg : ProbOctaveChord.Msg,
-  | ProbTypeChordMsg : ProbType.Msg,
-  | ProbApChordMsg : ProbApplied.Msg,
-  | ProbRootMsg : ProbRoot.Msg
-  | ProbAddOnMsg : ProbAddOn.Msg
+  | ProbPatizeMsg ProbPatternization.Msg
+  | NumPatSizeMsg Numpatsize.Msg
+  | KSPMsg KeySignature.Msg
+  | ProbmrMsg ProbMR.Msg
+  | ProbcrMsg ProbCR.Msg
+  | ProbOcMelMsg ProbOctave.Msg
+  | ProbOcChordMsg ProbOctaveChord.Msg
+  | ProbTypeChordMsg ProbType.Msg
+  | ProbApChordMsg ProbApplied.Msg
+  | ProbRootMsg ProbRoot.Msg
+  | ProbAddOnMsg ProbAddOn.Msg
   | Randomize
   | Default
 
-initialModel : Model =
+initialModel : Model
+initialModel =
   {
     coreval = CoreVal.init,
     probpatternsize = ProbPatternSize.init,
     probpatternization = ProbPatternization.init,
-    numpatzise = Numpatsize.init
+    numpatzise = Numpatsize.init,
     ksp = KeySignature.init,
     probmr = ProbMR.init,
     probcr = ProbCR.init,
@@ -71,7 +86,7 @@ initialModel : Model =
     proboctavechord = ProbOctaveChord.init,
     probtypechord = ProbType.init,
     probappliechord = ProbApplied.init,
-    probroot = ProbRoot.init
+    probroot = ProbRoot.init,
     probaddon = ProbAddOn.init
   }
 
@@ -130,4 +145,4 @@ update msg model = case msg of
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
   Randomize ->
-    let (randmod,cmd) = (update (CoreValMsg Random) model)
+    let (randmod1,cmd) =
