@@ -1,21 +1,3 @@
-var _user$project$CoreVal$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: A2(
-				_elm_lang$html$Html$p,
-				{ctor: '[]'},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text(
-						_elm_lang$core$Basics$toString(model)),
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		});
-};
 var _user$project$CoreVal$floatCreator = F2(
 	function (seed, fg) {
 		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
@@ -55,35 +37,44 @@ var _user$project$CoreVal$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$CoreVal$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var cwn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var pcmcm = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var pipn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var earn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$boolCreator, model.seed, _user$project$CoreVal$coinFlip));
-				var sarn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$boolCreator, model.seed, _user$project$CoreVal$coinFlip));
-				var prcn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var prmn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var icn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var ocn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var ikn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var okn = _elm_lang$core$Tuple$first(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
-				var seedn = _elm_lang$core$Tuple$second(
-					A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability));
+				var _p3 = A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability);
+				var okn = _p3._0;
+				var s2 = _p3._1;
+				var _p4 = A2(_user$project$CoreVal$floatCreator, s2, _user$project$CoreVal$probability);
+				var ikn = _p4._0;
+				var s3 = _p4._1;
+				var _p5 = A2(_user$project$CoreVal$floatCreator, s3, _user$project$CoreVal$probability);
+				var ocn = _p5._0;
+				var s4 = _p5._1;
+				var _p6 = A2(_user$project$CoreVal$floatCreator, s4, _user$project$CoreVal$probability);
+				var icn = _p6._0;
+				var s5 = _p6._1;
+				var _p7 = A2(_user$project$CoreVal$floatCreator, s5, _user$project$CoreVal$probability);
+				var prmn = _p7._0;
+				var s6 = _p7._1;
+				var _p8 = A2(_user$project$CoreVal$floatCreator, s6, _user$project$CoreVal$probability);
+				var prcn = _p8._0;
+				var s7 = _p8._1;
+				var _p9 = A2(_user$project$CoreVal$boolCreator, s7, _user$project$CoreVal$coinFlip);
+				var sarn = _p9._0;
+				var s8 = _p9._1;
+				var _p10 = A2(_user$project$CoreVal$boolCreator, s8, _user$project$CoreVal$coinFlip);
+				var earn = _p10._0;
+				var s9 = _p10._1;
+				var _p11 = A2(_user$project$CoreVal$floatCreator, s9, _user$project$CoreVal$probability);
+				var pipn = _p11._0;
+				var s10 = _p11._1;
+				var _p12 = A2(_user$project$CoreVal$floatCreator, s10, _user$project$CoreVal$probability);
+				var pcmcm = _p12._0;
+				var s11 = _p12._1;
+				var _p13 = A2(_user$project$CoreVal$floatCreator, s11, _user$project$CoreVal$probability);
+				var cwn = _p13._0;
+				var s12 = _p13._1;
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{seed: seedn, ok: okn, ik: ikn, oc: ocn, ic: icn, prm: prmn, prc: prcn, sar: sarn, ear: earn, pip: pipn, pcmc: pcmcm, cw: cwn}),
+						{seed: s12, ok: okn, ik: ikn, oc: ocn, ic: icn, prm: prmn, prc: prcn, sar: sarn, ear: earn, pip: pipn, pcmc: pcmcm, cw: cwn}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
@@ -113,6 +104,6 @@ var _user$project$CoreVal$Model = function (a) {
 		};
 	};
 };
-var _user$project$CoreVal$Random = {ctor: 'Random'};
+var _user$project$CoreVal$Randomize = {ctor: 'Randomize'};
 var _user$project$CoreVal$Reset = {ctor: 'Reset'};
 var _user$project$CoreVal$Set = {ctor: 'Set'};

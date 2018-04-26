@@ -144,9 +144,15 @@ update msg model = case msg of
     let (subMod,subCmd) = ProbAddOn.update m model.probaddon in
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
+  Randomize ->
+    update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
+    update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
+    update (ProbPatizeMsg ProbPatternization.Randomize)
+
   _ ->
     (model,Cmd.none)
 
 view : Model -> Html Msg
 view model =
-  Html.div [] [Html.p [] [Html.text (toString model)]]
+  Html.div [] [button [ onClick Randomize ] [text "Randomize"]
+              ,Html.p [] [Html.text (toString model)]]

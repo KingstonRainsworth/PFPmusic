@@ -40,9 +40,9 @@ initialModel = {
   pip = 0 ,
   pcmc = 0 ,
   cw = 0}
-  
+
 type Msg =
-  Set | Reset | Random
+  Set | Reset | Randomize
 
 probability : Generator Float
 probability =
@@ -71,24 +71,23 @@ update msg model =
   case msg of
     Set -> (model,Cmd.none)
     Reset -> (initialModel, Cmd.none)
-    Random ->
+    Randomize ->
       let
-        seedn = Tuple.second (floatCreator model.seed probability)
-        okn = Tuple.first (floatCreator model.seed probability)
-        ikn = Tuple.first (floatCreator model.seed probability)
-        ocn = Tuple.first (floatCreator model.seed probability)
-        icn = Tuple.first (floatCreator model.seed probability)
-        prmn = Tuple.first (floatCreator model.seed probability)
-        prcn = Tuple.first (floatCreator model.seed probability)
-        sarn = Tuple.first (boolCreator model.seed coinFlip)
-        earn = Tuple.first (boolCreator model.seed coinFlip)
-        pipn = Tuple.first (floatCreator model.seed probability)
-        pcmcm = Tuple.first (floatCreator model.seed probability)
-        cwn = Tuple.first (floatCreator model.seed probability)
+        (okn,s2) =  (floatCreator model.seed probability)
+        (ikn,s3) =  (floatCreator s2 probability)
+        (ocn,s4) =  (floatCreator s3 probability)
+        (icn,s5) =  (floatCreator s4 probability)
+        (prmn,s6) =  (floatCreator s5 probability)
+        (prcn,s7) =  (floatCreator s6 probability)
+        (sarn,s8) =  (boolCreator s7 coinFlip)
+        (earn,s9) =  (boolCreator s8 coinFlip)
+        (pipn,s10) =  (floatCreator s9 probability)
+        (pcmcm,s11) =  (floatCreator s10 probability)
+        (cwn,s12) =  (floatCreator s11 probability)
       in
-      ({model | seed=seedn , ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
+      ({model | seed=s12 , ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
 
-view : Model -> Html Msg
+{-view : Model -> Html Msg
 view model =
   Html.div []
-  [Html.p [] [Html.text (toString model)]]
+  [Html.p [] [Html.text (toString model)]]-}

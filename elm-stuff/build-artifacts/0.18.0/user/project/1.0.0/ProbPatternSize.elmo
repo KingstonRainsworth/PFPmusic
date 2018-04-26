@@ -1,13 +1,69 @@
+var _user$project$ProbPatternSize$floatCreator = F2(
+	function (seed, fg) {
+		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
+		var f = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: f, _1: s2};
+	});
+var _user$project$ProbPatternSize$probability = A2(_elm_lang$core$Random$float, 0, 1);
+var _user$project$ProbPatternSize$initialModel = {
+	p4: 0,
+	p8: 0,
+	p12: 0,
+	p16: 0,
+	p32: 0,
+	p64: 0,
+	p128: 0,
+	p256: 0,
+	seed: _elm_lang$core$Random$initialSeed(1)
+};
+var _user$project$ProbPatternSize$init = {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbPatternSize$update = F2(
 	function (msg, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var _p2 = A2(_user$project$ProbPatternSize$floatCreator, model.seed, _user$project$ProbPatternSize$probability);
+				var p4n = _p2._0;
+				var s2 = _p2._1;
+				var _p3 = A2(_user$project$ProbPatternSize$floatCreator, s2, _user$project$ProbPatternSize$probability);
+				var p8n = _p3._0;
+				var s3 = _p3._1;
+				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, s3, _user$project$ProbPatternSize$probability);
+				var p12n = _p4._0;
+				var s4 = _p4._1;
+				var _p5 = A2(_user$project$ProbPatternSize$floatCreator, s4, _user$project$ProbPatternSize$probability);
+				var p16n = _p5._0;
+				var s5 = _p5._1;
+				var _p6 = A2(_user$project$ProbPatternSize$floatCreator, s5, _user$project$ProbPatternSize$probability);
+				var p32n = _p6._0;
+				var s6 = _p6._1;
+				var _p7 = A2(_user$project$ProbPatternSize$floatCreator, s6, _user$project$ProbPatternSize$probability);
+				var p64n = _p7._0;
+				var s7 = _p7._1;
+				var _p8 = A2(_user$project$ProbPatternSize$floatCreator, s7, _user$project$ProbPatternSize$probability);
+				var p128n = _p8._0;
+				var s8 = _p8._1;
+				var _p9 = A2(_user$project$ProbPatternSize$floatCreator, s8, _user$project$ProbPatternSize$probability);
+				var p256n = _p9._0;
+				var s9 = _p9._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{p4: p4n, p8: p8n, p12: p12n, p16: p16n, p32: p32n, p64: p64n, p128: p128n, p256: p256n, seed: s9}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
 	});
-var _user$project$ProbPatternSize$initialModel = {p4: 0, p8: 0, p12: 0, p16: 0, p32: 0, p64: 0, p128: 0, p256: 0};
-var _user$project$ProbPatternSize$init = {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$ProbPatternSize$Model = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {p4: a, p8: b, p12: c, p16: d, p32: e, p64: f, p128: g, p256: h};
+var _user$project$ProbPatternSize$Model = F9(
+	function (a, b, c, d, e, f, g, h, i) {
+		return {p4: a, p8: b, p12: c, p16: d, p32: e, p64: f, p128: g, p256: h, seed: i};
 	});
-var _user$project$ProbPatternSize$Random = {ctor: 'Random'};
+var _user$project$ProbPatternSize$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbPatternSize$Reset = {ctor: 'Reset'};
 var _user$project$ProbPatternSize$Set = {ctor: 'Set'};
