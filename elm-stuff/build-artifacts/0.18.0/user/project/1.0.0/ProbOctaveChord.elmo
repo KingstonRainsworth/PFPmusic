@@ -1,3 +1,7 @@
+var _user$project$ProbOctaveChord$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$ProbOctaveChord$initialModel = {oc1: 0, oc2: 0, oc3: 0, oc4: 0, oc5: 0};
 var _user$project$ProbOctaveChord$init = {ctor: '_Tuple2', _0: _user$project$ProbOctaveChord$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbOctaveChord$Model = F5(

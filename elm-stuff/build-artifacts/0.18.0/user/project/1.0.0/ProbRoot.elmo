@@ -1,3 +1,7 @@
+var _user$project$ProbRoot$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$ProbRoot$initialModel = {prc1: 0, prc2: 0, prc3: 0, prc4: 0, prc5: 0, prc6: 0, prc7: 0};
 var _user$project$ProbRoot$init = {ctor: '_Tuple2', _0: _user$project$ProbRoot$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbRoot$Model = F7(

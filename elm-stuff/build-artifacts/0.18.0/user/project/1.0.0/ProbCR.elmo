@@ -1,3 +1,7 @@
+var _user$project$ProbCR$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$ProbCR$initialModel = {cw: 0, c2: 0, c3: 0, c4: 0, c5: 0, c6: 0, c7: 0, c8: 0, c9: 0, c10: 0, c11: 0, c12: 0, c13: 0, c14: 0, c15: 0, c16: 0};
 var _user$project$ProbCR$init = {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbCR$Model = function (a) {

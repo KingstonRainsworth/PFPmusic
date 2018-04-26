@@ -1,3 +1,21 @@
+var _user$project$CoreVal$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(model)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
+		});
+};
 var _user$project$CoreVal$floatCreator = F2(
 	function (seed, fg) {
 		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);

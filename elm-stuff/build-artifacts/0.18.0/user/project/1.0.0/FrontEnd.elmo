@@ -1,116 +1,3 @@
-var _user$project$FrontEnd$viewCheck = function (model) {
-	var v1 = model.value1;
-	var v2 = model.value2;
-	var v3 = model.value3;
-	var v4 = model.value4;
-	return ((_elm_lang$core$Native_Utils.cmp(v1, 0) < 0) || ((_elm_lang$core$Native_Utils.cmp(v1, 1) > 0) || ((_elm_lang$core$Native_Utils.cmp(v2, 0) < 0) || ((_elm_lang$core$Native_Utils.cmp(v2, 1) > 0) || ((_elm_lang$core$Native_Utils.cmp(v3, 0) < 0) || ((_elm_lang$core$Native_Utils.cmp(v3, 1) > 0) || ((_elm_lang$core$Native_Utils.cmp(v4, 0) < 0) || (_elm_lang$core$Native_Utils.cmp(v4, 1) > 0)))))))) ? A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: 'red'},
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text('input not a probability'),
-			_1: {ctor: '[]'}
-		}) : A2(
-		_elm_lang$html$Html$div,
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html_Attributes$style(
-				{
-					ctor: '::',
-					_0: {ctor: '_Tuple2', _0: 'color', _1: 'green'},
-					_1: {ctor: '[]'}
-				}),
-			_1: {ctor: '[]'}
-		},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text('OK'),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$FrontEnd$update = F2(
-	function (msg, model) {
-		var _p0 = msg;
-		switch (_p0.ctor) {
-			case 'Reset':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{value1: 0, value2: 0, value3: 0, value4: 0});
-			case 'Prop1':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						value1: A2(
-							_elm_lang$core$Result$withDefault,
-							0,
-							_elm_lang$core$String$toFloat(_p0._0))
-					});
-			case 'Prop2':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						value2: A2(
-							_elm_lang$core$Result$withDefault,
-							0,
-							_elm_lang$core$String$toFloat(_p0._0))
-					});
-			case 'Prop3':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						value3: A2(
-							_elm_lang$core$Result$withDefault,
-							0,
-							_elm_lang$core$String$toFloat(_p0._0))
-					});
-			case 'Prop4':
-				return _elm_lang$core$Native_Utils.update(
-					model,
-					{
-						value4: A2(
-							_elm_lang$core$Result$withDefault,
-							0,
-							_elm_lang$core$String$toFloat(_p0._0))
-					});
-			default:
-				return _elm_lang$core$Native_Utils.crashCase(
-					'FrontEnd',
-					{
-						start: {line: 58, column: 20},
-						end: {line: 65, column: 26}
-					},
-					_p0)('TODO');
-		}
-	});
-var _user$project$FrontEnd$initialModel = {value1: 0, value2: 0, value3: 0, value4: 0};
-var _user$project$FrontEnd$init = {ctor: '_Tuple2', _0: _user$project$FrontEnd$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$FrontEnd$Model = F4(
-	function (a, b, c, d) {
-		return {value1: a, value2: b, value3: c, value4: d};
-	});
-var _user$project$FrontEnd$Generate = {ctor: 'Generate'};
-var _user$project$FrontEnd$Reset = {ctor: 'Reset'};
-var _user$project$FrontEnd$Prop4 = function (a) {
-	return {ctor: 'Prop4', _0: a};
-};
-var _user$project$FrontEnd$Prop3 = function (a) {
-	return {ctor: 'Prop3', _0: a};
-};
-var _user$project$FrontEnd$Prop2 = function (a) {
-	return {ctor: 'Prop2', _0: a};
-};
-var _user$project$FrontEnd$Prop1 = function (a) {
-	return {ctor: 'Prop1', _0: a};
-};
 var _user$project$FrontEnd$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -118,126 +5,282 @@ var _user$project$FrontEnd$view = function (model) {
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$input,
+				_elm_lang$html$Html$p,
+				{ctor: '[]'},
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Attributes$type_('text'),
-					_1: {
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$placeholder('value1'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onInput(_user$project$FrontEnd$Prop1),
-							_1: {ctor: '[]'}
-						}
-					}
-				},
-				{ctor: '[]'}),
-			_1: {
-				ctor: '::',
-				_0: A2(
-					_elm_lang$html$Html$input,
-					{
-						ctor: '::',
-						_0: _elm_lang$html$Html_Attributes$type_('text'),
-						_1: {
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$placeholder('value2'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Events$onInput(_user$project$FrontEnd$Prop2),
-								_1: {ctor: '[]'}
-							}
-						}
-					},
-					{ctor: '[]'}),
-				_1: {
-					ctor: '::',
-					_0: A2(
-						_elm_lang$html$Html$input,
-						{
-							ctor: '::',
-							_0: _elm_lang$html$Html_Attributes$type_('text'),
-							_1: {
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$placeholder('value3'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onInput(_user$project$FrontEnd$Prop3),
-									_1: {ctor: '[]'}
-								}
-							}
-						},
-						{ctor: '[]'}),
-					_1: {
-						ctor: '::',
-						_0: A2(
-							_elm_lang$html$Html$input,
-							{
-								ctor: '::',
-								_0: _elm_lang$html$Html_Attributes$type_('text'),
-								_1: {
-									ctor: '::',
-									_0: _elm_lang$html$Html_Attributes$placeholder('value4'),
-									_1: {
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onInput(_user$project$FrontEnd$Prop4),
-										_1: {ctor: '[]'}
-									}
-								}
-							},
-							{ctor: '[]'}),
-						_1: {
-							ctor: '::',
-							_0: A2(
-								_elm_lang$html$Html$button,
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html_Events$onClick(_user$project$FrontEnd$Reset),
-									_1: {ctor: '[]'}
-								},
-								{
-									ctor: '::',
-									_0: _elm_lang$html$Html$text('Reset'),
-									_1: {ctor: '[]'}
-								}),
-							_1: {
-								ctor: '::',
-								_0: A2(
-									_elm_lang$html$Html$button,
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html_Events$onClick(_user$project$FrontEnd$Generate),
-										_1: {ctor: '[]'}
-									},
-									{
-										ctor: '::',
-										_0: _elm_lang$html$Html$text('Generate'),
-										_1: {ctor: '[]'}
-									}),
-								_1: {
-									ctor: '::',
-									_0: _user$project$FrontEnd$viewCheck(model),
-									_1: {
-										ctor: '::',
-										_0: A2(
-											_elm_lang$html$Html$p,
-											{ctor: '[]'},
-											{
-												ctor: '::',
-												_0: _elm_lang$html$Html$text(
-													_elm_lang$core$Basics$toString(model)),
-												_1: {ctor: '[]'}
-											}),
-										_1: {ctor: '[]'}
-									}
-								}
-							}
-						}
-					}
-				}
-			}
+					_0: _elm_lang$html$Html$text(
+						_elm_lang$core$Basics$toString(model)),
+					_1: {ctor: '[]'}
+				}),
+			_1: {ctor: '[]'}
 		});
 };
-var _user$project$FrontEnd$main = _elm_lang$html$Html$beginnerProgram(
-	{model: _user$project$FrontEnd$initialModel, view: _user$project$FrontEnd$view, update: _user$project$FrontEnd$update})();
+var _user$project$FrontEnd$initialModel = {coreval: _user$project$CoreVal$initialModel, probpatternsize: _user$project$ProbPatternSize$initialModel, probpatternization: _user$project$ProbPatternization$initialModel, numpatzise: _user$project$Numpatsize$initialModel, ksp: _user$project$KeySignature$initialModel, probmr: _user$project$ProbMR$initialModel, probcr: _user$project$ProbCR$initialModel, proboctavemelody: _user$project$ProbOctave$initialModel, proboctavechord: _user$project$ProbOctaveChord$initialModel, probtypechord: _user$project$ProbType$initialModel, probappliechord: _user$project$ProbApplied$initialModel, probroot: _user$project$ProbRoot$initialModel, probaddon: _user$project$ProbAddOn$initialModel};
+var _user$project$FrontEnd$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return {coreval: a, probpatternsize: b, probpatternization: c, numpatzise: d, ksp: e, probmr: f, probcr: g, proboctavemelody: h, proboctavechord: i, probtypechord: j, probappliechord: k, probroot: l, probaddon: m};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$FrontEnd$Default = {ctor: 'Default'};
+var _user$project$FrontEnd$Randomize = {ctor: 'Randomize'};
+var _user$project$FrontEnd$ProbAddOnMsg = function (a) {
+	return {ctor: 'ProbAddOnMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbRootMsg = function (a) {
+	return {ctor: 'ProbRootMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbApChordMsg = function (a) {
+	return {ctor: 'ProbApChordMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbTypeChordMsg = function (a) {
+	return {ctor: 'ProbTypeChordMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbOcChordMsg = function (a) {
+	return {ctor: 'ProbOcChordMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbOcMelMsg = function (a) {
+	return {ctor: 'ProbOcMelMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbcrMsg = function (a) {
+	return {ctor: 'ProbcrMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbmrMsg = function (a) {
+	return {ctor: 'ProbmrMsg', _0: a};
+};
+var _user$project$FrontEnd$KSPMsg = function (a) {
+	return {ctor: 'KSPMsg', _0: a};
+};
+var _user$project$FrontEnd$NumPatSizeMsg = function (a) {
+	return {ctor: 'NumPatSizeMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbPatizeMsg = function (a) {
+	return {ctor: 'ProbPatizeMsg', _0: a};
+};
+var _user$project$FrontEnd$ProbPatSizeMsg = function (a) {
+	return {ctor: 'ProbPatSizeMsg', _0: a};
+};
+var _user$project$FrontEnd$CoreValMsg = function (a) {
+	return {ctor: 'CoreValMsg', _0: a};
+};
+var _user$project$FrontEnd$update = F2(
+	function (msg, model) {
+		var _p0 = msg;
+		switch (_p0.ctor) {
+			case 'CoreValMsg':
+				var _p1 = A2(_user$project$CoreVal$update, _p0._0, model.coreval);
+				var subMod = _p1._0;
+				var subCmd = _p1._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{coreval: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$CoreValMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbPatSizeMsg':
+				var _p2 = A2(_user$project$ProbPatternSize$update, _p0._0, model.probpatternsize);
+				var subMod = _p2._0;
+				var subCmd = _p2._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probpatternsize: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbPatSizeMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbPatizeMsg':
+				var _p3 = A2(_user$project$ProbPatternization$update, _p0._0, model.probpatternization);
+				var subMod = _p3._0;
+				var subCmd = _p3._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probpatternization: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbPatizeMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'NumPatSizeMsg':
+				var _p4 = A2(_user$project$Numpatsize$update, _p0._0, model.numpatzise);
+				var subMod = _p4._0;
+				var subCmd = _p4._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{numpatzise: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$NumPatSizeMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'KSPMsg':
+				var _p5 = A2(_user$project$KeySignature$update, _p0._0, model.ksp);
+				var subMod = _p5._0;
+				var subCmd = _p5._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{ksp: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$KSPMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbmrMsg':
+				var _p6 = A2(_user$project$ProbMR$update, _p0._0, model.probmr);
+				var subMod = _p6._0;
+				var subCmd = _p6._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probmr: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbmrMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbcrMsg':
+				var _p7 = A2(_user$project$ProbCR$update, _p0._0, model.probcr);
+				var subMod = _p7._0;
+				var subCmd = _p7._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probcr: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbcrMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbOcMelMsg':
+				var _p8 = A2(_user$project$ProbOctave$update, _p0._0, model.proboctavemelody);
+				var subMod = _p8._0;
+				var subCmd = _p8._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{proboctavemelody: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbOcMelMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbOcChordMsg':
+				var _p9 = A2(_user$project$ProbOctaveChord$update, _p0._0, model.proboctavechord);
+				var subMod = _p9._0;
+				var subCmd = _p9._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{proboctavechord: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbOcChordMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbTypeChordMsg':
+				var _p10 = A2(_user$project$ProbType$update, _p0._0, model.probtypechord);
+				var subMod = _p10._0;
+				var subCmd = _p10._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probtypechord: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbTypeChordMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbApChordMsg':
+				var _p11 = A2(_user$project$ProbApplied$update, _p0._0, model.probappliechord);
+				var subMod = _p11._0;
+				var subCmd = _p11._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probappliechord: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbApChordMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbRootMsg':
+				var _p12 = A2(_user$project$ProbRoot$update, _p0._0, model.probroot);
+				var subMod = _p12._0;
+				var subCmd = _p12._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probroot: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbRootMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			case 'ProbAddOnMsg':
+				var _p13 = A2(_user$project$ProbAddOn$update, _p0._0, model.probaddon);
+				var subMod = _p13._0;
+				var subCmd = _p13._1;
+				return A2(
+					_elm_lang$core$Platform_Cmd_ops['!'],
+					_elm_lang$core$Native_Utils.update(
+						model,
+						{probaddon: subMod}),
+					{
+						ctor: '::',
+						_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbAddOnMsg, subCmd),
+						_1: {ctor: '[]'}
+					});
+			default:
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		}
+	});
+var _user$project$FrontEnd$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _user$project$FrontEnd$initialModel, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _user$project$FrontEnd$view,
+		update: _user$project$FrontEnd$update,
+		subscriptions: function (_p14) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();

@@ -40,7 +40,7 @@ initialModel = {
   pip = 0 ,
   pcmc = 0 ,
   cw = 0}
-
+  
 type Msg =
   Set | Reset | Random
 
@@ -87,3 +87,8 @@ update msg model =
         cwn = Tuple.first (floatCreator model.seed probability)
       in
       ({model | seed=seedn , ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
+
+view : Model -> Html Msg
+view model =
+  Html.div []
+  [Html.p [] [Html.text (toString model)]]

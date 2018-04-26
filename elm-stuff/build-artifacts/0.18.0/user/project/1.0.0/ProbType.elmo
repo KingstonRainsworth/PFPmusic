@@ -1,3 +1,7 @@
+var _user$project$ProbType$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$ProbType$initialModel = {proot: 0, pseveth: 0, pninth: 0, peleventh: 0};
 var _user$project$ProbType$init = {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbType$Model = F4(

@@ -27,3 +27,6 @@ init = (initialModel, Cmd.none)
 
 type Msg =
   Set | Reset | Random
+
+update : Msg -> Model -> (Model,Cmd Msg)
+update msg model = (model,Cmd.none)

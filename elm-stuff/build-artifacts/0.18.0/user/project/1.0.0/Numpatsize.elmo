@@ -1,3 +1,7 @@
+var _user$project$Numpatsize$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$Numpatsize$initialModel = {n4: 0, n8: 0, n12: 0, n16: 0, n32: 0, n64: 0, n128: 0, n256: 0};
 var _user$project$Numpatsize$init = {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Numpatsize$Model = F8(

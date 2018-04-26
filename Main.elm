@@ -31,8 +31,8 @@ import Mouse
 
 main : Program Never Model Msg
 main =
-    Html.progran
-      { model  = initialModel
+    Html.program
+      { init  = (initialModel,Cmd.none)
       , view = view
       , update = update
       , subscriptions = \_ -> Sub.none
@@ -75,19 +75,19 @@ type Msg
 initialModel : Model
 initialModel =
   {
-    coreval = CoreVal.init,
-    probpatternsize = ProbPatternSize.init,
-    probpatternization = ProbPatternization.init,
-    numpatzise = Numpatsize.init,
-    ksp = KeySignature.init,
-    probmr = ProbMR.init,
-    probcr = ProbCR.init,
-    proboctavemelody = ProbOctave.init,
-    proboctavechord = ProbOctaveChord.init,
-    probtypechord = ProbType.init,
-    probappliechord = ProbApplied.init,
-    probroot = ProbRoot.init,
-    probaddon = ProbAddOn.init
+    coreval = CoreVal.initialModel,
+    probpatternsize = ProbPatternSize.initialModel,
+    probpatternization = ProbPatternization.initialModel,
+    numpatzise = Numpatsize.initialModel,
+    ksp = KeySignature.initialModel,
+    probmr = ProbMR.initialModel,
+    probcr = ProbCR.initialModel,
+    proboctavemelody = ProbOctave.initialModel,
+    proboctavechord = ProbOctaveChord.initialModel,
+    probtypechord = ProbType.initialModel,
+    probappliechord = ProbApplied.initialModel,
+    probroot = ProbRoot.initialModel,
+    probaddon = ProbAddOn.initialModel
   }
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -144,5 +144,9 @@ update msg model = case msg of
     let (subMod,subCmd) = ProbAddOn.update m model.probaddon in
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
-  Randomize ->
-    let (randmod1,cmd) =
+  _ ->
+    (model,Cmd.none)
+
+view : Model -> Html Msg
+view model =
+  Html.div [] [Html.p [] [Html.text (toString model)]]

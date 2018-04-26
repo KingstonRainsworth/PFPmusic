@@ -1,3 +1,7 @@
+var _user$project$ProbPatternSize$update = F2(
+	function (msg, model) {
+		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+	});
 var _user$project$ProbPatternSize$initialModel = {p4: 0, p8: 0, p12: 0, p16: 0, p32: 0, p64: 0, p128: 0, p256: 0};
 var _user$project$ProbPatternSize$init = {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbPatternSize$Model = F8(
