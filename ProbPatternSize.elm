@@ -48,6 +48,9 @@ floatCreator seed fg =
   let (f,s2) = Random.step fg seed in
   (f,s2)
 
+getVal : Model -> List Float
+getVal {p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256,seed} = [p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256] 
+
 update : Msg -> Model -> (Model,Cmd Msg)
 update msg model = case msg of
   Set -> (model,Cmd.none)

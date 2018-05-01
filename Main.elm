@@ -71,6 +71,7 @@ type Msg
   | ProbAddOnMsg ProbAddOn.Msg
   | Randomize
   | Default
+  | Generate
 
 initialModel : Model
 initialModel =
@@ -164,4 +165,7 @@ update msg model = case msg of
 view : Model -> Html Msg
 view model =
   Html.div [] [button [ onClick Randomize ] [text "Randomize"]
-              ,Html.p [] [Html.text (toString model)]]
+              ,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
+              ,button [ onClick Generate ] [text "Generate"]
+              --,Html.p [] [Html.text (toString model)]
+              ]

@@ -26,6 +26,7 @@ var _user$project$FrontEnd$Model = function (a) {
 		};
 	};
 };
+var _user$project$FrontEnd$Generate = {ctor: 'Generate'};
 var _user$project$FrontEnd$Default = {ctor: 'Default'};
 var _user$project$FrontEnd$Randomize = {ctor: 'Randomize'};
 var _user$project$FrontEnd$view = function (model) {
@@ -49,15 +50,31 @@ var _user$project$FrontEnd$view = function (model) {
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$p,
+					_elm_lang$html$Html$div,
 					{ctor: '[]'},
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(model)),
+							_elm_lang$core$Basics$toString(
+								_user$project$ProbPatternSize$getVal(model.probpatternsize))),
 						_1: {ctor: '[]'}
 					}),
-				_1: {ctor: '[]'}
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(_user$project$FrontEnd$Generate),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Generate'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
 			}
 		});
 };

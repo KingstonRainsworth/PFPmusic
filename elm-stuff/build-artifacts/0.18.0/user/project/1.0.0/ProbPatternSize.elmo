@@ -1,8 +1,44 @@
+var _user$project$ProbPatternSize$getVal = function (_p0) {
+	var _p1 = _p0;
+	return {
+		ctor: '::',
+		_0: _p1.p4,
+		_1: {
+			ctor: '::',
+			_0: _p1.p8,
+			_1: {
+				ctor: '::',
+				_0: _p1.p12,
+				_1: {
+					ctor: '::',
+					_0: _p1.p16,
+					_1: {
+						ctor: '::',
+						_0: _p1.p32,
+						_1: {
+							ctor: '::',
+							_0: _p1.p64,
+							_1: {
+								ctor: '::',
+								_0: _p1.p128,
+								_1: {
+									ctor: '::',
+									_0: _p1.p256,
+									_1: {ctor: '[]'}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	};
+};
 var _user$project$ProbPatternSize$floatCreator = F2(
 	function (seed, fg) {
-		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
-		var f = _p0._0;
-		var s2 = _p0._1;
+		var _p2 = A2(_elm_lang$core$Random$step, fg, seed);
+		var f = _p2._0;
+		var s2 = _p2._1;
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbPatternSize$probability = A2(_elm_lang$core$Random$float, 0, 1);
@@ -20,37 +56,37 @@ var _user$project$ProbPatternSize$initialModel = {
 var _user$project$ProbPatternSize$init = {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbPatternSize$update = F2(
 	function (msg, model) {
-		var _p1 = msg;
-		switch (_p1.ctor) {
+		var _p3 = msg;
+		switch (_p3.ctor) {
 			case 'Set':
 				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbPatternSize$floatCreator, model.seed, _user$project$ProbPatternSize$probability);
-				var p4n = _p2._0;
-				var s2 = _p2._1;
-				var _p3 = A2(_user$project$ProbPatternSize$floatCreator, s2, _user$project$ProbPatternSize$probability);
-				var p8n = _p3._0;
-				var s3 = _p3._1;
-				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, s3, _user$project$ProbPatternSize$probability);
-				var p12n = _p4._0;
-				var s4 = _p4._1;
-				var _p5 = A2(_user$project$ProbPatternSize$floatCreator, s4, _user$project$ProbPatternSize$probability);
-				var p16n = _p5._0;
-				var s5 = _p5._1;
-				var _p6 = A2(_user$project$ProbPatternSize$floatCreator, s5, _user$project$ProbPatternSize$probability);
-				var p32n = _p6._0;
-				var s6 = _p6._1;
-				var _p7 = A2(_user$project$ProbPatternSize$floatCreator, s6, _user$project$ProbPatternSize$probability);
-				var p64n = _p7._0;
-				var s7 = _p7._1;
-				var _p8 = A2(_user$project$ProbPatternSize$floatCreator, s7, _user$project$ProbPatternSize$probability);
-				var p128n = _p8._0;
-				var s8 = _p8._1;
-				var _p9 = A2(_user$project$ProbPatternSize$floatCreator, s8, _user$project$ProbPatternSize$probability);
-				var p256n = _p9._0;
-				var s9 = _p9._1;
+				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, model.seed, _user$project$ProbPatternSize$probability);
+				var p4n = _p4._0;
+				var s2 = _p4._1;
+				var _p5 = A2(_user$project$ProbPatternSize$floatCreator, s2, _user$project$ProbPatternSize$probability);
+				var p8n = _p5._0;
+				var s3 = _p5._1;
+				var _p6 = A2(_user$project$ProbPatternSize$floatCreator, s3, _user$project$ProbPatternSize$probability);
+				var p12n = _p6._0;
+				var s4 = _p6._1;
+				var _p7 = A2(_user$project$ProbPatternSize$floatCreator, s4, _user$project$ProbPatternSize$probability);
+				var p16n = _p7._0;
+				var s5 = _p7._1;
+				var _p8 = A2(_user$project$ProbPatternSize$floatCreator, s5, _user$project$ProbPatternSize$probability);
+				var p32n = _p8._0;
+				var s6 = _p8._1;
+				var _p9 = A2(_user$project$ProbPatternSize$floatCreator, s6, _user$project$ProbPatternSize$probability);
+				var p64n = _p9._0;
+				var s7 = _p9._1;
+				var _p10 = A2(_user$project$ProbPatternSize$floatCreator, s7, _user$project$ProbPatternSize$probability);
+				var p128n = _p10._0;
+				var s8 = _p10._1;
+				var _p11 = A2(_user$project$ProbPatternSize$floatCreator, s8, _user$project$ProbPatternSize$probability);
+				var p256n = _p11._0;
+				var s9 = _p11._1;
 				return {
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(

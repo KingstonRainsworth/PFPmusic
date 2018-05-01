@@ -87,6 +87,8 @@ update msg model =
       in
       ({model | seed=s12 , ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
 
+getVal : Model -> (List Float, List Bool)
+getVal {seed,ok,ik,oc,ic,prm,prc,sar,ear,pip,pcmc,cw} = ([ok,ik,oc,ic,prm,prc,pip,pcmc,cw],[sar,ear])
 {-view : Model -> Html Msg
 view model =
   Html.div []
