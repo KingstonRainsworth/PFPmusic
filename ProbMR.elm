@@ -25,7 +25,8 @@ type alias Model =
   ,     m13 : Float
   ,     m14 : Float
   ,     m15 : Float
-  ,     m16 : Float     }
+  ,     m16 : Float
+  ,     seed : Seed       }
 
 initialModel : Model
 initialModel =
@@ -44,13 +45,45 @@ initialModel =
   ,     m13 = 0
   ,     m14 = 0
   ,     m15 = 0
-  ,     m16 = 0     }
+  ,     m16 = 0
+  ,     seed = Random.initialSeed 30}
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
 
 type Msg =
-  Set | Reset | Random
+  Set | Reset | Randomize
+
+probability : Generator Float
+probability =
+  Random.float 0 1
+
+floatCreator : Seed -> Generator Float -> (Float,Seed)
+floatCreator seed fg =
+  let (f,s2) = Random.step fg seed in
+  (f,s2)
 
 update : Msg -> Model -> (Model,Cmd Msg)
-update msg model = (model,Cmd.none)
+update msg model = case msg of
+  Set -> (model,Cmd.none)
+  Reset -> (initialModel,Cmd.none)
+  Randomize ->
+    let
+      (mwn,s2) = floatCreator model.seed probability
+      (m2n,s3) = floatCreator s2 probability
+      (m3n,s4) = floatCreator s3 probability
+      (m4n,s5) = floatCreator s4 probability
+      (m5n,s6) = floatCreator s5 probability
+      (m6n,s7) = floatCreator s6 probability
+      (m7n,s8) = floatCreator s7 probability
+      (m8n,s9) = floatCreator s8 probability
+      (m9n,s10) = floatCreator s9 probability
+      (m10n,s11) = floatCreator s10 probability
+      (m11n,s12) = floatCreator s11 probability
+      (m12n,s13) = floatCreator s12 probability
+      (m13n,s14) = floatCreator s13 probability
+      (m14n,s15) = floatCreator s14 probability
+      (m15n,s16) = floatCreator s15 probability
+      (m16n,s17) = floatCreator s16 probability
+    in
+    ({model | mw = mwn , m2 = m2n , m3 = m3n , m4 = m4n , m5 = m5n , m6 = m6n , m7 = m7n , m8 = m8n , m9 = m9n , m10 = m10n , m11 = m11n , m12 = m12n , m13 = m13n , m14 = m14n , m15 = m15n , m16 = m16n, seed = s17},Cmd.none)

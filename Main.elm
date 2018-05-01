@@ -147,8 +147,17 @@ update msg model = case msg of
   Randomize ->
     update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
     update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
-    update (ProbPatizeMsg ProbPatternization.Randomize)
-
+    update (ProbPatizeMsg ProbPatternization.Randomize) |> Tuple.first |>
+    update (NumPatSizeMsg Numpatsize.Randomize) |> Tuple.first |>
+    update (KSPMsg KeySignature.Randomize) |> Tuple.first |>
+    update (ProbmrMsg ProbMR.Randomize) |> Tuple.first |>
+    update (ProbcrMsg ProbCR.Randomize) |> Tuple.first |>
+    update (ProbOcMelMsg ProbOctave.Randomize) |> Tuple.first |>
+    update (ProbOcChordMsg ProbOctaveChord.Randomize) |> Tuple.first |>
+    update (ProbTypeChordMsg ProbType.Randomize) |> Tuple.first |>
+    update (ProbApChordMsg ProbApplied.Randomize) |> Tuple.first |>
+    update (ProbRootMsg ProbRoot.Randomize) |> Tuple.first |>
+    update (ProbAddOnMsg ProbAddOn.Randomize)
   _ ->
     (model,Cmd.none)
 

@@ -1,9 +1,97 @@
+var _user$project$ProbCR$floatCreator = F2(
+	function (seed, fg) {
+		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
+		var f = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: f, _1: s2};
+	});
+var _user$project$ProbCR$probability = A2(_elm_lang$core$Random$float, 0, 1);
+var _user$project$ProbCR$initialModel = {
+	seed: _elm_lang$core$Random$initialSeed(75),
+	cw: 0,
+	c2: 0,
+	c3: 0,
+	c4: 0,
+	c5: 0,
+	c6: 0,
+	c7: 0,
+	c8: 0,
+	c9: 0,
+	c10: 0,
+	c11: 0,
+	c12: 0,
+	c13: 0,
+	c14: 0,
+	c15: 0,
+	c16: 0
+};
+var _user$project$ProbCR$init = {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbCR$update = F2(
 	function (msg, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var _p2 = A2(_user$project$ProbCR$floatCreator, model.seed, _user$project$ProbCR$probability);
+				var cwn = _p2._0;
+				var s2 = _p2._1;
+				var _p3 = A2(_user$project$ProbCR$floatCreator, s2, _user$project$ProbCR$probability);
+				var c2n = _p3._0;
+				var s3 = _p3._1;
+				var _p4 = A2(_user$project$ProbCR$floatCreator, s3, _user$project$ProbCR$probability);
+				var c3n = _p4._0;
+				var s4 = _p4._1;
+				var _p5 = A2(_user$project$ProbCR$floatCreator, s4, _user$project$ProbCR$probability);
+				var c4n = _p5._0;
+				var s5 = _p5._1;
+				var _p6 = A2(_user$project$ProbCR$floatCreator, s5, _user$project$ProbCR$probability);
+				var c5n = _p6._0;
+				var s6 = _p6._1;
+				var _p7 = A2(_user$project$ProbCR$floatCreator, s6, _user$project$ProbCR$probability);
+				var c6n = _p7._0;
+				var s7 = _p7._1;
+				var _p8 = A2(_user$project$ProbCR$floatCreator, s7, _user$project$ProbCR$probability);
+				var c7n = _p8._0;
+				var s8 = _p8._1;
+				var _p9 = A2(_user$project$ProbCR$floatCreator, s8, _user$project$ProbCR$probability);
+				var c8n = _p9._0;
+				var s9 = _p9._1;
+				var _p10 = A2(_user$project$ProbCR$floatCreator, s9, _user$project$ProbCR$probability);
+				var c9n = _p10._0;
+				var s10 = _p10._1;
+				var _p11 = A2(_user$project$ProbCR$floatCreator, s10, _user$project$ProbCR$probability);
+				var c10n = _p11._0;
+				var s11 = _p11._1;
+				var _p12 = A2(_user$project$ProbCR$floatCreator, s11, _user$project$ProbCR$probability);
+				var c11n = _p12._0;
+				var s12 = _p12._1;
+				var _p13 = A2(_user$project$ProbCR$floatCreator, s12, _user$project$ProbCR$probability);
+				var c12n = _p13._0;
+				var s13 = _p13._1;
+				var _p14 = A2(_user$project$ProbCR$floatCreator, s13, _user$project$ProbCR$probability);
+				var c13n = _p14._0;
+				var s14 = _p14._1;
+				var _p15 = A2(_user$project$ProbCR$floatCreator, s14, _user$project$ProbCR$probability);
+				var c14n = _p15._0;
+				var s15 = _p15._1;
+				var _p16 = A2(_user$project$ProbCR$floatCreator, s15, _user$project$ProbCR$probability);
+				var c15n = _p16._0;
+				var s16 = _p16._1;
+				var _p17 = A2(_user$project$ProbCR$floatCreator, s16, _user$project$ProbCR$probability);
+				var c16n = _p17._0;
+				var s17 = _p17._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{cw: cwn, c2: c2n, c3: c3n, c4: c4n, c5: c5n, c6: c6n, c7: c7n, c8: c8n, c9: c9n, c10: c10n, c11: c11n, c12: c12n, c13: c13n, c14: c14n, c15: c15n, c16: c16n, seed: s17}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
 	});
-var _user$project$ProbCR$initialModel = {cw: 0, c2: 0, c3: 0, c4: 0, c5: 0, c6: 0, c7: 0, c8: 0, c9: 0, c10: 0, c11: 0, c12: 0, c13: 0, c14: 0, c15: 0, c16: 0};
-var _user$project$ProbCR$init = {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbCR$Model = function (a) {
 	return function (b) {
 		return function (c) {
@@ -20,7 +108,9 @@ var _user$project$ProbCR$Model = function (a) {
 													return function (n) {
 														return function (o) {
 															return function (p) {
-																return {cw: a, c2: b, c3: c, c4: d, c5: e, c6: f, c7: g, c8: h, c9: i, c10: j, c11: k, c12: l, c13: m, c14: n, c15: o, c16: p};
+																return function (q) {
+																	return {seed: a, cw: b, c2: c, c3: d, c4: e, c5: f, c6: g, c7: h, c8: i, c9: j, c10: k, c11: l, c12: m, c13: n, c14: o, c15: p, c16: q};
+																};
 															};
 														};
 													};
@@ -37,6 +127,6 @@ var _user$project$ProbCR$Model = function (a) {
 		};
 	};
 };
-var _user$project$ProbCR$Random = {ctor: 'Random'};
+var _user$project$ProbCR$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbCR$Reset = {ctor: 'Reset'};
 var _user$project$ProbCR$Set = {ctor: 'Set'};

@@ -11,22 +11,43 @@ import Mouse
 
 type alias Model =
   {proot : Float
-  ,pseveth : Float
+  ,pseventh : Float
   ,pninth  : Float
-  ,peleventh : Float}
+  ,peleventh : Float
+  ,seed : Seed}
 
 initialModel : Model
 initialModel =
   {proot = 0
-  ,pseveth = 0
+  ,pseventh = 0
   ,pninth  = 0
-  ,peleventh = 0}
+  ,peleventh = 0
+  ,seed = Random.initialSeed 94}
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
 
 type Msg =
-  Set | Reset | Random
+  Set | Reset | Randomize
+
+probability : Generator Float
+probability =
+  Random.float 0 1
+
+floatCreator : Seed -> Generator Float -> (Float,Seed)
+floatCreator seed fg =
+  let (f,s2) = Random.step fg seed in
+  (f,s2)
 
 update : Msg -> Model -> (Model,Cmd Msg)
-update msg model = (model,Cmd.none)
+update msg model = case msg of
+  Set -> (model,Cmd.none)
+  Reset -> (initialModel,Cmd.none)
+  Randomize ->
+    let
+      (prootn,s2) = floatCreator model.seed probability
+      (pseventhn,s3) = floatCreator s2 probability
+      (pninthn,s4) = floatCreator s3 probability
+      (peleventhn,s5) = floatCreator s4 probability
+    in
+    ({model | proot = prootn , pseventh = pseventhn , pninth = pninthn , peleventh = peleventhn , seed = s5},Cmd.none)

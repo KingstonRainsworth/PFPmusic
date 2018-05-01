@@ -289,16 +289,56 @@ var _user$project$FrontEnd$update = F2(
 							_1: {ctor: '[]'}
 						});
 				case 'Randomize':
-					var _v1 = _user$project$FrontEnd$ProbPatizeMsg(_user$project$ProbPatternization$Randomize),
+					var _v1 = _user$project$FrontEnd$ProbAddOnMsg(_user$project$ProbAddOn$Randomize),
 						_v2 = _elm_lang$core$Tuple$first(
 						A2(
 							_user$project$FrontEnd$update,
-							_user$project$FrontEnd$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
+							_user$project$FrontEnd$ProbRootMsg(_user$project$ProbRoot$Randomize),
 							_elm_lang$core$Tuple$first(
 								A2(
 									_user$project$FrontEnd$update,
-									_user$project$FrontEnd$CoreValMsg(_user$project$CoreVal$Randomize),
-									model))));
+									_user$project$FrontEnd$ProbApChordMsg(_user$project$ProbApplied$Randomize),
+									_elm_lang$core$Tuple$first(
+										A2(
+											_user$project$FrontEnd$update,
+											_user$project$FrontEnd$ProbTypeChordMsg(_user$project$ProbType$Randomize),
+											_elm_lang$core$Tuple$first(
+												A2(
+													_user$project$FrontEnd$update,
+													_user$project$FrontEnd$ProbOcChordMsg(_user$project$ProbOctaveChord$Randomize),
+													_elm_lang$core$Tuple$first(
+														A2(
+															_user$project$FrontEnd$update,
+															_user$project$FrontEnd$ProbOcMelMsg(_user$project$ProbOctave$Randomize),
+															_elm_lang$core$Tuple$first(
+																A2(
+																	_user$project$FrontEnd$update,
+																	_user$project$FrontEnd$ProbcrMsg(_user$project$ProbCR$Randomize),
+																	_elm_lang$core$Tuple$first(
+																		A2(
+																			_user$project$FrontEnd$update,
+																			_user$project$FrontEnd$ProbmrMsg(_user$project$ProbMR$Randomize),
+																			_elm_lang$core$Tuple$first(
+																				A2(
+																					_user$project$FrontEnd$update,
+																					_user$project$FrontEnd$KSPMsg(_user$project$KeySignature$Randomize),
+																					_elm_lang$core$Tuple$first(
+																						A2(
+																							_user$project$FrontEnd$update,
+																							_user$project$FrontEnd$NumPatSizeMsg(_user$project$Numpatsize$Randomize),
+																							_elm_lang$core$Tuple$first(
+																								A2(
+																									_user$project$FrontEnd$update,
+																									_user$project$FrontEnd$ProbPatizeMsg(_user$project$ProbPatternization$Randomize),
+																									_elm_lang$core$Tuple$first(
+																										A2(
+																											_user$project$FrontEnd$update,
+																											_user$project$FrontEnd$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
+																											_elm_lang$core$Tuple$first(
+																												A2(
+																													_user$project$FrontEnd$update,
+																													_user$project$FrontEnd$CoreValMsg(_user$project$CoreVal$Randomize),
+																													model))))))))))))))))))))))));
 					msg = _v1;
 					model = _v2;
 					continue update;

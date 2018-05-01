@@ -1,13 +1,69 @@
+var _user$project$Numpatsize$intCreator = F2(
+	function (seed, ig) {
+		var _p0 = A2(_elm_lang$core$Random$step, ig, seed);
+		var i = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: i, _1: s2};
+	});
+var _user$project$Numpatsize$intGenerator = A2(_elm_lang$core$Random$int, 0, 5);
+var _user$project$Numpatsize$initialModel = {
+	n4: 0,
+	n8: 0,
+	n12: 0,
+	n16: 0,
+	n32: 0,
+	n64: 0,
+	n128: 0,
+	n256: 0,
+	seed: _elm_lang$core$Random$initialSeed(8)
+};
+var _user$project$Numpatsize$init = {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$Numpatsize$update = F2(
 	function (msg, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var _p2 = A2(_user$project$Numpatsize$intCreator, model.seed, _user$project$Numpatsize$intGenerator);
+				var n4n = _p2._0;
+				var s2 = _p2._1;
+				var _p3 = A2(_user$project$Numpatsize$intCreator, s2, _user$project$Numpatsize$intGenerator);
+				var n8n = _p3._0;
+				var s3 = _p3._1;
+				var _p4 = A2(_user$project$Numpatsize$intCreator, s3, _user$project$Numpatsize$intGenerator);
+				var n12n = _p4._0;
+				var s4 = _p4._1;
+				var _p5 = A2(_user$project$Numpatsize$intCreator, s4, _user$project$Numpatsize$intGenerator);
+				var n16n = _p5._0;
+				var s5 = _p5._1;
+				var _p6 = A2(_user$project$Numpatsize$intCreator, s5, _user$project$Numpatsize$intGenerator);
+				var n32n = _p6._0;
+				var s6 = _p6._1;
+				var _p7 = A2(_user$project$Numpatsize$intCreator, s6, _user$project$Numpatsize$intGenerator);
+				var n64n = _p7._0;
+				var s7 = _p7._1;
+				var _p8 = A2(_user$project$Numpatsize$intCreator, s7, _user$project$Numpatsize$intGenerator);
+				var n128n = _p8._0;
+				var s8 = _p8._1;
+				var _p9 = A2(_user$project$Numpatsize$intCreator, s8, _user$project$Numpatsize$intGenerator);
+				var n256n = _p9._0;
+				var s9 = _p9._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{n4: n4n, n8: n8n, n12: n12n, n16: n16n, n32: n32n, n64: n64n, n128: n128n, n256: n256n, seed: s9}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
 	});
-var _user$project$Numpatsize$initialModel = {n4: 0, n8: 0, n12: 0, n16: 0, n32: 0, n64: 0, n128: 0, n256: 0};
-var _user$project$Numpatsize$init = {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$Numpatsize$Model = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {n4: a, n8: b, n12: c, n16: d, n32: e, n64: f, n128: g, n256: h};
+var _user$project$Numpatsize$Model = F9(
+	function (a, b, c, d, e, f, g, h, i) {
+		return {n4: a, n8: b, n12: c, n16: d, n32: e, n64: f, n128: g, n256: h, seed: i};
 	});
-var _user$project$Numpatsize$Random = {ctor: 'Random'};
+var _user$project$Numpatsize$Randomize = {ctor: 'Randomize'};
 var _user$project$Numpatsize$Reset = {ctor: 'Reset'};
 var _user$project$Numpatsize$Set = {ctor: 'Set'};

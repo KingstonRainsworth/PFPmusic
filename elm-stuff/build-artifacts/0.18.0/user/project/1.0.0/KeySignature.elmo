@@ -1,9 +1,81 @@
+var _user$project$KeySignature$intCreator = F2(
+	function (seed, ig) {
+		var _p0 = A2(_elm_lang$core$Random$step, ig, seed);
+		var i = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: i, _1: s2};
+	});
+var _user$project$KeySignature$intGenerator = A2(_elm_lang$core$Random$int, 0, 5);
+var _user$project$KeySignature$initialModel = {
+	key1: 0,
+	key2: 0,
+	key3: 0,
+	key4: 0,
+	key5: 0,
+	key6: 0,
+	key7: 0,
+	key8: 0,
+	key9: 0,
+	key10: 0,
+	key11: 0,
+	key12: 0,
+	seed: _elm_lang$core$Random$initialSeed(19)
+};
+var _user$project$KeySignature$init = {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$KeySignature$update = F2(
 	function (msg, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var _p2 = A2(_user$project$KeySignature$intCreator, model.seed, _user$project$KeySignature$intGenerator);
+				var key1n = _p2._0;
+				var s2 = _p2._1;
+				var _p3 = A2(_user$project$KeySignature$intCreator, s2, _user$project$KeySignature$intGenerator);
+				var key2n = _p3._0;
+				var s3 = _p3._1;
+				var _p4 = A2(_user$project$KeySignature$intCreator, s3, _user$project$KeySignature$intGenerator);
+				var key3n = _p4._0;
+				var s4 = _p4._1;
+				var _p5 = A2(_user$project$KeySignature$intCreator, s4, _user$project$KeySignature$intGenerator);
+				var key4n = _p5._0;
+				var s5 = _p5._1;
+				var _p6 = A2(_user$project$KeySignature$intCreator, s5, _user$project$KeySignature$intGenerator);
+				var key5n = _p6._0;
+				var s6 = _p6._1;
+				var _p7 = A2(_user$project$KeySignature$intCreator, s6, _user$project$KeySignature$intGenerator);
+				var key6n = _p7._0;
+				var s7 = _p7._1;
+				var _p8 = A2(_user$project$KeySignature$intCreator, s7, _user$project$KeySignature$intGenerator);
+				var key7n = _p8._0;
+				var s8 = _p8._1;
+				var _p9 = A2(_user$project$KeySignature$intCreator, s8, _user$project$KeySignature$intGenerator);
+				var key8n = _p9._0;
+				var s9 = _p9._1;
+				var _p10 = A2(_user$project$KeySignature$intCreator, s9, _user$project$KeySignature$intGenerator);
+				var key9n = _p10._0;
+				var s10 = _p10._1;
+				var _p11 = A2(_user$project$KeySignature$intCreator, s10, _user$project$KeySignature$intGenerator);
+				var key10n = _p11._0;
+				var s11 = _p11._1;
+				var _p12 = A2(_user$project$KeySignature$intCreator, s11, _user$project$KeySignature$intGenerator);
+				var key11n = _p12._0;
+				var s12 = _p12._1;
+				var _p13 = A2(_user$project$KeySignature$intCreator, s12, _user$project$KeySignature$intGenerator);
+				var key12n = _p13._0;
+				var s13 = _p13._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{key1: key1n, key2: key2n, key3: key3n, key4: key4n, key5: key5n, key6: key6n, key7: key7n, key8: key8n, key9: key9n, key10: key10n, key11: key11n, key12: key12n, seed: s13}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
 	});
-var _user$project$KeySignature$initialModel = {key1: 0, key2: 0, key3: 0, key4: 0, key5: 0, key6: 0, key7: 0, key8: 0, key9: 0, key10: 0, key11: 0, key12: 0};
-var _user$project$KeySignature$init = {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$KeySignature$Model = function (a) {
 	return function (b) {
 		return function (c) {
@@ -16,7 +88,9 @@ var _user$project$KeySignature$Model = function (a) {
 									return function (j) {
 										return function (k) {
 											return function (l) {
-												return {key1: a, key2: b, key3: c, key4: d, key5: e, key6: f, key7: g, key8: h, key9: i, key10: j, key11: k, key12: l};
+												return function (m) {
+													return {key1: a, key2: b, key3: c, key4: d, key5: e, key6: f, key7: g, key8: h, key9: i, key10: j, key11: k, key12: l, seed: m};
+												};
 											};
 										};
 									};
@@ -29,6 +103,6 @@ var _user$project$KeySignature$Model = function (a) {
 		};
 	};
 };
-var _user$project$KeySignature$Random = {ctor: 'Random'};
+var _user$project$KeySignature$Randomize = {ctor: 'Randomize'};
 var _user$project$KeySignature$Reset = {ctor: 'Reset'};
 var _user$project$KeySignature$Set = {ctor: 'Set'};

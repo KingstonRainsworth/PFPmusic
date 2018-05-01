@@ -1,13 +1,53 @@
+var _user$project$ProbType$floatCreator = F2(
+	function (seed, fg) {
+		var _p0 = A2(_elm_lang$core$Random$step, fg, seed);
+		var f = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: f, _1: s2};
+	});
+var _user$project$ProbType$probability = A2(_elm_lang$core$Random$float, 0, 1);
+var _user$project$ProbType$initialModel = {
+	proot: 0,
+	pseventh: 0,
+	pninth: 0,
+	peleventh: 0,
+	seed: _elm_lang$core$Random$initialSeed(94)
+};
+var _user$project$ProbType$init = {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbType$update = F2(
 	function (msg, model) {
-		return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+		var _p1 = msg;
+		switch (_p1.ctor) {
+			case 'Set':
+				return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			case 'Reset':
+				return {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+			default:
+				var _p2 = A2(_user$project$ProbType$floatCreator, model.seed, _user$project$ProbType$probability);
+				var prootn = _p2._0;
+				var s2 = _p2._1;
+				var _p3 = A2(_user$project$ProbType$floatCreator, s2, _user$project$ProbType$probability);
+				var pseventhn = _p3._0;
+				var s3 = _p3._1;
+				var _p4 = A2(_user$project$ProbType$floatCreator, s3, _user$project$ProbType$probability);
+				var pninthn = _p4._0;
+				var s4 = _p4._1;
+				var _p5 = A2(_user$project$ProbType$floatCreator, s4, _user$project$ProbType$probability);
+				var peleventhn = _p5._0;
+				var s5 = _p5._1;
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{proot: prootn, pseventh: pseventhn, pninth: pninthn, peleventh: peleventhn, seed: s5}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+		}
 	});
-var _user$project$ProbType$initialModel = {proot: 0, pseveth: 0, pninth: 0, peleventh: 0};
-var _user$project$ProbType$init = {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
-var _user$project$ProbType$Model = F4(
-	function (a, b, c, d) {
-		return {proot: a, pseveth: b, pninth: c, peleventh: d};
+var _user$project$ProbType$Model = F5(
+	function (a, b, c, d, e) {
+		return {proot: a, pseventh: b, pninth: c, peleventh: d, seed: e};
 	});
-var _user$project$ProbType$Random = {ctor: 'Random'};
+var _user$project$ProbType$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbType$Reset = {ctor: 'Reset'};
 var _user$project$ProbType$Set = {ctor: 'Set'};
