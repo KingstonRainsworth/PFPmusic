@@ -19,8 +19,8 @@ type alias ProbInChord = {ic : Float} -- probability chord includes notes from m
 type alias ProbRestMelody = {prm : Float}
 type alias ProbRestChord = {prc : Float}
 
-type alias StartAtRoot = {sar : Bool}
-type alias EndAtRoot = {ear : Bool}
+type alias StartAtRoot = {sar : Int}
+type alias EndAtRoot = {ear : Int}
 
 --------patternization inputs ------------------------------------------------------
 {-type alias ProbPatternMatch = {ppm : Float} -- probability that the next note is a pattern
@@ -55,7 +55,7 @@ type alias NumPatternSize =
           ,      n128 : Int
           ,      n256 : Int }
 
-type alias PatternList = List (List (List Int)) -- list that holds patterns
+type alias PatternList = List (List (List MelodyR)(List ChordR)(List Melody)(List Chord)) -- list that holds patterns
 
 
 type alias RNGSeed = {rngs : Int }
@@ -131,21 +131,17 @@ type alias ProbRootChord = { prc1 : Float
           ,     prc7 : Float }
 type alias ProbAddOnChord = { pnao : Float
           ,     psus2 : Float
-          ,     psus4 : FLoat
+          ,     psus4 : Float
           ,     pAug  : Float
           ,     pDim  : Float}
 
 -- im removing type Duration and replacing it with a int 1-16 time
-type Dur = W|H|Q|EI|S
+--type Dur = W|H|Q|EI|S
 
 type alias Note = Int
-
 type alias ChordR = List Int
-
 type alias Melody = List Int
-
 type alias Chord = List (List Int)
-
 type alias MelodyR = List Int
 
 notes = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62,63,64,65,66,67,68,69,70,71,72,73,74,75,76,77,78,79,80,81,82,83,84,85,86,87,88]
@@ -158,16 +154,7 @@ floatGenerator se low high  =
     let g = Random.float low high in
     let (n, s2) = Random.step g se in
     (s2 , n)
-{-
-calculateDur : Dur -> Int
-calculateDur d =
-  case d of
-    W -> 16
-    H -> 8
-    Q -> 4
-    EI -> 2
-    S -> 1
--}
+
 totalMR : Int -> MelodyR -> Int
 totalMR tot mr =
   case mr of
@@ -194,18 +181,19 @@ cycleThroughM list lim num =
 
 -------------------------------Main-------------------------------------------------
 
-
-main : -- input EVERYTHING
-main=
-  let ppa = patternCreator --stuff here
-  let m = []
-  let c = []
-  let mr = []
-  let cr = []
+{-
+main : ProbOutKey-> ProbInKey ->
+main      =
+let lp = -- make a list of number of each patterns to pass to pattern creator
+  let ppa = patternCreator      in --stuff here
+  let m = [] in
+  let c = [] in
+  let mr = [] in
+  let cr = [] in
   workFlowMainLoop --stuff here
   startAtRoot --stuff where
   endAtRoot -- stuff here
-
+-}
 
 
 
@@ -220,24 +208,33 @@ main=
 
 
 -------------------------------start/ end at root section --------------------------------------
+getStartAtRoot : StartAtRoot -> Int
+getStartAtRoot s =
+  s.sar
 
-startAtRoot : KeySignatureSuggestion -> StartAtRoot -> Melody -> Melody
+startAtRoot : KeySignature -> StartAtRoot -> Melody -> Melody
 startAtRoot kss sar m =
-  if sar == True then let n = kss + 48 in
-    List.drop 1 m
-    List.append [n] m
-    m
-    else m
+  let d = getStartAtRoot sar in
+  if d == 1 then let n = (keySignatureNeumericalHandler kss) + 48 in
+      let temp = List.drop 1 m in
+      let temp1 = List.append [n] m in
+      temp1
+  else  m
 
-endAtRoot : KeySignatureSuggestion -> EndAtRoot -> Melody -> Melody
+getEndAtRoot : EndAtRoot -> Int
+getEndAtRoot s =
+  s.ear
+
+endAtRoot : KeySignature-> EndAtRoot -> Melody -> Melody
 endAtRoot kss sar m =
-  if sar == True then let n = kss + 48 in
-    List.reverse m
-    List.drop 1 m
-    List.append [n] m
-    List.reverse m
-    m
-    else m
+  let d = getEndAtRoot sar in
+  if d == 1 then let n = (keySignatureNeumericalHandler kss) + 48 in
+      let temp = List.reverse m in
+      let temp1 = List.drop 1 temp in
+      let temp2 = List.append [n] temp1 in
+      let temp3 = List.reverse temp2 in
+      temp3
+  else m
 
 
 ------------------------------ start program flow section --------------------------------------
@@ -245,28 +242,33 @@ endAtRoot kss sar m =
 workFlowMain : -> (MelodyR, ChordR, Melody, Chord)
 workFlowMain   =
 -}
-workFlowMainLoop : PatternList -> Int -> Int-> MelodyR -> ChordR -> Melody -> Chord -> (MelodyR, ChordR, Melody, Chord)
-workFlowMainLoop pl siz maxsiz mr cr m c  =
-  if (maxsiz - siz) < 4 then let tmr = melodyRhythm 0 siz se mr pmr in
-                        List.append pat [tmr]  -- not sure how pat list lsit is going to work
-                        let tcr = chordRhythm 0 siz se cr pcr
-                        List.append pat [tcr]
-                        let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
-                        List.append pat [tm]
-                        let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss in
-                        List.append pat [tc]
-                        (mr,cr,m,c)
-  else
-    let lf total = workFlowListGenerator 0 siz ppsa [] pl in
-    let (s2, rn) = floatGenerator se 0.0 total in
-    let ans = workFlowDecidePattern pl rn lf
-    case ans of       -----------------------------------not sure this si the best way to do this
-      x::y::z::t -> List.append mr x
-                    List.append cr y
-                    List.append m z
-                    List.append c t
-                    workFlowMainLoop pl (siz + totalMR x 0)
+workFlowMainLoop : ProbOutChord -> ProbInChord -> ProbPatternSizeAppear -> PatternList -> ProbRestChord -> ProbOctaveMelody -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord ->
+  ProbTypeChord ->ProbCR -> ProbMR -> KeySignature -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> Seed -> PatternList -> Int -> Int-> MelodyR -> ChordR -> Melody -> Chord ->PatternList
+workFlowMainLoop poc pic ppsa pat prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se pl siz maxsiz mr cr m c  =
+  if (maxsiz - siz) < 4 then
+                          let tmr = melodyRhythm 0 siz se mr pmr in
+                          let tcr = chordRhythm 0 siz se cr pcr in
+                          let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+                          let tc = chordCreatorMain poc pic se prestc c m mr paoc prc pac ptc 0 cr kss in -- 0 in place of loc
+                          List.append pat  [tmr,tcr,tm,tc]
 
+
+  else
+    let (lf, total) = workFlowFloatListGenerator 0 siz ppsa [] pl in
+    let (s2, rn) = floatGenerator se 0.0 total in
+    let ans = workFlowDecidePattern pl rn lf in
+    let mr1 =  List.append mr (workFlowInsertPattern ans 0) in
+    let cr1 =  List.append cr (workFlowInsertPattern ans 1) in
+    let m1 =  List.append m (workFlowInsertPattern ans 2) in
+    let c1 =  List.append c (workFlowInsertPattern ans 3) in
+    workFlowMainLoop poc pic ppsa pat prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se pl (siz + totalMR 0 (workFlowInsertPattern ans 0)) maxsiz mr1 cr1 m1 c1
+
+workFlowInsertPattern : List (List Int) -> Int -> List Int
+workFlowInsertPattern lx w =
+  case lx of
+    [] -> Debug.crash "bad"
+    x::list_ -> if w <= 0 then x
+                  else workFlowInsertPattern list_ (w-1)
 
 
 workFlowDecidePattern : PatternList -> Float -> List Float -> List (List Int)
@@ -294,10 +296,14 @@ workFlowFloatListGenerator : Float -> Int -> ProbPatternSizeAppear -> List Float
 workFlowFloatListGenerator total siz ppsa lf pl =
   case pl of
     [] -> (lf,total)
-    [x]::list_ -> [y]::x
-                  if (List.length y) > siz then List.append lf 0 workFlowFloatListGenerator total siz ppsa lf list_
-                    else List.append lf ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf loc)
-                     workFlowFloatListGenerator ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf loc) siz ppsa lf list_
+    [x]::list_ -> case x of
+      y::h ->
+                  if (List.length y) > siz then
+                    let lfafter = List.append lf [0.0] in
+                    workFlowFloatListGenerator total siz ppsa lfafter list_
+                    else let temp =   ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf siz) in
+                      let lf3 =  List.append lf [temp] in
+                     workFlowFloatListGenerator ((getProbPatternSizeAppear ppsa (List.length y)) +  workFlowListCreatorFixFloatListLoop  lf3 siz) siz ppsa lf3 list_
 
 
 workFlowListCreatorFixFloatListLoop : List Float -> Int -> Float
@@ -305,7 +311,7 @@ workFlowListCreatorFixFloatListLoop lf loc =
   case lf of
     [] -> 0.0
     x::list_ -> if loc <= 0 then x
-                else workFlowListCreatorFixFloatListLoop  list_ (loc -1)
+                else workFlowListCreatorFixFloatListLoop  list_ (loc - 1)
 
 
 
@@ -319,6 +325,9 @@ workFlowListCreatorFixFloatListLoop lf loc =
 
 
 ------------------------------ start pattern section ----------------------------------------------
+getProbInterPatternization : ProbInterPatternization -> Float
+getProbInterPatternization pip =
+   pip.pip
 
 getProbPatternizationAppear : ProbPatternizationAppear -> Int -> Float
 getProbPatternizationAppear ppa num =
@@ -326,7 +335,7 @@ getProbPatternizationAppear ppa num =
     4 -> ppa.pz4
     8 -> ppa.pz8
     12 -> ppa.pz12
-    16 -> ppa.pz416
+    16 -> ppa.pz16
     32 -> ppa.pz32
     64 -> ppa.pz64
     128 -> ppa.pz128
@@ -339,35 +348,38 @@ findPatternToMatchListCreator : Int -> Float -> Int -> PatternList -> List Float
 findPatternToMatchListCreator loc total siz pl lf ppa =
   case pl of
     [] -> (lf,total)
-    [x]::list_ -> [y]::x
-                if List.length y >= siz then List.append lf 0.0 (findPatternToMatchListCreator total siz list_ lf ppa)
-                  else  List.append lf ((getProbPatternizationAppear ppa (List.length y)) + findPatternToMatchListCreatorFixFloatListLoop lf loc ))   -------------------loc might be in the wrong place may need to be loc  -1
-                        findPatternToMatchListCreator (total+(getProbPatternizationAppear ppa (List.length y))+ findPatternToMatchListCreatorFixFloatListLoop lf loc ) siz list_ lf ppa
+    x::list_ -> case x of
+       y::h -> if (List.length y) <= siz then
+                  let lf1 = List.append lf [0.0] in
+                  findPatternToMatchListCreator loc total siz list_ lf1 ppa
+                else
+                  let lf1 = List.append lf [(getProbPatternizationAppear ppa (List.length y)) + (findPatternToMatchListCreatorFixFloatListLoop lf loc )]  in -------------------loc might be in the wrong place may need to be loc  -1
+                      findPatternToMatchListCreator loc (total+(getProbPatternizationAppear ppa (List.length y))+ findPatternToMatchListCreatorFixFloatListLoop lf1 loc ) siz list_ lf1 ppa
 
 findPatternToMatchListCreatorFixFloatListLoop : List Float -> Int -> Float
 findPatternToMatchListCreatorFixFloatListLoop lf loc =
   case lf of
     [] -> 0.0
     x::list_ -> if loc <= 0 then x
-                else findPatternToMatchListCreatorFixFloatListLoop  list_ (loc -1)
+                else findPatternToMatchListCreatorFixFloatListLoop  list_ (loc - 1)
 
 
 
 findPatternMatchCycle : List Float -> Float -> Int -- takes lsit of probabilities and returns
 findPatternMatchCycle lf num =
   case lf of
-    [] -> lf
+    [] -> Debug.crash "badpat"
     x::list_ -> if x <= num then num
       else findPatternMatchCycle list_ num
 
 findPatternCycle : PatternList -> Int -> List (List Int)
 findPatternCycle pl num =
   case pl of
-    [] -> pl
-    x::list_ -> if num =< 0 then x
-      else findPatternMatchCycle list_ (num - 1)
+    [] -> [[]]
+    x::list_ -> if num <= 0 then x
+      else findPatternCycle list_ (num - 1)
 
-findPatternToMatch : Float -> Seed -> List Float -> ProbPatternizationAppear-> PatternList -> List (List Int) --takes the size or remaining space and calculates the probs for mathcing each pattern in list float form
+findPatternToMatch : Float -> Seed -> List Float -> ProbPatternizationAppear-> PatternList -> Int -> List (List Int) --takes the size or remaining space and calculates the probs for mathcing each pattern in list float form
 findPatternToMatch total se lf ppa pl siz =
       let (s2, rn) = floatGenerator se 0.0 total in
       let ans = findPatternMatchCycle lf rn in
@@ -375,55 +387,69 @@ findPatternToMatch total se lf ppa pl siz =
 
 
 
+calculateSize : List Int -> Int -> Int
+calculateSize li i =
+  case li of
+    [] -> i
+    x::list_ -> calculateSize list_ (i + x)
 
-findPatternToMatchMain :  Seed -> Int -> ProbPatternizationAppear-> ->List(List Int)
-findPatternToMatchMain se siz ppa pl siz =
-  let (lf,total) = findPatternToMatchListCreator  0.0 siz pl [] ppa
-  findPatternToMatch total se lf ppa pl siz
 
-patternCreator :
-     ProbRestChord -> Chord -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int   -- int is loc
+
+findPatternToMatchMain :  Seed -> Int -> ProbPatternizationAppear -> PatternList -> (Int, List(List Int))
+findPatternToMatchMain se siz ppa pat =
+  let (lf,total) = findPatternToMatchListCreator siz 0.0 siz pat [] ppa in
+  let thepat = findPatternToMatch total se lf ppa pat siz in
+  case thepat of
+      x::list_ ->  ((calculateSize x), thepat)
+
+patternCreator : List Int ->  ProbOutChord -> ProbInChord ->
+     ProbPatternizationAppear -> ProbRestChord -> Chord -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int   -- int is loc
   -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> KeySignature -> ProbOctaveMelody -> Melody
   -> ChordR -> ProbCR
   -> MelodyR -> ProbMR
-  ->ProbInterPatternization -> Seed -> Int -> PatternList-> Int ->PatternList
-patternCreator prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se siz pat numpatsize =
-  if siz == 4 then
-    case numpatsize of
-      0 -> pat
-      _ ->  let tmr = melodyRhythm 0 siz se mr pmr in
-            List.append pat [tmr]  -- not sure how pat list lsit is going to work
-            let tcr = chordRhythm 0 siz se cr pcr
-            List.append pat [tcr]
-            let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
-            List.append pat [tm]
-            let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss
-            List.append pat [tc]
-            patternCreator8 prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr se siz pat (numpatsize -1)
+  -> ProbInterPatternization -> Seed -> Int -> PatternList-> Int ->PatternList
+patternCreator liofptn poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se siz pat numpatsize =
+  if siz <= 0 then case liofptn of
+    [] -> pat
+    x::list_ ->  patternCreator list_ poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se 0 pat x
   else
-    let (s2, rn) = floatGenerator se 0.0 1.0 in
-    if rn <= pip then
-      findPatternToMatch ...
-
-
+    if (numpatsize - siz) <= 4 then
+        let tmr = melodyRhythm 0 siz se mr pmr in
+        let tcr = chordRhythm 0 siz se cr pcr in
+        let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+        let tc = chordCreatorMain poc pic se prestc c m mr paoc prc pac ptc loc cr kss in
+        let pat1 = List.append pat [tmr, tcr, tm,tc] in
+        let pat2 = liofptn patternCreator poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se (siz - tmr) pat1 numpatsize in
+        pat2
     else
-      case numpatsize of
-        0 -> pat
-        _ ->  let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in   -----needs to be here becuase otherwise it would do melody for whole thing instead of 1 note
-              let lf pt = melodyRhythmHelper [] arra 0.0 pmr
-              let dn = melodyRhythmDecider arra
-              let (s2, rn) = floatGenerator se 0.0 pt in
-              let nn =  (melodyRhythmDecider arra rn) in
+      let (s2, rn) = floatGenerator se 0.0 1.0 in
+      if rn <= (getProbInterPatternization pip ) then
+        let (siz1, pat2) =  findPatternToMatchMain se siz ppa pat in
+          patternCreator liofptn poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se (siz + siz1) (List.append pat [pat2]) numpatsize
 
-              let tmr = melodyRhythm 0 nn se mr pmr in
-              List.append pat [tmr]  -- not sure how pat list lsit is going to work
-              let tcr = chordRhythm 0 nn se cr pcr                                   ----------------------------------------------------logic error runs again wont be 0
-              List.append pat [tcr]
-              let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
-              List.append pat [tm]
-              let tc = chordCreatorMain se prestc c m mr paoc prc pac ptc loc cr kss
-              List.append pat [tc]
-              patternCreator8 prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr se siz pat (numpatsize -1)
+
+      else
+        case numpatsize of
+          0 -> pat
+          _ ->  let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in   -----needs to be here becuase otherwise it would do melody for whole thing instead of 1 note
+                let (lf, pt) = melodyRhythmHelper [] arra 0.0 pmr in
+                let dn = melodyRhythmDecider arra in
+                let (s2, rn) = floatGenerator se 0.0 pt in
+                let nn =  (melodyRhythmDecider arra rn) in
+
+                let tmr = melodyRhythm 0 nn se mr pmr in -- not sure how pat list lsit is going to work
+                let tcr = chordRhythm 0 nn se cr pcr     in                              ----------------------------------------------------logic erro
+                let tm = melodyCreatorMain kss se pok pik ks pom tmr m in
+                let tc = chordCreatorMain poc pic se prestc c m mr paoc prc pac ptc loc cr kss in
+                let tss1 = List.append tmr tcr in
+                let tss2 = List.append tss1 tm in -- type annotation to fit
+                let tss3 = List.append tss2 tc in
+                let pat1 = List.append pat [tss3] in
+                patternCreator liofptn poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se (siz + tmr) pat1 numpatsize
+
+
+
+
 
 
 
@@ -465,11 +491,11 @@ getProbMR y x = case y of
 
 
 
-melodyRhythmHelper : List  -> List Int -> Float  -> ProbMR -> (List Float, Int)
-melodyRhythmHelepr lf li total pmr
+melodyRhythmHelper : List Float  -> List Int -> Float  -> ProbMR -> (List Float, Int)
+melodyRhythmHelper lf li total pmr =
   case li of
     [] -> (lf, total)
-    x::list_ -> melodyRhythmHelper (List.append lf (probMR x pmr)) list_ (total + probMR x pmr) pmr
+    x::list_ -> melodyRhythmHelper (List.append lf [getProbMR x pmr]) list_ (total +getProbMR x pmr) pmr
 
 melodyRhythmDecider : List Int -> Float -> Int
 melodyRhythmDecider li prob =
@@ -483,12 +509,12 @@ melodyRhythm siz maxnote se mr pmr =
   let do = totalMR 0 mr in
   if do <= (maxnote - siz) then
     let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
-    let lf pt = melodyRhythmHelper [] arra 0.0 pmr
-    let dn = melodyRhythmDecider arra
+    let (lf, pt) = melodyRhythmHelper [] arra 0.0 pmr in
+    let dn = melodyRhythmDecider arra in
     let (s2, rn) = floatGenerator se 0.0 pt in
     let nn =  (melodyRhythmDecider arra rn) in
-    List.append mr nn
-    melodyRhythm (siz + nn) maxnote se mr pmr
+    let mr1 = List.append mr nn in
+    melodyRhythm (siz + nn) maxnote se mr1 pmr
   else
     let  hi = (cycleThroughR mr 0 )- ( maxnote - siz) in
     List.append mr [hi]
@@ -517,11 +543,12 @@ getProbCR y x = case y of
   15 -> x.c15
   16 -> x.c16
 
-chordRhythmHelper : List  -> List Int -> Float  -> ProbCR -> (List Float, Int)
-chordRhythmHelepr lf li total pmr
+chordRhythmHelper : List Float -> List Int -> Float  -> ProbCR -> (List Float, Int)
+chordRhythmHelper lf li total pmr =
   case li of
     [] -> (lf, total)
-    x::list_ -> chordRhythmHelper (List.append lf (probCR x pmr)) list_ (total + probCR x pmr) pmr
+    x::list_ -> let lf1 = List.append lf [(getProbCR x pmr)] in
+      chordRhythmHelper lf1 list_ (total + getProbCR x pmr) pmr
 
 chordRhythmDecider : List Int -> Float -> Int
 chordRhythmDecider li prob =
@@ -535,12 +562,12 @@ chordRhythm siz maxnote se mr pmr =
   let do = cycleThroughR mr 0 in
   if do <= (maxnote - siz) then
     let arra = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16] in
-    let lf pt = chordRhythmHelper [] arra 0.0 pmr
-    let dn = chordRhythmDecider arra
+    let (lf, pt) = chordRhythmHelper [] arra 0.0 pmr in
+    let dn = chordRhythmDecider arra in
     let (s2, rn) = floatGenerator se 0.0 pt in
     let cn = chordRhythmDecider arra rn in
-    List.append mr cn
-    chordRhythm  (siz + cn) maxnote se cr pmr
+    let mr1 = List.append mr cn in
+    chordRhythm  (siz + cn) maxnote se mr1 pmr
   else
     let  hi = (cycleThroughR mr 0 ) - (maxnote - siz) in
     List.append mr [hi]
@@ -549,11 +576,13 @@ chordRhythm siz maxnote se mr pmr =
 -------end code rhythm section-------------------------------------------
 
 -------Start of Melody section -------------------------------------------
+
+
 keySignatureHelperhandler : KeySignatureSuggestion -> List Int
 keySignatureHelperhandler kss =
   case kss of
     [] -> [0,2,4,5,7,9,11]
-    _ -> kss
+    [_,_,_,_,_,_,_] -> kss.ksp
 
 
 -- start with melodyCreatorMain creates list of probs calling probHelpMelodyMain
@@ -565,11 +594,17 @@ melodyCreatorMain kss se pok pik ks pom mr m =
   [] -> m
 --  [_] -> m -- precent root is final
 --  [_,_] -> m --something else here
-  x::list -> let x = probHelpMelodyMain pok pik ks pom [] notes in
-    let pt = Just (List.tail x) in
+  x::list -> let tem = probHelpMelodyMain kss pok pik ks pom [] notes in
+    let temp = (List.reverse [tem]) in
+    let pt = melodySaveAss 0.0 temp in
     let (s2, rn) = floatGenerator se 0.0 pt in
-    List.append m [melodyCreatorMainHelper x rn]
+    List.append m [melodyCreatorMainHelper tem rn]
 
+melodySaveAss : Float -> List Float -> Float
+melodySaveAss f lf =
+  case lf of
+    [] -> f
+    x::list_ -> x lf
 --cycles through list of probs till it finds the right int
 melodyCreatorMainHelper : List Float -> Float -> Int
 melodyCreatorMainHelper lf f =
@@ -583,10 +618,15 @@ probHelpMelodyMain kss pok pik ks pom pmr lr =
   let kss1 = keySignatureHelperhandler kss in
   case lr of
     [] -> pmr
-    x::list_ -> List.append pmr [((octaveControlMelody ks pom x * sameKeyMelodyProb kss1 pok pik x ) + (Just List.tail pmr) ) ]
-     probHelpMelodyMain pok pik ks pom pmr list_
+    x::list_ -> let temp = List.append pmr [(((octaveControlMelody ks pom x) * (sameKeyMelodyProb kss1 pok pik ks x )) + (probMelodySaveAss pmr 0.0) ) ] in
+     probHelpMelodyMain kss pok pik ks pom temp list_
 --function calls for prob handleers
 
+probMelodySaveAss : List Float -> Float -> Float
+probMelodySaveAss lf f =
+  case lf of
+    [] -> f
+    x::list_ -> probMelodySaveAss list_ x
 
 octaveControlMelody : KeySignature -> ProbOctaveMelody -> Int ->  Float
 octaveControlMelody key x note =
@@ -599,23 +639,27 @@ octaveControlMelody key x note =
             else if (temp / 12) == 5 then x.o6
   else 0.0
 
-sameKeyMelodyProb : KeySignatureSuggestion -> ProbOutKey ->ProbInKey -> KeySignature -> Int -> Float
+getInKey : ProbInKey -> Float
+getInKey ik =
+  ik.ik
+
+getOutKey : ProbOutKey -> Float
+getOutKey ik =
+  ik.ok
+
+sameKeyMelodyProb : List Int -> ProbOutKey ->ProbInKey -> KeySignature -> Int -> Float
 sameKeyMelodyProb kss outKey inkey key note =
   let temp = (note + (keySignatureNeumericalHandler key)) - 11 in
-  let tem1 te1 = x::kss in
-  let tem2 te2 = x::te1 in
-  let tem3 te3 = x::te2 in
-  let tem4 te4 = x::te3 in
-  let tem5 te5 = x::te4 in
-  let tem6 te6 = x::te5 in
-  if (temp % (tem1+12)) == 0 then inkey
-    else if (temp % tem2) == 0 then inkey
-      else if (temp % tem3) == 0 then inkey
-        else if (temp % tem4) == 0 then inkey
-          else if (temp % tem5) == 0 then inkey
-            else if (temp % tem6) == 0 then inkey
-              else if (temp % te6) == 0 then inkey
-              else outkey
+  case kss of
+    [] -> getOutKey outKey
+    x::list_ -> if x == 0 then
+                  if (temp % (x + 12)) == 0 then getInKey inkey
+                    else sameKeyMelodyProb list_ outKey inkey key note
+                else
+                  if (temp % x) == 0 then getInKey inkey
+                    else sameKeyMelodyProb list_ outKey inkey key note
+
+
 
 --- start chord decision creator--------------------------------------------------------------------
 --- Still Working On this part ---------------------------------------------------------------------
@@ -658,18 +702,24 @@ getProbAddOnChord x ptc = case x of
 
 
 
-chordCreatorMain :Seed ->ProbRestChord -> Chord -> Melody -> MelodyR ->  ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> ChordR -> KeySignatureSuggestion -> Chord --picks chord from prob initiate loc as 0
-chordCreatorMain s2 prestc c m mr paoc prc pac ptc loc cr kss =
+chordCreatorMain :ProbOutChord -> ProbInChord -> Seed ->ProbRestChord -> Chord -> Melody -> MelodyR ->  ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> ChordR -> KeySignatureSuggestion -> Chord --picks chord from prob initiate loc as 0
+chordCreatorMain poc pic se prestc c m mr paoc prc pac ptc loc cr kss =
   let lc = [[]] in
   let lc1 = chordListCreatorLoop kss lc 1 0 1 0 in
   case cr of
     [] -> c
-    x::list_ ->   let lf = chordProbMain m mr cr paoc prc pac ptc (loc+x) 1 0 1 0 cr cr  lc1
-                  List.append lf prestc
-                  List.append lc1 []
-                  let pt = Just (List.tail lf) in
-                  let (s2, rn) = floatGenerator se 0.0 pt in
-                  List.append c (chordListCycleThrough  lc1 (chordCreatorDecider lf rn 0))
+    x::list_ ->   let lf = chordProbMain poc pic m mr cr paoc prc pac ptc (loc+x) 1 0 1 0 cr cr  lc1 in
+                  let lf1 =  List.append lf [prestc] in
+                  let lc2 = List.append lc1 [] in
+                  let numend = chordGetend 0.0 lf1 in
+                  let (s2, rn) = floatGenerator se 0.0 numend in
+                  List.append c (chordListCycleThrough  lc2 (chordCreatorDecider lf1 rn 0))
+
+chordGetend : Float -> List Float -> Float
+chordGetend f lf =
+  case lf of
+    [] -> f
+    x::list_ -> chordGetend (f+x) list_
 
 
 chordListCycleThrough : List (List Int) -> Int -> List Int
@@ -682,16 +732,24 @@ chordListCycleThrough lc num =
 chordCreatorDecider : List Float -> Float ->Int -> Int
 chordCreatorDecider probs prob loc =
   case probs of
-    []-> Empty
+    []-> []
     x::list_ -> if x >= prob then loc
       else chordCreatorDecider list_ prob loc
 
-chordProbMain :Melody -> MelodyR -> ChordR -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord ->Int ->  Int -> Int -> Int -> Int -> List Float -> ChordR -> ChordR -> List List Int -> List Float --run through list chords
-chordProbMain m mr cr paoc prc pac ptc loc ac rc tc aoc lf cr cruc lc =
+chordProbMain : ProbOutChord -> ProbInChord -> Melody -> MelodyR -> ChordR -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord ->Int ->  Int -> Int -> Int -> Int -> List Float -> ChordR -> List List Int -> List Float --run through list chords
+chordProbMain poc pic m mr cruc paoc prc pac ptc loc ac rc tc aoc lf cr lc =
     case lc of
-       [] -> 0
-       y::list_ -> chordProbMain paoc prc pac ptc loc ac r tc aoc (List.append lf ((chordProbHelper m mr cruc x paoc prc pac ptc loc ac rc tc aoc  ))+y) cr_ lc
-
+       [] -> lf
+       y::list_ -> let lf1 = List.append lf [chordProbHelper poc pic m mr cruc y paoc prc pac ptc loc ac rc tc aoc] in
+                              chordProbMain poc pic m mr cruc paoc prc pac ptc loc ac rc tc aoc lf1 cr list_
+                  {-else
+                              let temp = List.reverse lf in
+                              let temp1 = Just (List.head [temp]) in
+                              let temp2 = (chordProbHelper m mr cruc y paoc prc pac ptc loc ac rc tc aoc )  in
+                              let temp3 = temp2 + Just (temp1) in
+                              let lf1 = List.append lf [temp3] in
+                              chordProbMain m mr cruc paoc prc pac ptc loc ac rc tc aoc lf1 cr list_
+-}
 chordTypeListLoop : Int -> Int -> Int -> Int -> (Int,Int,Int,Int)
 chordTypeListLoop lc ac rc tc aoc =
   if aoc < 4 then ac rc tc (aoc + 1)
@@ -700,24 +758,24 @@ chordTypeListLoop lc ac rc tc aoc =
             else if ac < 4 then (ac +1) 0 1 0
   else lc
 
-chordProbHelper :Melody -> MelodyR -> ChordR ->List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> Int -> Float -- returns the prob for chord x
-chordProbHelper m mr cr lc paoc prc pac ptc loc ac rc tc aoc =
+chordProbHelper :ProbOutChord -> ProbInChord -> Melody -> MelodyR -> ChordR ->List List Int -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord -> ProbTypeChord -> Int -> Int -> Int -> Int -> Int -> Float -- returns the prob for chord x
+chordProbHelper poc pic m mr cr lc paoc prc pac ptc loc ac rc tc aoc =
   let cc = chordProbFindMelodyNotes [] loc 0 m mr cr in
   case lc of
-    [] -> lc
-    x :: list_
-      let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc) * (chordProbMelodyCorralation) in
+    [] -> 0.0
+    x :: list_ ->
+      let p = (getProbTypeChord tc ptc )* (getProbAppliedChord ac pac) * (getProbRootChord rc prc) * (getProbAddOnChord aoc paoc) * (chordProbMelodyCorralation poc pic x 1 mr cr x ) in
       p -- dont delete needs to append to a list
 
 chordProbMelodyCorralation :  ProbOutChord -> ProbInChord -> List Int -> Float -> MelodyR -> ChordR -> List Int -> Float -- loc is int time where we are in the song chs is hte list of notes of hte chord
 chordProbMelodyCorralation poc pic mell prob mr cr chs =
   case chs of
     []-> prob
-    x::list_ -> let mn ml = chordProbMelodyCorralationSecondLoop mell
-                chordProbMelodyCorralation ml (prob * (chordProbLoop poc pic mn x)) mr cr list_
+    x::list_ -> let (mn, ml) = chordProbMelodyCorralationSecondLoop mell in
+                chordProbMelodyCorralation poc pic ml (prob * (chordProbLoop poc pic mn x)) mr cr list_
 
 chordProbMelodyCorralationSecondLoop :List Int -> (Int, List Int)
-chordProbMelodyCorralationSecondLoop = mn
+chordProbMelodyCorralationSecondLoop mn =
   case mn of
     [] -> []
     x::list -> (x, list)
@@ -730,12 +788,15 @@ chordProbLoop outkey inkey notem notec =
       else outkey
 
 chordProbFindMelodyNotes : List Int -> Int -> Int -> Melody -> MelodyR -> ChordR -> List Int -- this returns the list of notes that the chord overlap with
-chordProbFindMelodyNotes nsf loc counter mr cr =
+chordProbFindMelodyNotes nsf loc counter m mr cr =
   case mr of
     []-> nsf
     x::list_ -> if counter >= loc + x then List.append nsf (cycleThroughM mr m counter)
       else if counter >= loc then nsf
         else chordProbFindMelodyNotes nsf loc (counter + x) m mr cr
+
+
+
 
 
 
@@ -760,10 +821,10 @@ chordListCreatorAppliedHelper lo hi ans kss =
   if lo == hi then ans
     else if hi > 7 then let hi1 = hi - 7 in
        case kss of
-        [] -> Empty
+        [] -> []
         x::kss -> chordListCreatorAppliedHelper (lo + 1) hi1 (ans + x) kss
       else  case kss of
-        [] -> Empty
+        [] -> []
         x::kss -> chordListCreatorAppliedHelper (lo + 1) hi (ans + x) kss
 
 chordListCreatorApplied : KeySignatureSuggestion -> Int  -> Int
@@ -788,70 +849,70 @@ chordListCreatorAllElse lc kss fr app ac rc tc aoc  =
           2 -> []
           3 -> []
           4 ->
-            let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
+            let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)] in
             List.append lc temp
       2 -> case aoc of
-          0 -> Nil -- change to empty sets
-          1 -> Nil
-          2 -> Nil
-          3 -> Nil
-          4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          0 -> Nothing -- change to empty sets
+          1 -> Nothing
+          2 -> Nothing
+          3 -> Nothing
+          4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
                 List.append lc temp
       3 -> case aoc of
-          0 -> Nil
-          1 -> Nil
-          2 -> Nil
-          3 -> Nil
-          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          0 -> Nothing
+          1 -> Nothing
+          2 -> Nothing
+          3 -> Nothing
+          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
                 List.append lc temp
       4 -> case aoc of
-          0 -> Nil
-          1 -> Nil
-          2 -> Nil
-          3 -> Nil
-          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+          0 -> Nothing
+          1 -> Nothing
+          2 -> Nothing
+          3 -> Nothing
+          4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
                  List.append lc temp
   else
     case tc of
       1 -> case aoc of
-        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)] in
               List.append lc temp
-        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)] in
               List.append lc temp
-        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)]
+        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss)] in
               List.append lc temp
-        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1)]
+        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1)] in
                 List.append lc temp
-        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)]
+        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1)] in
               List.append lc temp
       2 -> case aoc of
-        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        1 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        2 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        3 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 -> let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+4) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
       3 -> case aoc of
-        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        1 -> Nil
-        2 -> Nil
-        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        1 -> Nothing
+        2 -> Nothing
+        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+2) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
       4 -> case aoc of
-        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        0 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), (app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        1 -> Nil
-        2 -> Nil
-        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        1 -> Nothing
+        2 -> Nothing
+        3 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) + 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
-        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)]
+        4 ->  let temp = [(fr + app) , (app + chordListCreatorAppliedHelper 0 (rc+1) 0 kss), ((app + chordListCreatorAppliedHelper 0 (rc+3) 0 kss) - 1),  (app + chordListCreatorAppliedHelper 0 (rc+7) 0 kss)] in
               List.append lc temp
 
 
