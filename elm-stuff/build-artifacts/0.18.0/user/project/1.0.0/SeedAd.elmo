@@ -1,0 +1,31 @@
+var _user$project$SeedAd$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: _elm_lang$html$Html$text(
+				_elm_lang$core$Basics$toString(model)),
+			_1: {ctor: '[]'}
+		});
+};
+var _user$project$SeedAd$getTimeF = function (model) {
+	return _elm_lang$core$Basics$round(model);
+};
+var _user$project$SeedAd$update = F2(
+	function (_p0, model) {
+		var _p1 = _p0;
+		return {ctor: '_Tuple2', _0: _p1._0, _1: _elm_lang$core$Platform_Cmd$none};
+	});
+var _user$project$SeedAd$OnTime = function (a) {
+	return {ctor: 'OnTime', _0: a};
+};
+var _user$project$SeedAd$getTime = A2(_elm_lang$core$Task$perform, _user$project$SeedAd$OnTime, _elm_lang$core$Time$now);
+var _user$project$SeedAd$initialModel = {ctor: '_Tuple2', _0: 0, _1: _user$project$SeedAd$getTime};
+var _user$project$SeedAd$main = _elm_lang$html$Html$program(
+	{
+		init: _user$project$SeedAd$initialModel,
+		update: _user$project$SeedAd$update,
+		view: _user$project$SeedAd$view,
+		subscriptions: _elm_lang$core$Basics$always(_elm_lang$core$Platform_Sub$none)
+	})();
