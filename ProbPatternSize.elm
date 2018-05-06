@@ -5,6 +5,7 @@ import Random exposing (Generator, Seed)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
+--import Now exposing (..)
 import Keyboard
 import Mouse
 ----------------------------------------------------------------------------
@@ -55,7 +56,7 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      seed = Random.initialSeed 1
+      seed = Random.initialSeed 3221
       (p4n,s2) = floatCreator seed probability
       (p8n,s3) = floatCreator s2 probability
       (p12n,s4) = floatCreator s3 probability

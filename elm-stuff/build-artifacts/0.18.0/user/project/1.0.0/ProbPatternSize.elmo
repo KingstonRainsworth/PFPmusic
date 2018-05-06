@@ -53,7 +53,7 @@ var _user$project$ProbPatternSize$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(1);
+				var seed = _elm_lang$core$Random$initialSeed(3221);
 				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, seed, _user$project$ProbPatternSize$probability);
 				var p4n = _p4._0;
 				var s2 = _p4._1;
