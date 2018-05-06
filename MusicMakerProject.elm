@@ -202,7 +202,7 @@ let lp = -- make a list of number of each patterns to pass to pattern creator
 
 
 
-
+{-
 
 
 
@@ -459,8 +459,7 @@ patternCreator liofptn poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks 
                 let pat1 = List.append pat pattem in
                 patternCreator liofptn poc pic ppa prestc c paoc prc pac ptc loc kss pok pik ks pom m cr pcr mr pmr pip se (siz + nn) pat1 numpatsize
 
-
-
+-}
 
 
 
