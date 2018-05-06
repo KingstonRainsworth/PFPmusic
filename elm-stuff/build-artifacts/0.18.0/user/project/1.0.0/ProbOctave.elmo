@@ -6,15 +6,7 @@ var _user$project$ProbOctave$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbOctave$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbOctave$initialModel = {
-	o1: 0,
-	o2: 0,
-	o3: 0,
-	o4: 0,
-	o5: 0,
-	o6: 0,
-	seed: _elm_lang$core$Random$initialSeed(101)
-};
+var _user$project$ProbOctave$initialModel = {o1: 0, o2: 0, o3: 0, o4: 0, o5: 0, o6: 0};
 var _user$project$ProbOctave$init = {ctor: '_Tuple2', _0: _user$project$ProbOctave$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbOctave$update = F2(
 	function (msg, model) {
@@ -25,7 +17,8 @@ var _user$project$ProbOctave$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbOctave$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbOctave$floatCreator, model.seed, _user$project$ProbOctave$probability);
+				var seed = _elm_lang$core$Random$initialSeed(101);
+				var _p2 = A2(_user$project$ProbOctave$floatCreator, seed, _user$project$ProbOctave$probability);
 				var o1n = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbOctave$floatCreator, s2, _user$project$ProbOctave$probability);
@@ -47,14 +40,14 @@ var _user$project$ProbOctave$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{o1: o1n, o2: o2n, o3: o3n, o4: o4n, o5: o5n, o6: o6n, seed: s7}),
+						{o1: o1n, o2: o2n, o3: o3n, o4: o4n, o5: o5n, o6: o6n}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
-var _user$project$ProbOctave$Model = F7(
-	function (a, b, c, d, e, f, g) {
-		return {o1: a, o2: b, o3: c, o4: d, o5: e, o6: f, seed: g};
+var _user$project$ProbOctave$Model = F6(
+	function (a, b, c, d, e, f) {
+		return {o1: a, o2: b, o3: c, o4: d, o5: e, o6: f};
 	});
 var _user$project$ProbOctave$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbOctave$Reset = {ctor: 'Reset'};

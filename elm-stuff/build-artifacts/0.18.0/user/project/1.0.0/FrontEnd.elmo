@@ -50,13 +50,12 @@ var _user$project$FrontEnd$view = function (model) {
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$div,
+					_elm_lang$html$Html$p,
 					{ctor: '[]'},
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(
-								_user$project$ProbPatternSize$getVal(model.probpatternsize))),
+							_elm_lang$core$Basics$toString(model)),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -351,11 +350,7 @@ var _user$project$FrontEnd$update = F2(
 																										A2(
 																											_user$project$FrontEnd$update,
 																											_user$project$FrontEnd$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
-																											_elm_lang$core$Tuple$first(
-																												A2(
-																													_user$project$FrontEnd$update,
-																													_user$project$FrontEnd$CoreValMsg(_user$project$CoreVal$Randomize),
-																													model))))))))))))))))))))))));
+																											model))))))))))))))))))))));
 					msg = _v1;
 					model = _v2;
 					continue update;

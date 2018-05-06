@@ -6,16 +6,7 @@ var _user$project$ProbRoot$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbRoot$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbRoot$initialModel = {
-	prc1: 0,
-	prc2: 0,
-	prc3: 0,
-	prc4: 0,
-	prc5: 0,
-	prc6: 0,
-	prc7: 0,
-	seed: _elm_lang$core$Random$initialSeed(9713)
-};
+var _user$project$ProbRoot$initialModel = {prc1: 0, prc2: 0, prc3: 0, prc4: 0, prc5: 0, prc6: 0, prc7: 0};
 var _user$project$ProbRoot$init = {ctor: '_Tuple2', _0: _user$project$ProbRoot$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbRoot$update = F2(
 	function (msg, model) {
@@ -26,7 +17,8 @@ var _user$project$ProbRoot$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbRoot$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbRoot$floatCreator, model.seed, _user$project$ProbRoot$probability);
+				var seed = _elm_lang$core$Random$initialSeed(9713);
+				var _p2 = A2(_user$project$ProbRoot$floatCreator, seed, _user$project$ProbRoot$probability);
 				var prc1n = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbRoot$floatCreator, s2, _user$project$ProbRoot$probability);
@@ -51,14 +43,14 @@ var _user$project$ProbRoot$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{prc1: prc1n, prc2: prc2n, prc3: prc3n, prc4: prc4n, prc5: prc5n, prc6: prc6n, prc7: prc7n, seed: s8}),
+						{prc1: prc1n, prc2: prc2n, prc3: prc3n, prc4: prc4n, prc5: prc5n, prc6: prc6n, prc7: prc7n}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
-var _user$project$ProbRoot$Model = F8(
-	function (a, b, c, d, e, f, g, h) {
-		return {prc1: a, prc2: b, prc3: c, prc4: d, prc5: e, prc6: f, prc7: g, seed: h};
+var _user$project$ProbRoot$Model = F7(
+	function (a, b, c, d, e, f, g) {
+		return {prc1: a, prc2: b, prc3: c, prc4: d, prc5: e, prc6: f, prc7: g};
 	});
 var _user$project$ProbRoot$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbRoot$Reset = {ctor: 'Reset'};

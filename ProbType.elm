@@ -13,16 +13,14 @@ type alias Model =
   {proot : Float
   ,pseventh : Float
   ,pninth  : Float
-  ,peleventh : Float
-  ,seed : Seed}
+  ,peleventh : Float}
 
 initialModel : Model
 initialModel =
   {proot = 0
   ,pseventh = 0
   ,pninth  = 0
-  ,peleventh = 0
-  ,seed = Random.initialSeed 94}
+  ,peleventh = 0}
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
@@ -45,9 +43,10 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (prootn,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 94
+      (prootn,s2) = floatCreator seed probability
       (pseventhn,s3) = floatCreator s2 probability
       (pninthn,s4) = floatCreator s3 probability
       (peleventhn,s5) = floatCreator s4 probability
     in
-    ({model | proot = prootn , pseventh = pseventhn , pninth = pninthn , peleventh = peleventhn , seed = s5},Cmd.none)
+    ({model | proot = prootn , pseventh = pseventhn , pninth = pninthn , peleventh = peleventhn },Cmd.none)

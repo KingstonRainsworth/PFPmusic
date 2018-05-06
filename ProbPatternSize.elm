@@ -18,7 +18,6 @@ type alias Model =
   ,p64 : Float
   ,p128 : Float
   ,p256 : Float
-  ,seed : Seed
   }
 
 initialModel : Model
@@ -31,7 +30,6 @@ initialModel =
   ,p64 = 0
   ,p128 = 0
   ,p256 = 0
-  ,seed = Random.initialSeed 1
   }
 
 init : (Model,Cmd Msg)
@@ -49,7 +47,7 @@ floatCreator seed fg =
   (f,s2)
 
 getVal : Model -> List Float
-getVal {p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256,seed} = [p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256] 
+getVal {p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256} = [p4 ,p8 ,p12 ,p16 ,p32 ,p64 ,p128 ,p256]
 
 update : Msg -> Model -> (Model,Cmd Msg)
 update msg model = case msg of
@@ -57,7 +55,8 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (p4n,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 1
+      (p4n,s2) = floatCreator seed probability
       (p8n,s3) = floatCreator s2 probability
       (p12n,s4) = floatCreator s3 probability
       (p16n,s5) = floatCreator s4 probability
@@ -66,4 +65,4 @@ update msg model = case msg of
       (p128n,s8) = floatCreator s7 probability
       (p256n,s9) = floatCreator s8 probability
     in
-    ({model | p4=p4n , p8=p8n , p12=p12n , p16=p16n , p32=p32n , p64=p64n , p128=p128n , p256=p256n, seed = s9},Cmd.none)
+    ({model | p4=p4n , p8=p8n , p12=p12n , p16=p16n , p32=p32n , p64=p64n , p128=p128n , p256=p256n},Cmd.none)

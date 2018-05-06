@@ -14,8 +14,7 @@ type alias Model =
   , psus2 : Float
   , psus4 : Float
   , pAug  : Float
-  , pDim  : Float
-  , seed : Seed }
+  , pDim  : Float }
 
 initialModel : Model
 initialModel =
@@ -23,8 +22,7 @@ initialModel =
   , psus2 = 0
   , psus4 = 0
   , pAug  = 0
-  , pDim  = 0
-  , seed = Random.initialSeed 885 }
+  , pDim  = 0 }
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
@@ -47,10 +45,11 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (pnaon,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 885
+      (pnaon,s2) = floatCreator seed probability
       (psus2n,s3) = floatCreator s2 probability
       (psus4n,s4) = floatCreator s3 probability
       (pAugn,s5) = floatCreator s4 probability
       (pDimn,s6) = floatCreator s5 probability
     in
-    ({model | pnao = pnaon , psus2 = psus2n , psus4 = psus4n , pAug = pAugn , pDim = pDimn , seed = s6},Cmd.none)
+    ({model | pnao = pnaon , psus2 = psus2n , psus4 = psus4n , pAug = pAugn , pDim = pDimn},Cmd.none)

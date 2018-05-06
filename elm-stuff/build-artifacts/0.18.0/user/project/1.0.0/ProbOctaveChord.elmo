@@ -6,14 +6,7 @@ var _user$project$ProbOctaveChord$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbOctaveChord$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbOctaveChord$initialModel = {
-	oc1: 0,
-	oc2: 0,
-	oc3: 0,
-	oc4: 0,
-	oc5: 0,
-	seed: _elm_lang$core$Random$initialSeed(43)
-};
+var _user$project$ProbOctaveChord$initialModel = {oc1: 0, oc2: 0, oc3: 0, oc4: 0, oc5: 0};
 var _user$project$ProbOctaveChord$init = {ctor: '_Tuple2', _0: _user$project$ProbOctaveChord$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbOctaveChord$update = F2(
 	function (msg, model) {
@@ -24,7 +17,8 @@ var _user$project$ProbOctaveChord$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbOctaveChord$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbOctaveChord$floatCreator, model.seed, _user$project$ProbOctaveChord$probability);
+				var seed = _elm_lang$core$Random$initialSeed(43);
+				var _p2 = A2(_user$project$ProbOctaveChord$floatCreator, seed, _user$project$ProbOctaveChord$probability);
 				var oc1n = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbOctaveChord$floatCreator, s2, _user$project$ProbOctaveChord$probability);
@@ -43,14 +37,14 @@ var _user$project$ProbOctaveChord$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{oc1: oc1n, oc2: oc2n, oc3: oc3n, oc4: oc4n, oc5: oc5n, seed: s6}),
+						{oc1: oc1n, oc2: oc2n, oc3: oc3n, oc4: oc4n, oc5: oc5n}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
-var _user$project$ProbOctaveChord$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {oc1: a, oc2: b, oc3: c, oc4: d, oc5: e, seed: f};
+var _user$project$ProbOctaveChord$Model = F5(
+	function (a, b, c, d, e) {
+		return {oc1: a, oc2: b, oc3: c, oc4: d, oc5: e};
 	});
 var _user$project$ProbOctaveChord$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbOctaveChord$Reset = {ctor: 'Reset'};

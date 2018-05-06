@@ -16,8 +16,7 @@ type alias Model =
   , prc4 : Float
   , prc5 : Float
   , prc6 : Float
-  , prc7 : Float
-  , seed : Seed  }
+  , prc7 : Float }
 
 initialModel : Model
 initialModel =
@@ -27,8 +26,7 @@ initialModel =
   , prc4 = 0
   , prc5 = 0
   , prc6 = 0
-  , prc7 = 0
-  , seed = Random.initialSeed 9713  }
+  , prc7 = 0  }
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
@@ -51,7 +49,8 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (prc1n,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 9713
+      (prc1n,s2) = floatCreator seed probability
       (prc2n,s3) = floatCreator s2 probability
       (prc3n,s4) = floatCreator s3 probability
       (prc4n,s5) = floatCreator s4 probability
@@ -59,4 +58,4 @@ update msg model = case msg of
       (prc6n,s7) = floatCreator s6 probability
       (prc7n,s8) = floatCreator s7 probability
     in
-    ({model | prc1 = prc1n , prc2 = prc2n , prc3 = prc3n , prc4 = prc4n , prc5 = prc5n , prc6 = prc6n , prc7 = prc7n , seed = s8},Cmd.none)
+    ({model | prc1 = prc1n , prc2 = prc2n , prc3 = prc3n , prc4 = prc4n , prc5 = prc5n , prc6 = prc6n , prc7 = prc7n },Cmd.none)

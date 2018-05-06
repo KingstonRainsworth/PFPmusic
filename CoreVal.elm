@@ -12,7 +12,6 @@ import Html.Events exposing (onInput,onClick)
 
 type alias Model =
   {
-    seed : Seed ,
     ok : Float ,
     ik : Float , -- probablility that melody note is in key
     oc : Float ,
@@ -28,7 +27,6 @@ type alias Model =
 
 initialModel : Model
 initialModel = {
-  seed = Random.initialSeed 5,
   ok = 0 ,
   ik = 0 , -- probablility that melody note is in key
   oc = 0 ,
@@ -73,7 +71,8 @@ update msg model =
     Reset -> (initialModel, Cmd.none)
     Randomize ->
       let
-        (okn,s2) =  (floatCreator model.seed probability)
+        seed = Random.initialSeed 5
+        (okn,s2) =  (floatCreator seed probability)
         (ikn,s3) =  (floatCreator s2 probability)
         (ocn,s4) =  (floatCreator s3 probability)
         (icn,s5) =  (floatCreator s4 probability)
@@ -85,10 +84,10 @@ update msg model =
         (pcmcm,s11) =  (floatCreator s10 probability)
         (cwn,s12) =  (floatCreator s11 probability)
       in
-      ({model | seed=s12 , ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
+      ({model | ok=okn, ik=ikn , oc=ocn , ic=icn, prm=prmn , prc=prcn , sar=sarn , ear=earn , pip=pipn , pcmc=pcmcm , cw=cwn},Cmd.none)
 
 getVal : Model -> (List Float, List Bool)
-getVal {seed,ok,ik,oc,ic,prm,prc,sar,ear,pip,pcmc,cw} = ([ok,ik,oc,ic,prm,prc,pip,pcmc,cw],[sar,ear])
+getVal {ok,ik,oc,ic,prm,prc,sar,ear,pip,pcmc,cw} = ([ok,ik,oc,ic,prm,prc,pip,pcmc,cw],[sar,ear])
 {-view : Model -> Html Msg
 view model =
   Html.div []

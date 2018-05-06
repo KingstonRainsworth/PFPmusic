@@ -6,25 +6,7 @@ var _user$project$ProbCR$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbCR$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbCR$initialModel = {
-	seed: _elm_lang$core$Random$initialSeed(75),
-	cw: 0,
-	c2: 0,
-	c3: 0,
-	c4: 0,
-	c5: 0,
-	c6: 0,
-	c7: 0,
-	c8: 0,
-	c9: 0,
-	c10: 0,
-	c11: 0,
-	c12: 0,
-	c13: 0,
-	c14: 0,
-	c15: 0,
-	c16: 0
-};
+var _user$project$ProbCR$initialModel = {cw: 0, c2: 0, c3: 0, c4: 0, c5: 0, c6: 0, c7: 0, c8: 0, c9: 0, c10: 0, c11: 0, c12: 0, c13: 0, c14: 0, c15: 0, c16: 0};
 var _user$project$ProbCR$init = {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbCR$update = F2(
 	function (msg, model) {
@@ -35,7 +17,8 @@ var _user$project$ProbCR$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbCR$floatCreator, model.seed, _user$project$ProbCR$probability);
+				var seed = _elm_lang$core$Random$initialSeed(75);
+				var _p2 = A2(_user$project$ProbCR$floatCreator, seed, _user$project$ProbCR$probability);
 				var cwn = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbCR$floatCreator, s2, _user$project$ProbCR$probability);
@@ -87,7 +70,7 @@ var _user$project$ProbCR$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{cw: cwn, c2: c2n, c3: c3n, c4: c4n, c5: c5n, c6: c6n, c7: c7n, c8: c8n, c9: c9n, c10: c10n, c11: c11n, c12: c12n, c13: c13n, c14: c14n, c15: c15n, c16: c16n, seed: s17}),
+						{cw: cwn, c2: c2n, c3: c3n, c4: c4n, c5: c5n, c6: c6n, c7: c7n, c8: c8n, c9: c9n, c10: c10n, c11: c11n, c12: c12n, c13: c13n, c14: c14n, c15: c15n, c16: c16n}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
@@ -108,9 +91,7 @@ var _user$project$ProbCR$Model = function (a) {
 													return function (n) {
 														return function (o) {
 															return function (p) {
-																return function (q) {
-																	return {seed: a, cw: b, c2: c, c3: d, c4: e, c5: f, c6: g, c7: h, c8: i, c9: j, c10: k, c11: l, c12: m, c13: n, c14: o, c15: p, c16: q};
-																};
+																return {cw: a, c2: b, c3: c, c4: d, c5: e, c6: f, c7: g, c8: h, c9: i, c10: j, c11: k, c12: l, c13: m, c14: n, c15: o, c16: p};
 															};
 														};
 													};

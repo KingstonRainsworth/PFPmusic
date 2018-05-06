@@ -6,14 +6,7 @@ var _user$project$ProbAddOn$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbAddOn$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbAddOn$initialModel = {
-	pnao: 0,
-	psus2: 0,
-	psus4: 0,
-	pAug: 0,
-	pDim: 0,
-	seed: _elm_lang$core$Random$initialSeed(885)
-};
+var _user$project$ProbAddOn$initialModel = {pnao: 0, psus2: 0, psus4: 0, pAug: 0, pDim: 0};
 var _user$project$ProbAddOn$init = {ctor: '_Tuple2', _0: _user$project$ProbAddOn$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbAddOn$update = F2(
 	function (msg, model) {
@@ -24,7 +17,8 @@ var _user$project$ProbAddOn$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbAddOn$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbAddOn$floatCreator, model.seed, _user$project$ProbAddOn$probability);
+				var seed = _elm_lang$core$Random$initialSeed(885);
+				var _p2 = A2(_user$project$ProbAddOn$floatCreator, seed, _user$project$ProbAddOn$probability);
 				var pnaon = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbAddOn$floatCreator, s2, _user$project$ProbAddOn$probability);
@@ -43,14 +37,14 @@ var _user$project$ProbAddOn$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{pnao: pnaon, psus2: psus2n, psus4: psus4n, pAug: pAugn, pDim: pDimn, seed: s6}),
+						{pnao: pnaon, psus2: psus2n, psus4: psus4n, pAug: pAugn, pDim: pDimn}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
-var _user$project$ProbAddOn$Model = F6(
-	function (a, b, c, d, e, f) {
-		return {pnao: a, psus2: b, psus4: c, pAug: d, pDim: e, seed: f};
+var _user$project$ProbAddOn$Model = F5(
+	function (a, b, c, d, e) {
+		return {pnao: a, psus2: b, psus4: c, pAug: d, pDim: e};
 	});
 var _user$project$ProbAddOn$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbAddOn$Reset = {ctor: 'Reset'};

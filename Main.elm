@@ -146,8 +146,7 @@ update msg model = case msg of
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
   Randomize ->
-    update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
-    update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
+    update (ProbPatSizeMsg ProbPatternSize.Randomize) model |> Tuple.first |>
     update (ProbPatizeMsg ProbPatternization.Randomize) |> Tuple.first |>
     update (NumPatSizeMsg Numpatsize.Randomize) |> Tuple.first |>
     update (KSPMsg KeySignature.Randomize) |> Tuple.first |>
@@ -165,7 +164,7 @@ update msg model = case msg of
 view : Model -> Html Msg
 view model =
   Html.div [] [button [ onClick Randomize ] [text "Randomize"]
-              ,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
+              ,Html.p [] [Html.text (toString model)]
+              --,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
               ,button [ onClick Generate ] [text "Generate"]
-              --,Html.p [] [Html.text (toString model)]
               ]

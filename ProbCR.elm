@@ -10,8 +10,7 @@ import Mouse
 ----------------------------------------------------------------------------
 
 type alias Model ={
-        seed : Seed
-  ,     cw : Float -- celody rhythc
+       cw : Float -- celody rhythc
   ,     c2 : Float
   ,     c3 : Float
   ,     c4 : Float
@@ -29,8 +28,8 @@ type alias Model ={
   ,     c16 : Float     }
 
 initialModel : Model
-initialModel = { seed = Random.initialSeed 75
-  ,     cw = 0 -- celody rhythc
+initialModel = {
+        cw = 0 -- celody rhythc
   ,     c2 = 0
   ,     c3 = 0
   ,     c4 = 0
@@ -68,7 +67,8 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (cwn,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 75
+      (cwn,s2) = floatCreator seed probability
       (c2n,s3) = floatCreator s2 probability
       (c3n,s4) = floatCreator s3 probability
       (c4n,s5) = floatCreator s4 probability
@@ -85,4 +85,4 @@ update msg model = case msg of
       (c15n,s16) = floatCreator s15 probability
       (c16n,s17) = floatCreator s16 probability
     in
-    ({model | cw = cwn , c2 = c2n , c3 = c3n , c4 = c4n , c5 = c5n , c6 = c6n , c7 = c7n , c8 = c8n , c9 = c9n , c10 = c10n , c11 = c11n , c12 = c12n , c13 = c13n , c14 = c14n , c15 = c15n , c16 = c16n, seed = s17},Cmd.none)
+    ({model | cw = cwn , c2 = c2n , c3 = c3n , c4 = c4n , c5 = c5n , c6 = c6n , c7 = c7n , c8 = c8n , c9 = c9n , c10 = c10n , c11 = c11n , c12 = c12n , c13 = c13n , c14 = c14n , c15 = c15n , c16 = c16n},Cmd.none)

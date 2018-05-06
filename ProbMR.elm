@@ -25,8 +25,7 @@ type alias Model =
   ,     m13 : Float
   ,     m14 : Float
   ,     m15 : Float
-  ,     m16 : Float
-  ,     seed : Seed       }
+  ,     m16 : Float      }
 
 initialModel : Model
 initialModel =
@@ -45,8 +44,7 @@ initialModel =
   ,     m13 = 0
   ,     m14 = 0
   ,     m15 = 0
-  ,     m16 = 0
-  ,     seed = Random.initialSeed 30}
+  ,     m16 = 0     }
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
@@ -69,7 +67,8 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (mwn,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 30
+      (mwn,s2) = floatCreator seed probability
       (m2n,s3) = floatCreator s2 probability
       (m3n,s4) = floatCreator s3 probability
       (m4n,s5) = floatCreator s4 probability
@@ -86,4 +85,4 @@ update msg model = case msg of
       (m15n,s16) = floatCreator s15 probability
       (m16n,s17) = floatCreator s16 probability
     in
-    ({model | mw = mwn , m2 = m2n , m3 = m3n , m4 = m4n , m5 = m5n , m6 = m6n , m7 = m7n , m8 = m8n , m9 = m9n , m10 = m10n , m11 = m11n , m12 = m12n , m13 = m13n , m14 = m14n , m15 = m15n , m16 = m16n, seed = s17},Cmd.none)
+    ({model | mw = mwn , m2 = m2n , m3 = m3n , m4 = m4n , m5 = m5n , m6 = m6n , m7 = m7n , m8 = m8n , m9 = m9n , m10 = m10n , m11 = m11n , m12 = m12n , m13 = m13n , m14 = m14n , m15 = m15n , m16 = m16n},Cmd.none)

@@ -66,20 +66,7 @@ var _user$project$CoreVal$boolCreator = F2(
 	});
 var _user$project$CoreVal$coinFlip = _elm_lang$core$Random$bool;
 var _user$project$CoreVal$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$CoreVal$initialModel = {
-	seed: _elm_lang$core$Random$initialSeed(5),
-	ok: 0,
-	ik: 0,
-	oc: 0,
-	ic: 0,
-	prm: 0,
-	prc: 0,
-	sar: false,
-	ear: false,
-	pip: 0,
-	pcmc: 0,
-	cw: 0
-};
+var _user$project$CoreVal$initialModel = {ok: 0, ik: 0, oc: 0, ic: 0, prm: 0, prc: 0, sar: false, ear: false, pip: 0, pcmc: 0, cw: 0};
 var _user$project$CoreVal$update = F2(
 	function (msg, model) {
 		var _p4 = msg;
@@ -89,7 +76,8 @@ var _user$project$CoreVal$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$CoreVal$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p5 = A2(_user$project$CoreVal$floatCreator, model.seed, _user$project$CoreVal$probability);
+				var seed = _elm_lang$core$Random$initialSeed(5);
+				var _p5 = A2(_user$project$CoreVal$floatCreator, seed, _user$project$CoreVal$probability);
 				var okn = _p5._0;
 				var s2 = _p5._1;
 				var _p6 = A2(_user$project$CoreVal$floatCreator, s2, _user$project$CoreVal$probability);
@@ -126,7 +114,7 @@ var _user$project$CoreVal$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{seed: s12, ok: okn, ik: ikn, oc: ocn, ic: icn, prm: prmn, prc: prcn, sar: sarn, ear: earn, pip: pipn, pcmc: pcmcm, cw: cwn}),
+						{ok: okn, ik: ikn, oc: ocn, ic: icn, prm: prmn, prc: prcn, sar: sarn, ear: earn, pip: pipn, pcmc: pcmcm, cw: cwn}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
@@ -142,9 +130,7 @@ var _user$project$CoreVal$Model = function (a) {
 								return function (i) {
 									return function (j) {
 										return function (k) {
-											return function (l) {
-												return {seed: a, ok: b, ik: c, oc: d, ic: e, prm: f, prc: g, sar: h, ear: i, pip: j, pcmc: k, cw: l};
-											};
+											return {ok: a, ik: b, oc: c, ic: d, prm: e, prc: f, sar: g, ear: h, pip: i, pcmc: j, cw: k};
 										};
 									};
 								};

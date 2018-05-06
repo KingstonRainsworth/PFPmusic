@@ -6,13 +6,7 @@ var _user$project$ProbApplied$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbApplied$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbApplied$initialModel = {
-	pac1: 0,
-	pac4: 0,
-	pac5: 0,
-	pac7: 0,
-	seed: _elm_lang$core$Random$initialSeed(1010)
-};
+var _user$project$ProbApplied$initialModel = {pac1: 0, pac4: 0, pac5: 0, pac7: 0};
 var _user$project$ProbApplied$init = {ctor: '_Tuple2', _0: _user$project$ProbApplied$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbApplied$update = F2(
 	function (msg, model) {
@@ -23,7 +17,8 @@ var _user$project$ProbApplied$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbApplied$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var _p2 = A2(_user$project$ProbApplied$floatCreator, model.seed, _user$project$ProbApplied$probability);
+				var seed = _elm_lang$core$Random$initialSeed(1010);
+				var _p2 = A2(_user$project$ProbApplied$floatCreator, seed, _user$project$ProbApplied$probability);
 				var pac1n = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbApplied$floatCreator, s2, _user$project$ProbApplied$probability);
@@ -39,14 +34,14 @@ var _user$project$ProbApplied$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{pac1: pac1n, pac4: pac4n, pac5: pac5n, pac7: pac7n, seed: s5}),
+						{pac1: pac1n, pac4: pac4n, pac5: pac5n, pac7: pac7n}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
-var _user$project$ProbApplied$Model = F5(
-	function (a, b, c, d, e) {
-		return {pac1: a, pac4: b, pac5: c, pac7: d, seed: e};
+var _user$project$ProbApplied$Model = F4(
+	function (a, b, c, d) {
+		return {pac1: a, pac4: b, pac5: c, pac7: d};
 	});
 var _user$project$ProbApplied$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbApplied$Reset = {ctor: 'Reset'};

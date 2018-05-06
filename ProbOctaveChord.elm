@@ -14,8 +14,7 @@ type alias Model =
   ,     oc2 : Float
   ,     oc3 : Float
   ,     oc4 : Float
-  ,     oc5 : Float
-  ,     seed : Seed   }
+  ,     oc5 : Float     }
 
 initialModel : Model
 initialModel =
@@ -23,8 +22,7 @@ initialModel =
   ,     oc2 = 0
   ,     oc3 = 0
   ,     oc4 = 0
-  ,     oc5 = 0
-  ,     seed = Random.initialSeed 43}
+  ,     oc5 = 0     }
 
 init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
@@ -47,10 +45,11 @@ update msg model = case msg of
   Reset -> (initialModel,Cmd.none)
   Randomize ->
     let
-      (oc1n,s2) = floatCreator model.seed probability
+      seed = Random.initialSeed 43
+      (oc1n,s2) = floatCreator seed probability
       (oc2n,s3) = floatCreator s2 probability
       (oc3n,s4) = floatCreator s3 probability
       (oc4n,s5) = floatCreator s4 probability
       (oc5n,s6) = floatCreator s5 probability
     in
-    ({model | oc1 = oc1n , oc2 = oc2n , oc3 = oc3n , oc4 = oc4n , oc5 = oc5n , seed = s6},Cmd.none)
+    ({model | oc1 = oc1n , oc2 = oc2n , oc3 = oc3n , oc4 = oc4n , oc5 = oc5n },Cmd.none)
