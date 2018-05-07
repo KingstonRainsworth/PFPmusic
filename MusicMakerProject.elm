@@ -61,7 +61,7 @@ type alias PatternList = List (List (List MelodyR)(List ChordR)(List Melody)(Lis
 type alias RNGSeed = {rngs : Int }
 
 type alias ProbChordMelodyCorralation = { pcmc : Float} -- corralation between how likely chords with the melody with be present
-type KeySignature = A|AS|B|C|CS|D|DS|E|F|FS|G|GS  --12  no flats only sharps or pick your own
+type KeySignature = A|AS|B|C|CS|D|DS|E|F|FS|G|GS  -- THIS IS ALSO USER INPUT
 --type alias Key = { key : KeySignature}
 type alias KeySignatureSuggestion = List Int
 
@@ -137,6 +137,34 @@ type alias ProbAddOnChord = { pnao : Float
 
 -- im removing type Duration and replacing it with a int 1-16 time
 --type Dur = W|H|Q|EI|S
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------everything above is user input except Song and PatternList------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 type alias Note = Int
 type alias ChordR = List Int
