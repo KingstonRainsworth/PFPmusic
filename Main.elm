@@ -16,11 +16,13 @@ import ProbType exposing (..)
 import ProbApplied exposing (..)
 import ProbRoot exposing (..)
 import ProbAddOn exposing (..)
+import ResultS exposing (..)
 --
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
 import MusicMakerProject as MMP
+import Random exposing (Generator, Seed)
 import Keyboard
 import Mouse
 --import Svg exposing (..)
@@ -40,6 +42,7 @@ main =
 
 type alias Model =
   {
+    seed : Seed,
     coreval : CoreVal.Model,
     probpatternsize : ProbPatternSize.Model,
     probpatternization : ProbPatternization.Model,
@@ -52,7 +55,8 @@ type alias Model =
     probtypechord : ProbType.Model,
     probappliechord : ProbApplied.Model,
     probroot : ProbRoot.Model,
-    probaddon : ProbAddOn.Model
+    probaddon : ProbAddOn.Model,
+    results : ResultS.Model
   }
 
 type Msg
@@ -69,6 +73,7 @@ type Msg
   | ProbApChordMsg ProbApplied.Msg
   | ProbRootMsg ProbRoot.Msg
   | ProbAddOnMsg ProbAddOn.Msg
+  | ResultSMsg ResultS.Msg
   | Randomize
   | Default
   | Generate
@@ -76,6 +81,7 @@ type Msg
 initialModel : Model
 initialModel =
   {
+    seed = Random.initialSeed 111,
     coreval = CoreVal.initialModel,
     probpatternsize = ProbPatternSize.initialModel,
     probpatternization = ProbPatternization.initialModel,
@@ -88,7 +94,8 @@ initialModel =
     probtypechord = ProbType.initialModel,
     probappliechord = ProbApplied.initialModel,
     probroot = ProbRoot.initialModel,
-    probaddon = ProbAddOn.initialModel
+    probaddon = ProbAddOn.initialModel,
+    results = ResultS.initialModel
   }
 
 update : Msg -> Model -> ( Model, Cmd Msg )
@@ -145,6 +152,10 @@ update msg model = case msg of
     let (subMod,subCmd) = ProbAddOn.update m model.probaddon in
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
+  ResultSMsg m ->
+    let (subMod,subCmd) = ResultS.update m model.results in
+    { model | results = subMod }
+                    ! [ Cmd.map ResultSMsg subCmd ]
   Randomize ->
     update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
     update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
@@ -159,13 +170,17 @@ update msg model = case msg of
     update (ProbApChordMsg ProbApplied.Randomize) |> Tuple.first |>
     update (ProbRootMsg ProbRoot.Randomize) |> Tuple.first |>
     update (ProbAddOnMsg ProbAddOn.Randomize)
+  Generate ->
+    let t =
+      MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} model.seed in
+    update (ResultSMsg (ResultS.Set t)) model
   _ ->
     (model,Cmd.none)
 
 view : Model -> Html Msg
 view model =
   Html.div [] [button [ onClick Randomize ] [text "Randomize"]
-              ,Html.p [] [Html.text (toString model)]
+              ,Html.p [] [Html.text (toString model.results)]
               --,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
               ,button [ onClick Generate ] [text "Generate"]
               ]

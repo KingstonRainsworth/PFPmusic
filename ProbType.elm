@@ -11,14 +11,14 @@ import Mouse
 
 type alias Model =
   {proot : Float
-  ,pseventh : Float
+  ,pseveth : Float
   ,pninth  : Float
   ,peleventh : Float}
 
 initialModel : Model
 initialModel =
   {proot = 0
-  ,pseventh = 0
+  ,pseveth = 0
   ,pninth  = 0
   ,peleventh = 0}
 
@@ -45,8 +45,8 @@ update msg model = case msg of
     let
       seed = Random.initialSeed 94
       (prootn,s2) = floatCreator seed probability
-      (pseventhn,s3) = floatCreator s2 probability
+      (psevethn,s3) = floatCreator s2 probability
       (pninthn,s4) = floatCreator s3 probability
       (peleventhn,s5) = floatCreator s4 probability
     in
-    ({model | proot = prootn , pseventh = pseventhn , pninth = pninthn , peleventh = peleventhn },Cmd.none)
+    ({model | proot = prootn , pseveth = psevethn , pninth = pninthn , peleventh = peleventhn },Cmd.none)

@@ -56,8 +56,8 @@ var _user$project$MusicMakerProject$chordListCreatorApplied = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 884, column: 3},
-						end: {line: 889, column: 46}
+						start: {line: 908, column: 3},
+						end: {line: 913, column: 46}
 					},
 					_p2)('tried get bad value');
 		}
@@ -108,8 +108,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 899, column: 12},
-									end: {line: 907, column: 52}
+									start: {line: 923, column: 12},
+									end: {line: 931, column: 52}
 								},
 								_p5)('tried get bad value');
 					}
@@ -154,8 +154,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 908, column: 12},
-									end: {line: 915, column: 52}
+									start: {line: 932, column: 12},
+									end: {line: 939, column: 52}
 								},
 								_p7)('tried get bad value');
 					}
@@ -200,8 +200,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 916, column: 12},
-									end: {line: 923, column: 52}
+									start: {line: 940, column: 12},
+									end: {line: 947, column: 52}
 								},
 								_p9)('tried get bad value');
 					}
@@ -246,8 +246,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 924, column: 12},
-									end: {line: 931, column: 52}
+									start: {line: 948, column: 12},
+									end: {line: 955, column: 52}
 								},
 								_p11)('tried get bad value');
 					}
@@ -255,8 +255,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 					return _elm_lang$core$Native_Utils.crashCase(
 						'MusicMakerProject',
 						{
-							start: {line: 898, column: 5},
-							end: {line: 932, column: 48}
+							start: {line: 922, column: 5},
+							end: {line: 956, column: 48}
 						},
 						_p4)('tried get bad value');
 			}
@@ -380,8 +380,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 935, column: 12},
-									end: {line: 946, column: 50}
+									start: {line: 959, column: 12},
+									end: {line: 970, column: 50}
 								},
 								_p15)('tried get bad value');
 					}
@@ -522,8 +522,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 947, column: 12},
-									end: {line: 958, column: 50}
+									start: {line: 971, column: 12},
+									end: {line: 982, column: 50}
 								},
 								_p17)('tried get bad value');
 					}
@@ -616,8 +616,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 959, column: 12},
-									end: {line: 968, column: 50}
+									start: {line: 983, column: 12},
+									end: {line: 992, column: 50}
 								},
 								_p19)('tried get bad value');
 					}
@@ -710,8 +710,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 							return _elm_lang$core$Native_Utils.crashCase(
 								'MusicMakerProject',
 								{
-									start: {line: 969, column: 12},
-									end: {line: 978, column: 50}
+									start: {line: 993, column: 12},
+									end: {line: 1002, column: 50}
 								},
 								_p21)('tried get bad value');
 					}
@@ -719,8 +719,8 @@ var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
 					return _elm_lang$core$Native_Utils.crashCase(
 						'MusicMakerProject',
 						{
-							start: {line: 934, column: 5},
-							end: {line: 979, column: 48}
+							start: {line: 958, column: 5},
+							end: {line: 1003, column: 48}
 						},
 						_p14)('tried get bad value');
 			}
@@ -746,8 +746,8 @@ var _user$project$MusicMakerProject$chordCreatorDecider = F3(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 786, column: 3},
-						end: {line: 789, column: 46}
+						start: {line: 810, column: 3},
+						end: {line: 813, column: 46}
 					},
 					_p24)('chordCreatorDecider');
 			} else {
@@ -826,8 +826,8 @@ var _user$project$MusicMakerProject$getProbAddOnChord = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 737, column: 27},
-						end: {line: 743, column: 50}
+						start: {line: 761, column: 27},
+						end: {line: 767, column: 50}
 					},
 					_p28)('tried get bad value');
 		}
@@ -854,8 +854,8 @@ var _user$project$MusicMakerProject$getProbRootChord = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 726, column: 26},
-						end: {line: 734, column: 50}
+						start: {line: 750, column: 26},
+						end: {line: 758, column: 50}
 					},
 					_p30)('tried get bad value');
 		}
@@ -876,8 +876,8 @@ var _user$project$MusicMakerProject$getProbAppliedChord = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 718, column: 29},
-						end: {line: 723, column: 50}
+						start: {line: 742, column: 29},
+						end: {line: 747, column: 50}
 					},
 					_p32)('tried get bad value');
 		}
@@ -898,8 +898,8 @@ var _user$project$MusicMakerProject$getProbTypeChord = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 710, column: 26},
-						end: {line: 715, column: 50}
+						start: {line: 734, column: 26},
+						end: {line: 739, column: 50}
 					},
 					_p34)('tried get bad value');
 		}
@@ -1040,8 +1040,8 @@ var _user$project$MusicMakerProject$chordRhythmDecider = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 581, column: 3},
-						end: {line: 585, column: 41}
+						start: {line: 605, column: 3},
+						end: {line: 609, column: 41}
 					},
 					_p40)('chord rythm decider');
 			} else {
@@ -1099,8 +1099,8 @@ var _user$project$MusicMakerProject$getProbCR = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 553, column: 17},
-						end: {line: 570, column: 44}
+						start: {line: 577, column: 17},
+						end: {line: 594, column: 44}
 					},
 					_p43)('tried get bad value');
 		}
@@ -1140,8 +1140,8 @@ var _user$project$MusicMakerProject$melodyRhythmDecider = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 519, column: 3},
-						end: {line: 522, column: 42}
+						start: {line: 543, column: 3},
+						end: {line: 546, column: 42}
 					},
 					_p46)('float rythm decider');
 			} else {
@@ -1200,8 +1200,8 @@ var _user$project$MusicMakerProject$getProbMR = F2(
 				return _elm_lang$core$Native_Utils.crashCase(
 					'MusicMakerProject',
 					{
-						start: {line: 491, column: 17},
-						end: {line: 508, column: 44}
+						start: {line: 515, column: 17},
+						end: {line: 532, column: 44}
 					},
 					_p49)('tried get bad value');
 		}
@@ -2290,6 +2290,65 @@ var _user$project$MusicMakerProject$melodyCreatorMain = F8(
 				});
 		}
 	});
+var _user$project$MusicMakerProject$mmk = function (poc) {
+	return function (pic) {
+		return function (ppsa) {
+			return function (prestc) {
+				return function (pom) {
+					return function (paoc) {
+						return function (prc) {
+							return function (pac) {
+								return function (ptc) {
+									return function (pcr) {
+										return function (pmr) {
+											return function (ks) {
+												return function (kss) {
+													return function (pok) {
+														return function (pik) {
+															return function (se) {
+																var mr = A5(
+																	_user$project$MusicMakerProject$melodyRhythm,
+																	0,
+																	256,
+																	se,
+																	{ctor: '[]'},
+																	pmr);
+																var cr = A5(
+																	_user$project$MusicMakerProject$chordRhythm,
+																	0,
+																	256,
+																	se,
+																	{ctor: '[]'},
+																	pcr);
+																var m = A8(
+																	_user$project$MusicMakerProject$melodyCreatorMain,
+																	kss,
+																	se,
+																	pok,
+																	pik,
+																	ks,
+																	pom,
+																	mr,
+																	{ctor: '[]'});
+																var c = _user$project$MusicMakerProject$chordCreatorMain(poc)(pic)(se)(prestc)(
+																	{ctor: '[]'})(m)(mr)(paoc)(prc)(pac)(ptc)(0)(cr)(kss);
+																return {ctor: '_Tuple4', _0: cr, _1: m, _2: c, _3: mr};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
 var _user$project$MusicMakerProject$ProbOutKey = function (a) {
 	return {ok: a};
 };

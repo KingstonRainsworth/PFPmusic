@@ -1,12 +1,12 @@
-var _user$project$KeySignature$coinFlip = _elm_lang$core$Random$bool;
-var _user$project$KeySignature$boolCreator = F2(
-	function (seed, bg) {
-		var _p0 = A2(_elm_lang$core$Random$step, bg, seed);
-		var b = _p0._0;
+var _user$project$KeySignature$intGen = A2(_elm_lang$core$Random$int, 1, 12);
+var _user$project$KeySignature$intCreator = F2(
+	function (seed, ig) {
+		var _p0 = A2(_elm_lang$core$Random$step, ig, seed);
+		var i = _p0._0;
 		var s2 = _p0._1;
-		return {ctor: '_Tuple2', _0: b, _1: s2};
+		return {ctor: '_Tuple2', _0: i, _1: s2};
 	});
-var _user$project$KeySignature$initialModel = {key1: false, key2: false, key3: false, key4: false, key5: false, key6: false, key7: false, key8: false, key9: false, key10: false, key11: false, key12: false};
+var _user$project$KeySignature$initialModel = _user$project$MusicMakerProject$A;
 var _user$project$KeySignature$init = {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$KeySignature$update = F2(
 	function (msg, model) {
@@ -18,76 +18,40 @@ var _user$project$KeySignature$update = F2(
 				return {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
 				var seed = _elm_lang$core$Random$initialSeed(132);
-				var _p2 = A2(_user$project$KeySignature$boolCreator, seed, _user$project$KeySignature$coinFlip);
+				var _p2 = A2(_user$project$KeySignature$intCreator, seed, _user$project$KeySignature$intGen);
 				var key1n = _p2._0;
 				var s2 = _p2._1;
-				var _p3 = A2(_user$project$KeySignature$boolCreator, s2, _user$project$KeySignature$coinFlip);
-				var key2n = _p3._0;
-				var s3 = _p3._1;
-				var _p4 = A2(_user$project$KeySignature$boolCreator, s3, _user$project$KeySignature$coinFlip);
-				var key3n = _p4._0;
-				var s4 = _p4._1;
-				var _p5 = A2(_user$project$KeySignature$boolCreator, s4, _user$project$KeySignature$coinFlip);
-				var key4n = _p5._0;
-				var s5 = _p5._1;
-				var _p6 = A2(_user$project$KeySignature$boolCreator, s5, _user$project$KeySignature$coinFlip);
-				var key5n = _p6._0;
-				var s6 = _p6._1;
-				var _p7 = A2(_user$project$KeySignature$boolCreator, s6, _user$project$KeySignature$coinFlip);
-				var key6n = _p7._0;
-				var s7 = _p7._1;
-				var _p8 = A2(_user$project$KeySignature$boolCreator, s7, _user$project$KeySignature$coinFlip);
-				var key7n = _p8._0;
-				var s8 = _p8._1;
-				var _p9 = A2(_user$project$KeySignature$boolCreator, s8, _user$project$KeySignature$coinFlip);
-				var key8n = _p9._0;
-				var s9 = _p9._1;
-				var _p10 = A2(_user$project$KeySignature$boolCreator, s9, _user$project$KeySignature$coinFlip);
-				var key9n = _p10._0;
-				var s10 = _p10._1;
-				var _p11 = A2(_user$project$KeySignature$boolCreator, s10, _user$project$KeySignature$coinFlip);
-				var key10n = _p11._0;
-				var s11 = _p11._1;
-				var _p12 = A2(_user$project$KeySignature$boolCreator, s11, _user$project$KeySignature$coinFlip);
-				var key11n = _p12._0;
-				var s12 = _p12._1;
-				var _p13 = A2(_user$project$KeySignature$boolCreator, s12, _user$project$KeySignature$coinFlip);
-				var key12n = _p13._0;
-				var s13 = _p13._1;
-				return {
-					ctor: '_Tuple2',
-					_0: _elm_lang$core$Native_Utils.update(
-						model,
-						{key1: key1n, key2: key2n, key3: key3n, key4: key4n, key5: key5n, key6: key6n, key7: key7n, key8: key8n, key9: key9n, key10: key10n, key11: key11n, key12: key12n}),
-					_1: _elm_lang$core$Platform_Cmd$none
-				};
+				var _p3 = key1n;
+				switch (_p3) {
+					case 1:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$A, _1: _elm_lang$core$Platform_Cmd$none};
+					case 2:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$AS, _1: _elm_lang$core$Platform_Cmd$none};
+					case 3:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$B, _1: _elm_lang$core$Platform_Cmd$none};
+					case 4:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$C, _1: _elm_lang$core$Platform_Cmd$none};
+					case 5:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$CS, _1: _elm_lang$core$Platform_Cmd$none};
+					case 6:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$D, _1: _elm_lang$core$Platform_Cmd$none};
+					case 7:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$DS, _1: _elm_lang$core$Platform_Cmd$none};
+					case 8:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$E, _1: _elm_lang$core$Platform_Cmd$none};
+					case 9:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$F, _1: _elm_lang$core$Platform_Cmd$none};
+					case 10:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$FS, _1: _elm_lang$core$Platform_Cmd$none};
+					case 11:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$G, _1: _elm_lang$core$Platform_Cmd$none};
+					case 12:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$GS, _1: _elm_lang$core$Platform_Cmd$none};
+					default:
+						return {ctor: '_Tuple2', _0: _user$project$MusicMakerProject$A, _1: _elm_lang$core$Platform_Cmd$none};
+				}
 		}
 	});
-var _user$project$KeySignature$Model = function (a) {
-	return function (b) {
-		return function (c) {
-			return function (d) {
-				return function (e) {
-					return function (f) {
-						return function (g) {
-							return function (h) {
-								return function (i) {
-									return function (j) {
-										return function (k) {
-											return function (l) {
-												return {key1: a, key2: b, key3: c, key4: d, key5: e, key6: f, key7: g, key8: h, key9: i, key10: j, key11: k, key12: l};
-											};
-										};
-									};
-								};
-							};
-						};
-					};
-				};
-			};
-		};
-	};
-};
 var _user$project$KeySignature$Randomize = {ctor: 'Randomize'};
 var _user$project$KeySignature$Reset = {ctor: 'Reset'};
 var _user$project$KeySignature$Set = {ctor: 'Set'};

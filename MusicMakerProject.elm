@@ -209,15 +209,15 @@ cycleThroughM list lim num =
 
 -------------------------------Main-------------------------------------------------
 
-
-main : ProbOutChord -> ProbInChord -> ProbPatternSizeAppear -> ProbRestChord -> ProbOctaveMelody -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord ->
-  ProbTypeChord ->ProbCR -> ProbMR -> KeySignature -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> Seed -> (MelodyR, ChordR, Melody, Chord)
-main poc pic ppsa prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se =
+--change order of result
+mmk : ProbOutChord -> ProbInChord -> ProbPatternSizeAppear -> ProbRestChord -> ProbOctaveMelody -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord ->
+  ProbTypeChord ->ProbCR -> ProbMR -> KeySignature -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> Seed -> (ChordR, Melody, Chord, MelodyR)
+mmk poc pic ppsa prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se =
   let mr = melodyRhythm 0 256 se [] pmr in
   let cr = chordRhythm 0 256 se [] pcr in
   let m = melodyCreatorMain kss se pok pik ks pom mr [] in
   let c = chordCreatorMain poc pic se prestc [] m mr paoc prc pac ptc 0 cr kss in
-  (mr, cr, m, c)
+  (cr, m, c, mr)
 
 
 
@@ -629,8 +629,8 @@ chordRhythm siz maxnote se mr pmr =
 
 -------Start of Melody section -------------------------------------------
 
-
-keySignatureHelperhandler : KeySignatureSuggestion -> List Int
+--chang List Int to KSS
+keySignatureHelperhandler : KeySignatureSuggestion -> KeySignatureSuggestion
 keySignatureHelperhandler kss =
   [0,2,4,5,7,9,11]
 

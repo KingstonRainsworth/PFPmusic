@@ -6,7 +6,7 @@ var _user$project$ProbType$floatCreator = F2(
 		return {ctor: '_Tuple2', _0: f, _1: s2};
 	});
 var _user$project$ProbType$probability = A2(_elm_lang$core$Random$float, 0, 1);
-var _user$project$ProbType$initialModel = {proot: 0, pseventh: 0, pninth: 0, peleventh: 0};
+var _user$project$ProbType$initialModel = {proot: 0, pseveth: 0, pninth: 0, peleventh: 0};
 var _user$project$ProbType$init = {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 var _user$project$ProbType$update = F2(
 	function (msg, model) {
@@ -22,7 +22,7 @@ var _user$project$ProbType$update = F2(
 				var prootn = _p2._0;
 				var s2 = _p2._1;
 				var _p3 = A2(_user$project$ProbType$floatCreator, s2, _user$project$ProbType$probability);
-				var pseventhn = _p3._0;
+				var psevethn = _p3._0;
 				var s3 = _p3._1;
 				var _p4 = A2(_user$project$ProbType$floatCreator, s3, _user$project$ProbType$probability);
 				var pninthn = _p4._0;
@@ -34,14 +34,14 @@ var _user$project$ProbType$update = F2(
 					ctor: '_Tuple2',
 					_0: _elm_lang$core$Native_Utils.update(
 						model,
-						{proot: prootn, pseventh: pseventhn, pninth: pninthn, peleventh: peleventhn}),
+						{proot: prootn, pseveth: psevethn, pninth: pninthn, peleventh: peleventhn}),
 					_1: _elm_lang$core$Platform_Cmd$none
 				};
 		}
 	});
 var _user$project$ProbType$Model = F4(
 	function (a, b, c, d) {
-		return {proot: a, pseventh: b, pninth: c, peleventh: d};
+		return {proot: a, pseveth: b, pninth: c, peleventh: d};
 	});
 var _user$project$ProbType$Randomize = {ctor: 'Randomize'};
 var _user$project$ProbType$Reset = {ctor: 'Reset'};

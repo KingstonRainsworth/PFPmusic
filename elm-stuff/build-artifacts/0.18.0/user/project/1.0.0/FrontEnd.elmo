@@ -1,4 +1,20 @@
-var _user$project$FrontEnd$initialModel = {coreval: _user$project$CoreVal$initialModel, probpatternsize: _user$project$ProbPatternSize$initialModel, probpatternization: _user$project$ProbPatternization$initialModel, numpatzise: _user$project$Numpatsize$initialModel, ksp: _user$project$KeySignature$initialModel, probmr: _user$project$ProbMR$initialModel, probcr: _user$project$ProbCR$initialModel, proboctavemelody: _user$project$ProbOctave$initialModel, proboctavechord: _user$project$ProbOctaveChord$initialModel, probtypechord: _user$project$ProbType$initialModel, probappliechord: _user$project$ProbApplied$initialModel, probroot: _user$project$ProbRoot$initialModel, probaddon: _user$project$ProbAddOn$initialModel};
+var _user$project$FrontEnd$initialModel = {
+	seed: _elm_lang$core$Random$initialSeed(111),
+	coreval: _user$project$CoreVal$initialModel,
+	probpatternsize: _user$project$ProbPatternSize$initialModel,
+	probpatternization: _user$project$ProbPatternization$initialModel,
+	numpatzise: _user$project$Numpatsize$initialModel,
+	ksp: _user$project$KeySignature$initialModel,
+	probmr: _user$project$ProbMR$initialModel,
+	probcr: _user$project$ProbCR$initialModel,
+	proboctavemelody: _user$project$ProbOctave$initialModel,
+	proboctavechord: _user$project$ProbOctaveChord$initialModel,
+	probtypechord: _user$project$ProbType$initialModel,
+	probappliechord: _user$project$ProbApplied$initialModel,
+	probroot: _user$project$ProbRoot$initialModel,
+	probaddon: _user$project$ProbAddOn$initialModel,
+	results: _user$project$ResultS$initialModel
+};
 var _user$project$FrontEnd$Model = function (a) {
 	return function (b) {
 		return function (c) {
@@ -12,7 +28,11 @@ var _user$project$FrontEnd$Model = function (a) {
 										return function (k) {
 											return function (l) {
 												return function (m) {
-													return {coreval: a, probpatternsize: b, probpatternization: c, numpatzise: d, ksp: e, probmr: f, probcr: g, proboctavemelody: h, proboctavechord: i, probtypechord: j, probappliechord: k, probroot: l, probaddon: m};
+													return function (n) {
+														return function (o) {
+															return {seed: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
+														};
+													};
 												};
 											};
 										};
@@ -55,7 +75,7 @@ var _user$project$FrontEnd$view = function (model) {
 					{
 						ctor: '::',
 						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(model)),
+							_elm_lang$core$Basics$toString(model.results)),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -76,6 +96,9 @@ var _user$project$FrontEnd$view = function (model) {
 				}
 			}
 		});
+};
+var _user$project$FrontEnd$ResultSMsg = function (a) {
+	return {ctor: 'ResultSMsg', _0: a};
 };
 var _user$project$FrontEnd$ProbAddOnMsg = function (a) {
 	return {ctor: 'ProbAddOnMsg', _0: a};
@@ -304,6 +327,20 @@ var _user$project$FrontEnd$update = F2(
 							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ProbAddOnMsg, subCmd),
 							_1: {ctor: '[]'}
 						});
+				case 'ResultSMsg':
+					var _p14 = A2(_user$project$ResultS$update, _p0._0, model.results);
+					var subMod = _p14._0;
+					var subCmd = _p14._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{results: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$FrontEnd$ResultSMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
 				case 'Randomize':
 					var _v1 = _user$project$FrontEnd$ProbAddOnMsg(_user$project$ProbAddOn$Randomize),
 						_v2 = _elm_lang$core$Tuple$first(
@@ -358,6 +395,20 @@ var _user$project$FrontEnd$update = F2(
 					msg = _v1;
 					model = _v2;
 					continue update;
+				case 'Generate':
+					var t = _user$project$MusicMakerProject$mmk(
+						{oc: model.coreval.oc})(
+						{ic: model.coreval.ic})(model.probpatternsize)(
+						{prc: model.coreval.prc})(model.proboctavemelody)(model.probaddon)(model.probroot)(model.probappliechord)(model.probtypechord)(model.probcr)(model.probmr)(model.ksp)(
+						{ctor: '[]'})(
+						{ok: model.coreval.ok})(
+						{ik: model.coreval.ik})(model.seed);
+					var _v3 = _user$project$FrontEnd$ResultSMsg(
+						_user$project$ResultS$Set(t)),
+						_v4 = model;
+					msg = _v3;
+					model = _v4;
+					continue update;
 				default:
 					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
 			}
@@ -368,7 +419,7 @@ var _user$project$FrontEnd$main = _elm_lang$html$Html$program(
 		init: {ctor: '_Tuple2', _0: _user$project$FrontEnd$initialModel, _1: _elm_lang$core$Platform_Cmd$none},
 		view: _user$project$FrontEnd$view,
 		update: _user$project$FrontEnd$update,
-		subscriptions: function (_p14) {
+		subscriptions: function (_p15) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();
