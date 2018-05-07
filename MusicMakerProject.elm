@@ -213,8 +213,8 @@ cycleThroughM list lim num =
 mmk : ProbOutChord -> ProbInChord -> ProbPatternSizeAppear -> ProbRestChord -> ProbOctaveMelody -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord ->
   ProbTypeChord ->ProbCR -> ProbMR -> KeySignature -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> Seed -> (ChordR, Melody, Chord, MelodyR)
 mmk poc pic ppsa prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se =
-  let mr = melodyRhythm 0 256 se [] pmr in
-  let cr = chordRhythm 0 256 se [] pcr in
+  let mr = melodyRhythm 0 16 se [] pmr in
+  let cr = chordRhythm 0 16 se [] pcr in
   let m = melodyCreatorMain kss se pok pik ks pom mr [] in
   let c = chordCreatorMain poc pic se prestc [] m mr paoc prc pac ptc 0 cr kss in
   (cr, m, c, mr)

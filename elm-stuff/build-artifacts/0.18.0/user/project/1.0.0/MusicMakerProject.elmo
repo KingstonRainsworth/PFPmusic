@@ -2309,14 +2309,14 @@ var _user$project$MusicMakerProject$mmk = function (poc) {
 																var mr = A5(
 																	_user$project$MusicMakerProject$melodyRhythm,
 																	0,
-																	256,
+																	16,
 																	se,
 																	{ctor: '[]'},
 																	pmr);
 																var cr = A5(
 																	_user$project$MusicMakerProject$chordRhythm,
 																	0,
-																	256,
+																	16,
 																	se,
 																	{ctor: '[]'},
 																	pcr);
