@@ -1,0 +1,2442 @@
+var _user$project$MusicMakerProject$chordListCreatorAppliedHelper = F4(
+	function (lo, hi, ans, kss) {
+		chordListCreatorAppliedHelper:
+		while (true) {
+			if (_elm_lang$core$Native_Utils.eq(lo, hi)) {
+				return ans;
+			} else {
+				if (_elm_lang$core$Native_Utils.cmp(hi, 7) > 0) {
+					var hi1 = hi - 7;
+					var _p0 = kss;
+					if (_p0.ctor === '[]') {
+						return ans;
+					} else {
+						var _v1 = lo + 1,
+							_v2 = hi1,
+							_v3 = ans + _p0._0,
+							_v4 = _p0._1;
+						lo = _v1;
+						hi = _v2;
+						ans = _v3;
+						kss = _v4;
+						continue chordListCreatorAppliedHelper;
+					}
+				} else {
+					var _p1 = kss;
+					if (_p1.ctor === '[]') {
+						return ans;
+					} else {
+						var _v6 = lo + 1,
+							_v7 = hi,
+							_v8 = ans + _p1._0,
+							_v9 = _p1._1;
+						lo = _v6;
+						hi = _v7;
+						ans = _v8;
+						kss = _v9;
+						continue chordListCreatorAppliedHelper;
+					}
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordListCreatorApplied = F2(
+	function (kss, ac) {
+		var _p2 = ac;
+		switch (_p2) {
+			case 1:
+				return 0;
+			case 2:
+				return A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, 4, 0, kss);
+			case 3:
+				return A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, 5, 0, kss);
+			case 4:
+				return A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, 7, 0, kss);
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 884, column: 3},
+						end: {line: 889, column: 46}
+					},
+					_p2)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$chordListCreatorFindRoot = F2(
+	function (kss, rc) {
+		return A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc, 0, kss);
+	});
+var _user$project$MusicMakerProject$chordListCreatorAllElse = F8(
+	function (lc, kss, fr, app, ac, rc, tc, aoc) {
+		if (_elm_lang$core$Native_Utils.eq(ac, 4)) {
+			var _p4 = tc;
+			switch (_p4) {
+				case 1:
+					var _p5 = aoc;
+					switch (_p5) {
+						case 0:
+							return lc;
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							return lc;
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) - 1,
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 899, column: 12},
+									end: {line: 907, column: 52}
+								},
+								_p5)('tried get bad value');
+					}
+				case 2:
+					var _p7 = aoc;
+					switch (_p7) {
+						case 0:
+							return lc;
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							return lc;
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 908, column: 12},
+									end: {line: 915, column: 52}
+								},
+								_p7)('tried get bad value');
+					}
+				case 3:
+					var _p9 = aoc;
+					switch (_p9) {
+						case 0:
+							return lc;
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							return lc;
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 916, column: 12},
+									end: {line: 923, column: 52}
+								},
+								_p9)('tried get bad value');
+					}
+				case 4:
+					var _p11 = aoc;
+					switch (_p11) {
+						case 0:
+							return lc;
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							return lc;
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 924, column: 12},
+									end: {line: 931, column: 52}
+								},
+								_p11)('tried get bad value');
+					}
+				default:
+					return _elm_lang$core$Native_Utils.crashCase(
+						'MusicMakerProject',
+						{
+							start: {line: 898, column: 5},
+							end: {line: 932, column: 48}
+						},
+						_p4)('tried get bad value');
+			}
+		} else {
+			var _p14 = tc;
+			switch (_p14) {
+				case 1:
+					var _p15 = aoc;
+					switch (_p15) {
+						case 0:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 1:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 2:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 3:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) + 1,
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) - 1,
+										_1: {ctor: '[]'}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 935, column: 12},
+									end: {line: 946, column: 50}
+								},
+								_p15)('tried get bad value');
+					}
+				case 2:
+					var _p17 = aoc;
+					switch (_p17) {
+						case 0:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 1:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 2:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss),
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 3:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) + 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 4, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 947, column: 12},
+									end: {line: 958, column: 50}
+								},
+								_p17)('tried get bad value');
+					}
+				case 3:
+					var _p19 = aoc;
+					switch (_p19) {
+						case 0:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss),
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss)) + 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 2, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 959, column: 12},
+									end: {line: 968, column: 50}
+								},
+								_p19)('tried get bad value');
+					}
+				case 4:
+					var _p21 = aoc;
+					switch (_p21) {
+						case 0:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss),
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 1:
+							return lc;
+						case 2:
+							return lc;
+						case 3:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss)) + 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						case 4:
+							var temp = {
+								ctor: '::',
+								_0: fr + app,
+								_1: {
+									ctor: '::',
+									_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 1, 0, kss),
+									_1: {
+										ctor: '::',
+										_0: (app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 3, 0, kss)) - 1,
+										_1: {
+											ctor: '::',
+											_0: app + A4(_user$project$MusicMakerProject$chordListCreatorAppliedHelper, 0, rc + 7, 0, kss),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							};
+							return A2(
+								_elm_lang$core$List$append,
+								lc,
+								{
+									ctor: '::',
+									_0: temp,
+									_1: {ctor: '[]'}
+								});
+						default:
+							return _elm_lang$core$Native_Utils.crashCase(
+								'MusicMakerProject',
+								{
+									start: {line: 969, column: 12},
+									end: {line: 978, column: 50}
+								},
+								_p21)('tried get bad value');
+					}
+				default:
+					return _elm_lang$core$Native_Utils.crashCase(
+						'MusicMakerProject',
+						{
+							start: {line: 934, column: 5},
+							end: {line: 979, column: 48}
+						},
+						_p14)('tried get bad value');
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordListCreatorMain = F6(
+	function (kss, lc, ac, rc, tc, aoc) {
+		var app = A2(_user$project$MusicMakerProject$chordListCreatorApplied, kss, ac);
+		var fr = A2(_user$project$MusicMakerProject$chordListCreatorFindRoot, kss, rc);
+		var lc1 = A8(_user$project$MusicMakerProject$chordListCreatorAllElse, lc, kss, fr, app, ac, rc, tc, aoc);
+		return lc1;
+	});
+var _user$project$MusicMakerProject$chordListCreatorLoop = F6(
+	function (kss, lc, ac, rc, tc, aoc) {
+		return (_elm_lang$core$Native_Utils.cmp(aoc, 4) < 0) ? A6(_user$project$MusicMakerProject$chordListCreatorMain, kss, lc, ac, rc, tc, aoc + 1) : ((_elm_lang$core$Native_Utils.cmp(tc, 4) < 0) ? A6(_user$project$MusicMakerProject$chordListCreatorMain, kss, lc, ac, rc, tc + 1, aoc) : ((_elm_lang$core$Native_Utils.cmp(rc, 6) < 0) ? A6(_user$project$MusicMakerProject$chordListCreatorMain, kss, lc, ac, rc + 1, tc, aoc) : ((_elm_lang$core$Native_Utils.cmp(ac, 4) < 0) ? A6(_user$project$MusicMakerProject$chordListCreatorMain, kss, lc, ac + 1, rc, tc, aoc) : lc)));
+	});
+var _user$project$MusicMakerProject$chordCreatorDecider = F3(
+	function (probs, prob, loc) {
+		chordCreatorDecider:
+		while (true) {
+			var _p24 = probs;
+			if (_p24.ctor === '[]') {
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 786, column: 3},
+						end: {line: 789, column: 46}
+					},
+					_p24)('chordCreatorDecider');
+			} else {
+				if (_elm_lang$core$Native_Utils.cmp(_p24._0, prob) > -1) {
+					return loc;
+				} else {
+					var _v22 = _p24._1,
+						_v23 = prob,
+						_v24 = loc;
+					probs = _v22;
+					prob = _v23;
+					loc = _v24;
+					continue chordCreatorDecider;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordListCycleThrough = F2(
+	function (lc, num) {
+		chordListCycleThrough:
+		while (true) {
+			var _p26 = lc;
+			if (_p26.ctor === '[]') {
+				return {
+					ctor: '::',
+					_0: num,
+					_1: {ctor: '[]'}
+				};
+			} else {
+				if (_elm_lang$core$Native_Utils.eq(num, 0)) {
+					return _p26._0;
+				} else {
+					var _v26 = _p26._1,
+						_v27 = num - 1;
+					lc = _v26;
+					num = _v27;
+					continue chordListCycleThrough;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordGetend = F2(
+	function (f, lf) {
+		chordGetend:
+		while (true) {
+			var _p27 = lf;
+			if (_p27.ctor === '[]') {
+				return f;
+			} else {
+				var _v29 = f + _p27._0,
+					_v30 = _p27._1;
+				f = _v29;
+				lf = _v30;
+				continue chordGetend;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$getProbRestChord = function (p) {
+	return p.prc;
+};
+var _user$project$MusicMakerProject$getProbAddOnChord = F2(
+	function (x, ptc) {
+		var _p28 = x;
+		switch (_p28) {
+			case 0:
+				return ptc.pnao;
+			case 1:
+				return ptc.psus2;
+			case 2:
+				return ptc.psus4;
+			case 3:
+				return ptc.pAug;
+			case 4:
+				return ptc.pDim;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 737, column: 27},
+						end: {line: 743, column: 50}
+					},
+					_p28)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$getProbRootChord = F2(
+	function (x, ptc) {
+		var _p30 = x;
+		switch (_p30) {
+			case 0:
+				return ptc.prc1;
+			case 1:
+				return ptc.prc2;
+			case 2:
+				return ptc.prc3;
+			case 3:
+				return ptc.prc4;
+			case 4:
+				return ptc.prc5;
+			case 5:
+				return ptc.prc6;
+			case 6:
+				return ptc.prc7;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 726, column: 26},
+						end: {line: 734, column: 50}
+					},
+					_p30)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$getProbAppliedChord = F2(
+	function (x, ptc) {
+		var _p32 = x;
+		switch (_p32) {
+			case 1:
+				return ptc.pac1;
+			case 2:
+				return ptc.pac4;
+			case 3:
+				return ptc.pac5;
+			case 4:
+				return ptc.pac7;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 718, column: 29},
+						end: {line: 723, column: 50}
+					},
+					_p32)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$getProbTypeChord = F2(
+	function (x, ptc) {
+		var _p34 = x;
+		switch (_p34) {
+			case 1:
+				return ptc.proot;
+			case 2:
+				return ptc.pseveth;
+			case 3:
+				return ptc.pninth;
+			case 4:
+				return ptc.peleventh;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 710, column: 26},
+						end: {line: 715, column: 50}
+					},
+					_p34)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$getOutChord = function (ik) {
+	return ik.oc;
+};
+var _user$project$MusicMakerProject$getInChord = function (ik) {
+	return ik.ic;
+};
+var _user$project$MusicMakerProject$chordProbLoop = F4(
+	function (outkey, inkey, notem, notec) {
+		var temp = A2(_elm_lang$core$Basics_ops['%'], notem, 12);
+		var temp2 = A2(_elm_lang$core$Basics_ops['%'], notec, 12);
+		return _elm_lang$core$Native_Utils.eq(temp, temp2) ? _user$project$MusicMakerProject$getInChord(inkey) : _user$project$MusicMakerProject$getOutChord(outkey);
+	});
+var _user$project$MusicMakerProject$chordProbMelodyCorralation = F7(
+	function (poc, pic, mell, prob, mr, cr, chs) {
+		chordProbMelodyCorralation:
+		while (true) {
+			var _p36 = chs;
+			if (_p36.ctor === '[]') {
+				return prob;
+			} else {
+				var _v36 = poc,
+					_v37 = pic,
+					_v38 = mell,
+					_v39 = prob * A4(_user$project$MusicMakerProject$chordProbLoop, poc, pic, _p36._0, mell),
+					_v40 = mr,
+					_v41 = cr,
+					_v42 = _p36._1;
+				poc = _v36;
+				pic = _v37;
+				mell = _v38;
+				prob = _v39;
+				mr = _v40;
+				cr = _v41;
+				chs = _v42;
+				continue chordProbMelodyCorralation;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$getOutKey = function (ik) {
+	return ik.ok;
+};
+var _user$project$MusicMakerProject$getInKey = function (ik) {
+	return ik.ik;
+};
+var _user$project$MusicMakerProject$probMelodySaveAss = F2(
+	function (lf, f) {
+		probMelodySaveAss:
+		while (true) {
+			var _p37 = lf;
+			if (_p37.ctor === '[]') {
+				return f;
+			} else {
+				var _v44 = _p37._1,
+					_v45 = _p37._0;
+				lf = _v44;
+				f = _v45;
+				continue probMelodySaveAss;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$melodyCreatorMainHelper = F2(
+	function (lf, f) {
+		melodyCreatorMainHelper:
+		while (true) {
+			var _p38 = lf;
+			if (_p38.ctor === '[]') {
+				return 1;
+			} else {
+				if (_elm_lang$core$Native_Utils.cmp(_p38._0, f) > 0) {
+					return 88 - _elm_lang$core$List$length(lf);
+				} else {
+					var _v47 = _p38._1,
+						_v48 = f;
+					lf = _v47;
+					f = _v48;
+					continue melodyCreatorMainHelper;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$melodySaveAss = F2(
+	function (f, lf) {
+		melodySaveAss:
+		while (true) {
+			var _p39 = lf;
+			if (_p39.ctor === '[]') {
+				return f;
+			} else {
+				var _v50 = _p39._0,
+					_v51 = lf;
+				f = _v50;
+				lf = _v51;
+				continue melodySaveAss;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$keySignatureHelperhandler = function (kss) {
+	return {
+		ctor: '::',
+		_0: 0,
+		_1: {
+			ctor: '::',
+			_0: 2,
+			_1: {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 7,
+						_1: {
+							ctor: '::',
+							_0: 9,
+							_1: {
+								ctor: '::',
+								_0: 11,
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			}
+		}
+	};
+};
+var _user$project$MusicMakerProject$chordRhythmDecider = F2(
+	function (li, prob) {
+		chordRhythmDecider:
+		while (true) {
+			var _p40 = li;
+			if (_p40.ctor === '[]') {
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 581, column: 3},
+						end: {line: 585, column: 41}
+					},
+					_p40)('chord rythm decider');
+			} else {
+				var _p42 = _p40._0;
+				var t = _elm_lang$core$Basics$toFloat(_p42);
+				if (_elm_lang$core$Native_Utils.cmp(t, prob) > 0) {
+					return _p42;
+				} else {
+					var _v53 = _p40._1,
+						_v54 = prob;
+					li = _v53;
+					prob = _v54;
+					continue chordRhythmDecider;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$getProbCR = F2(
+	function (y, x) {
+		var _p43 = y;
+		switch (_p43) {
+			case 1:
+				return x.cw;
+			case 2:
+				return x.c2;
+			case 3:
+				return x.c3;
+			case 4:
+				return x.c4;
+			case 5:
+				return x.c5;
+			case 6:
+				return x.c6;
+			case 7:
+				return x.c7;
+			case 8:
+				return x.c8;
+			case 9:
+				return x.c9;
+			case 10:
+				return x.c10;
+			case 11:
+				return x.c11;
+			case 12:
+				return x.c12;
+			case 13:
+				return x.c13;
+			case 14:
+				return x.c14;
+			case 15:
+				return x.c15;
+			case 16:
+				return x.c16;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 553, column: 17},
+						end: {line: 570, column: 44}
+					},
+					_p43)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$chordRhythmHelper = F3(
+	function (lf, li, pmr) {
+		chordRhythmHelper:
+		while (true) {
+			var _p45 = li;
+			if (_p45.ctor === '[]') {
+				return lf;
+			} else {
+				var lf1 = A2(
+					_elm_lang$core$List$append,
+					lf,
+					{
+						ctor: '::',
+						_0: A2(_user$project$MusicMakerProject$getProbCR, _p45._0, pmr),
+						_1: {ctor: '[]'}
+					});
+				var _v57 = lf1,
+					_v58 = _p45._1,
+					_v59 = pmr;
+				lf = _v57;
+				li = _v58;
+				pmr = _v59;
+				continue chordRhythmHelper;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$melodyRhythmDecider = F2(
+	function (li, prob) {
+		melodyRhythmDecider:
+		while (true) {
+			var _p46 = li;
+			if (_p46.ctor === '[]') {
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 519, column: 3},
+						end: {line: 522, column: 42}
+					},
+					_p46)('float rythm decider');
+			} else {
+				var _p48 = _p46._0;
+				if (_elm_lang$core$Native_Utils.cmp(
+					_elm_lang$core$Basics$toFloat(_p48),
+					prob) > 0) {
+					return _p48;
+				} else {
+					var _v61 = _p46._1,
+						_v62 = prob;
+					li = _v61;
+					prob = _v62;
+					continue melodyRhythmDecider;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$getProbMR = F2(
+	function (y, x) {
+		var _p49 = y;
+		switch (_p49) {
+			case 1:
+				return x.mw;
+			case 2:
+				return x.m2;
+			case 3:
+				return x.m3;
+			case 4:
+				return x.m4;
+			case 5:
+				return x.m5;
+			case 6:
+				return x.m6;
+			case 7:
+				return x.m7;
+			case 8:
+				return x.m8;
+			case 9:
+				return x.m9;
+			case 10:
+				return x.m10;
+			case 11:
+				return x.m11;
+			case 12:
+				return x.m12;
+			case 13:
+				return x.m13;
+			case 14:
+				return x.m14;
+			case 15:
+				return x.m15;
+			case 16:
+				return x.m16;
+			default:
+				return _elm_lang$core$Native_Utils.crashCase(
+					'MusicMakerProject',
+					{
+						start: {line: 491, column: 17},
+						end: {line: 508, column: 44}
+					},
+					_p49)('tried get bad value');
+		}
+	});
+var _user$project$MusicMakerProject$melodyRhythmHelper = F3(
+	function (lf, li, pmr) {
+		melodyRhythmHelper:
+		while (true) {
+			var _p51 = li;
+			if (_p51.ctor === '[]') {
+				return lf;
+			} else {
+				var _v65 = A2(
+					_elm_lang$core$List$append,
+					lf,
+					{
+						ctor: '::',
+						_0: A2(_user$project$MusicMakerProject$getProbMR, _p51._0, pmr),
+						_1: {ctor: '[]'}
+					}),
+					_v66 = _p51._1,
+					_v67 = pmr;
+				lf = _v65;
+				li = _v66;
+				pmr = _v67;
+				continue melodyRhythmHelper;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$keySignatureNeumericalHandler = function (k) {
+	var _p52 = k;
+	switch (_p52.ctor) {
+		case 'A':
+			return 0;
+		case 'AS':
+			return 1;
+		case 'B':
+			return 2;
+		case 'C':
+			return 3;
+		case 'CS':
+			return 4;
+		case 'D':
+			return 5;
+		case 'DS':
+			return 6;
+		case 'E':
+			return 7;
+		case 'F':
+			return 8;
+		case 'FS':
+			return 9;
+		case 'G':
+			return 10;
+		default:
+			return 11;
+	}
+};
+var _user$project$MusicMakerProject$octaveControlMelody = F3(
+	function (key, x, note) {
+		var temp = _elm_lang$core$Basics$toFloat(
+			note + _user$project$MusicMakerProject$keySignatureNeumericalHandler(key));
+		return _elm_lang$core$Native_Utils.eq(temp / 12, 0) ? x.o1 : (_elm_lang$core$Native_Utils.eq(temp / 12, 1) ? x.o2 : (_elm_lang$core$Native_Utils.eq(temp / 12, 2) ? x.o3 : (_elm_lang$core$Native_Utils.eq(temp / 12, 3) ? x.o4 : (_elm_lang$core$Native_Utils.eq(temp / 12, 4) ? x.o5 : (_elm_lang$core$Native_Utils.eq(temp / 12, 5) ? x.o6 : 0.0)))));
+	});
+var _user$project$MusicMakerProject$sameKeyMelodyProb = F5(
+	function (kss, outKey, inkey, key, note) {
+		sameKeyMelodyProb:
+		while (true) {
+			var temp = (note + _user$project$MusicMakerProject$keySignatureNeumericalHandler(key)) - 11;
+			var _p53 = kss;
+			if (_p53.ctor === '[]') {
+				return _user$project$MusicMakerProject$getOutKey(outKey);
+			} else {
+				var _p55 = _p53._0;
+				var _p54 = _p53._1;
+				if (_elm_lang$core$Native_Utils.eq(_p55, 0)) {
+					if (_elm_lang$core$Native_Utils.eq(
+						A2(_elm_lang$core$Basics_ops['%'], temp, _p55 + 12),
+						0)) {
+						return _user$project$MusicMakerProject$getInKey(inkey);
+					} else {
+						var _v70 = _p54,
+							_v71 = outKey,
+							_v72 = inkey,
+							_v73 = key,
+							_v74 = note;
+						kss = _v70;
+						outKey = _v71;
+						inkey = _v72;
+						key = _v73;
+						note = _v74;
+						continue sameKeyMelodyProb;
+					}
+				} else {
+					if (_elm_lang$core$Native_Utils.eq(
+						A2(_elm_lang$core$Basics_ops['%'], temp, _p55),
+						0)) {
+						return _user$project$MusicMakerProject$getInKey(inkey);
+					} else {
+						var _v75 = _p54,
+							_v76 = outKey,
+							_v77 = inkey,
+							_v78 = key,
+							_v79 = note;
+						kss = _v75;
+						outKey = _v76;
+						inkey = _v77;
+						key = _v78;
+						note = _v79;
+						continue sameKeyMelodyProb;
+					}
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$probHelpMelodyMain = F7(
+	function (kss, pok, pik, ks, pom, pmr, lr) {
+		probHelpMelodyMain:
+		while (true) {
+			var kss1 = _user$project$MusicMakerProject$keySignatureHelperhandler(kss);
+			var _p56 = lr;
+			if (_p56.ctor === '[]') {
+				return pmr;
+			} else {
+				var _p57 = _p56._0;
+				var temp = A2(
+					_elm_lang$core$List$append,
+					pmr,
+					{
+						ctor: '::',
+						_0: (A3(_user$project$MusicMakerProject$octaveControlMelody, ks, pom, _p57) * A5(_user$project$MusicMakerProject$sameKeyMelodyProb, kss1, pok, pik, ks, _p57)) + A2(_user$project$MusicMakerProject$probMelodySaveAss, pmr, 0.0),
+						_1: {ctor: '[]'}
+					});
+				var _v81 = kss,
+					_v82 = pok,
+					_v83 = pik,
+					_v84 = ks,
+					_v85 = pom,
+					_v86 = temp,
+					_v87 = _p56._1;
+				kss = _v81;
+				pok = _v82;
+				pik = _v83;
+				ks = _v84;
+				pom = _v85;
+				pmr = _v86;
+				lr = _v87;
+				continue probHelpMelodyMain;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$getLenFloatList = F2(
+	function (lf, f) {
+		getLenFloatList:
+		while (true) {
+			var _p58 = lf;
+			if (_p58.ctor === '[]') {
+				return f;
+			} else {
+				var _v89 = lf,
+					_v90 = f + _p58._0;
+				lf = _v89;
+				f = _v90;
+				continue getLenFloatList;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$cycleThroughM = F3(
+	function (list, lim, num) {
+		cycleThroughM:
+		while (true) {
+			var _p59 = list;
+			if (_p59.ctor === '[]') {
+				return num;
+			} else {
+				var _p60 = lim;
+				if (_p60.ctor === '[]') {
+					return num;
+				} else {
+					if (_elm_lang$core$Native_Utils.cmp(num, 0) < 1) {
+						return _p60._0;
+					} else {
+						var _v93 = _p59._1,
+							_v94 = _p60._1,
+							_v95 = _p59._0 + num;
+						list = _v93;
+						lim = _v94;
+						num = _v95;
+						continue cycleThroughM;
+					}
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordProbFindMelodyNotes = F6(
+	function (nsf, loc, counter, m, mr, cr) {
+		chordProbFindMelodyNotes:
+		while (true) {
+			var _p61 = mr;
+			if (_p61.ctor === '[]') {
+				return nsf;
+			} else {
+				var _p62 = _p61._0;
+				if (_elm_lang$core$Native_Utils.cmp(counter, loc + _p62) > -1) {
+					return A2(
+						_elm_lang$core$List$append,
+						nsf,
+						{
+							ctor: '::',
+							_0: A3(_user$project$MusicMakerProject$cycleThroughM, mr, m, counter),
+							_1: {ctor: '[]'}
+						});
+				} else {
+					if (_elm_lang$core$Native_Utils.cmp(counter, loc) > -1) {
+						return nsf;
+					} else {
+						var _v97 = nsf,
+							_v98 = loc,
+							_v99 = counter + _p62,
+							_v100 = m,
+							_v101 = mr,
+							_v102 = cr;
+						nsf = _v97;
+						loc = _v98;
+						counter = _v99;
+						m = _v100;
+						mr = _v101;
+						cr = _v102;
+						continue chordProbFindMelodyNotes;
+					}
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordProbHelper = function (poc) {
+	return function (pic) {
+		return function (m) {
+			return function (mr) {
+				return function (cr) {
+					return function (lc) {
+						return function (paoc) {
+							return function (prc) {
+								return function (pac) {
+									return function (ptc) {
+										return function (loc) {
+											return function (ac) {
+												return function (rc) {
+													return function (tc) {
+														return function (aoc) {
+															var cc = A6(
+																_user$project$MusicMakerProject$chordProbFindMelodyNotes,
+																{ctor: '[]'},
+																loc,
+																0,
+																m,
+																mr,
+																cr);
+															var _p63 = lc;
+															if (_p63.ctor === '[]') {
+																return 0.0;
+															} else {
+																var p = (((A2(_user$project$MusicMakerProject$getProbTypeChord, tc, ptc) * A2(_user$project$MusicMakerProject$getProbAppliedChord, ac, pac)) * A2(_user$project$MusicMakerProject$getProbRootChord, rc, prc)) * A2(_user$project$MusicMakerProject$getProbAddOnChord, aoc, paoc)) * A7(_user$project$MusicMakerProject$chordProbMelodyCorralation, poc, pic, _p63._0, 1, mr, cr, cc);
+																return p;
+															}
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$MusicMakerProject$chordProbMain = function (poc) {
+	return function (pic) {
+		return function (m) {
+			return function (mr) {
+				return function (cruc) {
+					return function (paoc) {
+						return function (prc) {
+							return function (pac) {
+								return function (ptc) {
+									return function (loc) {
+										return function (ac) {
+											return function (rc) {
+												return function (tc) {
+													return function (aoc) {
+														return function (lf) {
+															return function (cr) {
+																return function (lc) {
+																	chordProbMain:
+																	while (true) {
+																		var _p64 = lc;
+																		if (_p64.ctor === '[]') {
+																			return lf;
+																		} else {
+																			var lf1 = A2(
+																				_elm_lang$core$List$append,
+																				lf,
+																				{
+																					ctor: '::',
+																					_0: _user$project$MusicMakerProject$chordProbHelper(poc)(pic)(m)(mr)(cruc)(_p64._0)(paoc)(prc)(pac)(ptc)(loc)(ac)(rc)(tc)(aoc),
+																					_1: {ctor: '[]'}
+																				});
+																			var _v105 = poc,
+																				_v106 = pic,
+																				_v107 = m,
+																				_v108 = mr,
+																				_v109 = cruc,
+																				_v110 = paoc,
+																				_v111 = prc,
+																				_v112 = pac,
+																				_v113 = ptc,
+																				_v114 = loc,
+																				_v115 = ac,
+																				_v116 = rc,
+																				_v117 = tc,
+																				_v118 = aoc,
+																				_v119 = lf1,
+																				_v120 = cr,
+																				_v121 = _p64._1;
+																			poc = _v105;
+																			pic = _v106;
+																			m = _v107;
+																			mr = _v108;
+																			cruc = _v109;
+																			paoc = _v110;
+																			prc = _v111;
+																			pac = _v112;
+																			ptc = _v113;
+																			loc = _v114;
+																			ac = _v115;
+																			rc = _v116;
+																			tc = _v117;
+																			aoc = _v118;
+																			lf = _v119;
+																			cr = _v120;
+																			lc = _v121;
+																			continue chordProbMain;
+																		}
+																	}
+																};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$MusicMakerProject$cycleThroughR = F2(
+	function (list, num) {
+		cycleThroughR:
+		while (true) {
+			var _p65 = list;
+			if (_p65.ctor === '[]') {
+				return num;
+			} else {
+				var _p66 = _p65._0;
+				if (_elm_lang$core$Native_Utils.cmp(num, 0) < 1) {
+					return _p66;
+				} else {
+					var _v123 = _p65._1,
+						_v124 = num - _p66;
+					list = _v123;
+					num = _v124;
+					continue cycleThroughR;
+				}
+			}
+		}
+	});
+var _user$project$MusicMakerProject$totalMR = F2(
+	function (tot, mr) {
+		totalMR:
+		while (true) {
+			var _p67 = mr;
+			if (_p67.ctor === '[]') {
+				return tot;
+			} else {
+				var _v126 = tot + _p67._0,
+					_v127 = _p67._1;
+				tot = _v126;
+				mr = _v127;
+				continue totalMR;
+			}
+		}
+	});
+var _user$project$MusicMakerProject$floatGenerator = F3(
+	function (se, low, high) {
+		var g = A2(_elm_lang$core$Random$float, low, high);
+		var _p68 = A2(_elm_lang$core$Random$step, g, se);
+		var n = _p68._0;
+		var s2 = _p68._1;
+		return {ctor: '_Tuple2', _0: s2, _1: n};
+	});
+var _user$project$MusicMakerProject$melodyRhythm = F5(
+	function (siz, maxnote, se, mr, pmr) {
+		melodyRhythm:
+		while (true) {
+			var $do = A2(_user$project$MusicMakerProject$totalMR, 0, mr);
+			if (_elm_lang$core$Native_Utils.cmp($do, maxnote - siz) < 1) {
+				var arra = {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 3,
+							_1: {
+								ctor: '::',
+								_0: 4,
+								_1: {
+									ctor: '::',
+									_0: 5,
+									_1: {
+										ctor: '::',
+										_0: 6,
+										_1: {
+											ctor: '::',
+											_0: 7,
+											_1: {
+												ctor: '::',
+												_0: 8,
+												_1: {
+													ctor: '::',
+													_0: 9,
+													_1: {
+														ctor: '::',
+														_0: 10,
+														_1: {
+															ctor: '::',
+															_0: 11,
+															_1: {
+																ctor: '::',
+																_0: 12,
+																_1: {
+																	ctor: '::',
+																	_0: 13,
+																	_1: {
+																		ctor: '::',
+																		_0: 14,
+																		_1: {
+																			ctor: '::',
+																			_0: 15,
+																			_1: {
+																				ctor: '::',
+																				_0: 16,
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				};
+				var lf = A3(
+					_user$project$MusicMakerProject$melodyRhythmHelper,
+					{ctor: '[]'},
+					arra,
+					pmr);
+				var pt = A2(_user$project$MusicMakerProject$getLenFloatList, lf, 0.0);
+				var dn = _user$project$MusicMakerProject$melodyRhythmDecider(arra);
+				var _p69 = A3(_user$project$MusicMakerProject$floatGenerator, se, 0.0, pt);
+				var s2 = _p69._0;
+				var rn = _p69._1;
+				var nn = A2(_user$project$MusicMakerProject$melodyRhythmDecider, arra, rn);
+				var mr1 = A2(
+					_elm_lang$core$List$append,
+					mr,
+					{
+						ctor: '::',
+						_0: nn,
+						_1: {ctor: '[]'}
+					});
+				var _v128 = siz + nn,
+					_v129 = maxnote,
+					_v130 = se,
+					_v131 = mr1,
+					_v132 = pmr;
+				siz = _v128;
+				maxnote = _v129;
+				se = _v130;
+				mr = _v131;
+				pmr = _v132;
+				continue melodyRhythm;
+			} else {
+				var hi = A2(_user$project$MusicMakerProject$cycleThroughR, mr, 0) - (maxnote - siz);
+				return A2(
+					_elm_lang$core$List$append,
+					mr,
+					{
+						ctor: '::',
+						_0: hi,
+						_1: {ctor: '[]'}
+					});
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordRhythm = F5(
+	function (siz, maxnote, se, mr, pmr) {
+		chordRhythm:
+		while (true) {
+			var $do = A2(_user$project$MusicMakerProject$cycleThroughR, mr, 0);
+			if (_elm_lang$core$Native_Utils.cmp($do, maxnote - siz) < 1) {
+				var arra = {
+					ctor: '::',
+					_0: 1,
+					_1: {
+						ctor: '::',
+						_0: 2,
+						_1: {
+							ctor: '::',
+							_0: 3,
+							_1: {
+								ctor: '::',
+								_0: 4,
+								_1: {
+									ctor: '::',
+									_0: 5,
+									_1: {
+										ctor: '::',
+										_0: 6,
+										_1: {
+											ctor: '::',
+											_0: 7,
+											_1: {
+												ctor: '::',
+												_0: 8,
+												_1: {
+													ctor: '::',
+													_0: 9,
+													_1: {
+														ctor: '::',
+														_0: 10,
+														_1: {
+															ctor: '::',
+															_0: 11,
+															_1: {
+																ctor: '::',
+																_0: 12,
+																_1: {
+																	ctor: '::',
+																	_0: 13,
+																	_1: {
+																		ctor: '::',
+																		_0: 14,
+																		_1: {
+																			ctor: '::',
+																			_0: 15,
+																			_1: {
+																				ctor: '::',
+																				_0: 16,
+																				_1: {ctor: '[]'}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				};
+				var lf = A3(
+					_user$project$MusicMakerProject$chordRhythmHelper,
+					{ctor: '[]'},
+					arra,
+					pmr);
+				var pt = A2(_user$project$MusicMakerProject$getLenFloatList, lf, 0.0);
+				var dn = _user$project$MusicMakerProject$chordRhythmDecider(arra);
+				var _p70 = A3(_user$project$MusicMakerProject$floatGenerator, se, 0.0, pt);
+				var s2 = _p70._0;
+				var rn = _p70._1;
+				var cn = A2(_user$project$MusicMakerProject$chordRhythmDecider, arra, rn);
+				var mr1 = A2(
+					_elm_lang$core$List$append,
+					mr,
+					{
+						ctor: '::',
+						_0: cn,
+						_1: {ctor: '[]'}
+					});
+				var _v133 = siz + cn,
+					_v134 = maxnote,
+					_v135 = se,
+					_v136 = mr1,
+					_v137 = pmr;
+				siz = _v133;
+				maxnote = _v134;
+				se = _v135;
+				mr = _v136;
+				pmr = _v137;
+				continue chordRhythm;
+			} else {
+				var hi = A2(_user$project$MusicMakerProject$cycleThroughR, mr, 0) - (maxnote - siz);
+				return A2(
+					_elm_lang$core$List$append,
+					mr,
+					{
+						ctor: '::',
+						_0: hi,
+						_1: {ctor: '[]'}
+					});
+			}
+		}
+	});
+var _user$project$MusicMakerProject$chordCreatorMain = function (poc) {
+	return function (pic) {
+		return function (se) {
+			return function (prestc) {
+				return function (c) {
+					return function (m) {
+						return function (mr) {
+							return function (paoc) {
+								return function (prc) {
+									return function (pac) {
+										return function (ptc) {
+											return function (loc) {
+												return function (cr) {
+													return function (kss) {
+														var lc = {
+															ctor: '::',
+															_0: {ctor: '[]'},
+															_1: {ctor: '[]'}
+														};
+														var lc1 = A6(_user$project$MusicMakerProject$chordListCreatorLoop, kss, lc, 1, 0, 1, 0);
+														var _p71 = cr;
+														if (_p71.ctor === '[]') {
+															return c;
+														} else {
+															var lf = _user$project$MusicMakerProject$chordProbMain(poc)(pic)(m)(mr)(cr)(paoc)(prc)(pac)(ptc)(loc + _p71._0)(1)(0)(1)(0)(
+																{ctor: '[]'})(cr)(lc1);
+															var lf1 = A2(
+																_elm_lang$core$List$append,
+																lf,
+																{
+																	ctor: '::',
+																	_0: _user$project$MusicMakerProject$getProbRestChord(prestc),
+																	_1: {ctor: '[]'}
+																});
+															var lc2 = A2(
+																_elm_lang$core$List$append,
+																lc1,
+																{ctor: '[]'});
+															var numend = A2(_user$project$MusicMakerProject$chordGetend, 0.0, lf1);
+															var _p72 = A3(_user$project$MusicMakerProject$floatGenerator, se, 0.0, numend);
+															var s2 = _p72._0;
+															var rn = _p72._1;
+															return A2(
+																_elm_lang$core$List$append,
+																c,
+																{
+																	ctor: '::',
+																	_0: A2(
+																		_user$project$MusicMakerProject$chordListCycleThrough,
+																		lc2,
+																		A3(_user$project$MusicMakerProject$chordCreatorDecider, lf1, rn, 0)),
+																	_1: {ctor: '[]'}
+																});
+														}
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$MusicMakerProject$notes = {
+	ctor: '::',
+	_0: 1,
+	_1: {
+		ctor: '::',
+		_0: 2,
+		_1: {
+			ctor: '::',
+			_0: 3,
+			_1: {
+				ctor: '::',
+				_0: 4,
+				_1: {
+					ctor: '::',
+					_0: 5,
+					_1: {
+						ctor: '::',
+						_0: 6,
+						_1: {
+							ctor: '::',
+							_0: 7,
+							_1: {
+								ctor: '::',
+								_0: 8,
+								_1: {
+									ctor: '::',
+									_0: 9,
+									_1: {
+										ctor: '::',
+										_0: 10,
+										_1: {
+											ctor: '::',
+											_0: 11,
+											_1: {
+												ctor: '::',
+												_0: 12,
+												_1: {
+													ctor: '::',
+													_0: 13,
+													_1: {
+														ctor: '::',
+														_0: 14,
+														_1: {
+															ctor: '::',
+															_0: 15,
+															_1: {
+																ctor: '::',
+																_0: 16,
+																_1: {
+																	ctor: '::',
+																	_0: 17,
+																	_1: {
+																		ctor: '::',
+																		_0: 18,
+																		_1: {
+																			ctor: '::',
+																			_0: 19,
+																			_1: {
+																				ctor: '::',
+																				_0: 20,
+																				_1: {
+																					ctor: '::',
+																					_0: 21,
+																					_1: {
+																						ctor: '::',
+																						_0: 22,
+																						_1: {
+																							ctor: '::',
+																							_0: 23,
+																							_1: {
+																								ctor: '::',
+																								_0: 24,
+																								_1: {
+																									ctor: '::',
+																									_0: 25,
+																									_1: {
+																										ctor: '::',
+																										_0: 26,
+																										_1: {
+																											ctor: '::',
+																											_0: 27,
+																											_1: {
+																												ctor: '::',
+																												_0: 28,
+																												_1: {
+																													ctor: '::',
+																													_0: 29,
+																													_1: {
+																														ctor: '::',
+																														_0: 30,
+																														_1: {
+																															ctor: '::',
+																															_0: 31,
+																															_1: {
+																																ctor: '::',
+																																_0: 32,
+																																_1: {
+																																	ctor: '::',
+																																	_0: 33,
+																																	_1: {
+																																		ctor: '::',
+																																		_0: 34,
+																																		_1: {
+																																			ctor: '::',
+																																			_0: 35,
+																																			_1: {
+																																				ctor: '::',
+																																				_0: 36,
+																																				_1: {
+																																					ctor: '::',
+																																					_0: 37,
+																																					_1: {
+																																						ctor: '::',
+																																						_0: 38,
+																																						_1: {
+																																							ctor: '::',
+																																							_0: 39,
+																																							_1: {
+																																								ctor: '::',
+																																								_0: 40,
+																																								_1: {
+																																									ctor: '::',
+																																									_0: 41,
+																																									_1: {
+																																										ctor: '::',
+																																										_0: 42,
+																																										_1: {
+																																											ctor: '::',
+																																											_0: 43,
+																																											_1: {
+																																												ctor: '::',
+																																												_0: 44,
+																																												_1: {
+																																													ctor: '::',
+																																													_0: 45,
+																																													_1: {
+																																														ctor: '::',
+																																														_0: 46,
+																																														_1: {
+																																															ctor: '::',
+																																															_0: 47,
+																																															_1: {
+																																																ctor: '::',
+																																																_0: 48,
+																																																_1: {
+																																																	ctor: '::',
+																																																	_0: 49,
+																																																	_1: {
+																																																		ctor: '::',
+																																																		_0: 50,
+																																																		_1: {
+																																																			ctor: '::',
+																																																			_0: 51,
+																																																			_1: {
+																																																				ctor: '::',
+																																																				_0: 52,
+																																																				_1: {
+																																																					ctor: '::',
+																																																					_0: 53,
+																																																					_1: {
+																																																						ctor: '::',
+																																																						_0: 54,
+																																																						_1: {
+																																																							ctor: '::',
+																																																							_0: 55,
+																																																							_1: {
+																																																								ctor: '::',
+																																																								_0: 56,
+																																																								_1: {
+																																																									ctor: '::',
+																																																									_0: 57,
+																																																									_1: {
+																																																										ctor: '::',
+																																																										_0: 58,
+																																																										_1: {
+																																																											ctor: '::',
+																																																											_0: 59,
+																																																											_1: {
+																																																												ctor: '::',
+																																																												_0: 60,
+																																																												_1: {
+																																																													ctor: '::',
+																																																													_0: 61,
+																																																													_1: {
+																																																														ctor: '::',
+																																																														_0: 62,
+																																																														_1: {
+																																																															ctor: '::',
+																																																															_0: 63,
+																																																															_1: {
+																																																																ctor: '::',
+																																																																_0: 64,
+																																																																_1: {
+																																																																	ctor: '::',
+																																																																	_0: 65,
+																																																																	_1: {
+																																																																		ctor: '::',
+																																																																		_0: 66,
+																																																																		_1: {
+																																																																			ctor: '::',
+																																																																			_0: 67,
+																																																																			_1: {
+																																																																				ctor: '::',
+																																																																				_0: 68,
+																																																																				_1: {
+																																																																					ctor: '::',
+																																																																					_0: 69,
+																																																																					_1: {
+																																																																						ctor: '::',
+																																																																						_0: 70,
+																																																																						_1: {
+																																																																							ctor: '::',
+																																																																							_0: 71,
+																																																																							_1: {
+																																																																								ctor: '::',
+																																																																								_0: 72,
+																																																																								_1: {
+																																																																									ctor: '::',
+																																																																									_0: 73,
+																																																																									_1: {
+																																																																										ctor: '::',
+																																																																										_0: 74,
+																																																																										_1: {
+																																																																											ctor: '::',
+																																																																											_0: 75,
+																																																																											_1: {
+																																																																												ctor: '::',
+																																																																												_0: 76,
+																																																																												_1: {
+																																																																													ctor: '::',
+																																																																													_0: 77,
+																																																																													_1: {
+																																																																														ctor: '::',
+																																																																														_0: 78,
+																																																																														_1: {
+																																																																															ctor: '::',
+																																																																															_0: 79,
+																																																																															_1: {
+																																																																																ctor: '::',
+																																																																																_0: 80,
+																																																																																_1: {
+																																																																																	ctor: '::',
+																																																																																	_0: 81,
+																																																																																	_1: {
+																																																																																		ctor: '::',
+																																																																																		_0: 82,
+																																																																																		_1: {
+																																																																																			ctor: '::',
+																																																																																			_0: 83,
+																																																																																			_1: {
+																																																																																				ctor: '::',
+																																																																																				_0: 84,
+																																																																																				_1: {
+																																																																																					ctor: '::',
+																																																																																					_0: 85,
+																																																																																					_1: {
+																																																																																						ctor: '::',
+																																																																																						_0: 86,
+																																																																																						_1: {
+																																																																																							ctor: '::',
+																																																																																							_0: 87,
+																																																																																							_1: {
+																																																																																								ctor: '::',
+																																																																																								_0: 88,
+																																																																																								_1: {ctor: '[]'}
+																																																																																							}
+																																																																																						}
+																																																																																					}
+																																																																																				}
+																																																																																			}
+																																																																																		}
+																																																																																	}
+																																																																																}
+																																																																															}
+																																																																														}
+																																																																													}
+																																																																												}
+																																																																											}
+																																																																										}
+																																																																									}
+																																																																								}
+																																																																							}
+																																																																						}
+																																																																					}
+																																																																				}
+																																																																			}
+																																																																		}
+																																																																	}
+																																																																}
+																																																															}
+																																																														}
+																																																													}
+																																																												}
+																																																											}
+																																																										}
+																																																									}
+																																																								}
+																																																							}
+																																																						}
+																																																					}
+																																																				}
+																																																			}
+																																																		}
+																																																	}
+																																																}
+																																															}
+																																														}
+																																													}
+																																												}
+																																											}
+																																										}
+																																									}
+																																								}
+																																							}
+																																						}
+																																					}
+																																				}
+																																			}
+																																		}
+																																	}
+																																}
+																															}
+																														}
+																													}
+																												}
+																											}
+																										}
+																									}
+																								}
+																							}
+																						}
+																					}
+																				}
+																			}
+																		}
+																	}
+																}
+															}
+														}
+													}
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+};
+var _user$project$MusicMakerProject$melodyCreatorMain = F8(
+	function (kss, se, pok, pik, ks, pom, mr, m) {
+		var _p73 = mr;
+		if (_p73.ctor === '[]') {
+			return m;
+		} else {
+			var tem = A7(
+				_user$project$MusicMakerProject$probHelpMelodyMain,
+				kss,
+				pok,
+				pik,
+				ks,
+				pom,
+				{ctor: '[]'},
+				_user$project$MusicMakerProject$notes);
+			var temp = _elm_lang$core$List$reverse(tem);
+			var pt = A2(_user$project$MusicMakerProject$melodySaveAss, 0.0, temp);
+			var _p74 = A3(_user$project$MusicMakerProject$floatGenerator, se, 0.0, pt);
+			var s2 = _p74._0;
+			var rn = _p74._1;
+			return A2(
+				_elm_lang$core$List$append,
+				m,
+				{
+					ctor: '::',
+					_0: A2(_user$project$MusicMakerProject$melodyCreatorMainHelper, tem, rn),
+					_1: {ctor: '[]'}
+				});
+		}
+	});
+var _user$project$MusicMakerProject$ProbOutKey = function (a) {
+	return {ok: a};
+};
+var _user$project$MusicMakerProject$ProbInKey = function (a) {
+	return {ik: a};
+};
+var _user$project$MusicMakerProject$ProbOutChord = function (a) {
+	return {oc: a};
+};
+var _user$project$MusicMakerProject$ProbInChord = function (a) {
+	return {ic: a};
+};
+var _user$project$MusicMakerProject$ProbRestMelody = function (a) {
+	return {prm: a};
+};
+var _user$project$MusicMakerProject$ProbRestChord = function (a) {
+	return {prc: a};
+};
+var _user$project$MusicMakerProject$StartAtRoot = function (a) {
+	return {sar: a};
+};
+var _user$project$MusicMakerProject$EndAtRoot = function (a) {
+	return {ear: a};
+};
+var _user$project$MusicMakerProject$ProbInterPatternization = function (a) {
+	return {pip: a};
+};
+var _user$project$MusicMakerProject$ProbPatternSizeAppear = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {p4: a, p8: b, p12: c, p16: d, p32: e, p64: f, p128: g, p256: h};
+	});
+var _user$project$MusicMakerProject$ProbPatternizationAppear = F7(
+	function (a, b, c, d, e, f, g) {
+		return {pz4: a, pz8: b, pz12: c, pz16: d, pz32: e, pz64: f, pz128: g};
+	});
+var _user$project$MusicMakerProject$NumPatternSize = F8(
+	function (a, b, c, d, e, f, g, h) {
+		return {n4: a, n8: b, n12: c, n16: d, n32: e, n64: f, n128: g, n256: h};
+	});
+var _user$project$MusicMakerProject$RNGSeed = function (a) {
+	return {rngs: a};
+};
+var _user$project$MusicMakerProject$ProbChordMelodyCorralation = function (a) {
+	return {pcmc: a};
+};
+var _user$project$MusicMakerProject$ProbMR = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return function (p) {
+																return {mw: a, m2: b, m3: c, m4: d, m5: e, m6: f, m7: g, m8: h, m9: i, m10: j, m11: k, m12: l, m13: m, m14: n, m15: o, m16: p};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$MusicMakerProject$ProbCR = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return function (p) {
+																return {cw: a, c2: b, c3: c, c4: d, c5: e, c6: f, c7: g, c8: h, c9: i, c10: j, c11: k, c12: l, c13: m, c14: n, c15: o, c16: p};
+															};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$MusicMakerProject$ProbOctaveMelody = F6(
+	function (a, b, c, d, e, f) {
+		return {o1: a, o2: b, o3: c, o4: d, o5: e, o6: f};
+	});
+var _user$project$MusicMakerProject$ProbOctaveChord = F5(
+	function (a, b, c, d, e) {
+		return {oc1: a, oc2: b, oc3: c, oc4: d, oc5: e};
+	});
+var _user$project$MusicMakerProject$ProbTypeChord = F4(
+	function (a, b, c, d) {
+		return {proot: a, pseveth: b, pninth: c, peleventh: d};
+	});
+var _user$project$MusicMakerProject$ProbAppliedChord = F4(
+	function (a, b, c, d) {
+		return {pac1: a, pac4: b, pac5: c, pac7: d};
+	});
+var _user$project$MusicMakerProject$ProbRootChord = F7(
+	function (a, b, c, d, e, f, g) {
+		return {prc1: a, prc2: b, prc3: c, prc4: d, prc5: e, prc6: f, prc7: g};
+	});
+var _user$project$MusicMakerProject$ProbAddOnChord = F5(
+	function (a, b, c, d, e) {
+		return {pnao: a, psus2: b, psus4: c, pAug: d, pDim: e};
+	});
+var _user$project$MusicMakerProject$List = function (a) {
+	return {ctor: 'List', _0: a};
+};
+var _user$project$MusicMakerProject$GS = {ctor: 'GS'};
+var _user$project$MusicMakerProject$G = {ctor: 'G'};
+var _user$project$MusicMakerProject$FS = {ctor: 'FS'};
+var _user$project$MusicMakerProject$F = {ctor: 'F'};
+var _user$project$MusicMakerProject$E = {ctor: 'E'};
+var _user$project$MusicMakerProject$DS = {ctor: 'DS'};
+var _user$project$MusicMakerProject$D = {ctor: 'D'};
+var _user$project$MusicMakerProject$CS = {ctor: 'CS'};
+var _user$project$MusicMakerProject$C = {ctor: 'C'};
+var _user$project$MusicMakerProject$B = {ctor: 'B'};
+var _user$project$MusicMakerProject$AS = {ctor: 'AS'};
+var _user$project$MusicMakerProject$A = {ctor: 'A'};

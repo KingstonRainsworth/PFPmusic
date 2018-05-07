@@ -20,7 +20,7 @@ import ProbAddOn exposing (..)
 import Html exposing (..)
 import Html.Attributes exposing (..)
 import Html.Events exposing (onInput,onClick)
---import MusicMakerProject as MMP
+import MusicMakerProject as MMP
 import Keyboard
 import Mouse
 --import Svg exposing (..)
@@ -146,7 +146,8 @@ update msg model = case msg of
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
   Randomize ->
-    update (ProbPatSizeMsg ProbPatternSize.Randomize) model |> Tuple.first |>
+    update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
+    update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
     update (ProbPatizeMsg ProbPatternization.Randomize) |> Tuple.first |>
     update (NumPatSizeMsg Numpatsize.Randomize) |> Tuple.first |>
     update (KSPMsg KeySignature.Randomize) |> Tuple.first |>

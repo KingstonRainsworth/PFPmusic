@@ -350,7 +350,11 @@ var _user$project$FrontEnd$update = F2(
 																										A2(
 																											_user$project$FrontEnd$update,
 																											_user$project$FrontEnd$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
-																											model))))))))))))))))))))));
+																											_elm_lang$core$Tuple$first(
+																												A2(
+																													_user$project$FrontEnd$update,
+																													_user$project$FrontEnd$CoreValMsg(_user$project$CoreVal$Randomize),
+																													model))))))))))))))))))))))));
 					msg = _v1;
 					model = _v2;
 					continue update;
