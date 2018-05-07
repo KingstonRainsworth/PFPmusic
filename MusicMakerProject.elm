@@ -209,19 +209,15 @@ cycleThroughM list lim num =
 
 -------------------------------Main-------------------------------------------------
 
-{-
-main : ProbOutKey-> ProbInKey ->
-main      =
-let lp = -- make a list of number of each patterns to pass to pattern creator
-  let ppa = patternCreator      in --stuff here
-  let m = [] in
-  let c = [] in
-  let mr = [] in
-  let cr = [] in
-  workFlowMainLoop --stuff here
-  startAtRoot --stuff where
-  endAtRoot -- stuff here
--}
+
+main : ProbOutChord -> ProbInChord -> ProbPatternSizeAppear -> ProbRestChord -> ProbOctaveMelody -> ProbAddOnChord -> ProbRootChord -> ProbAppliedChord ->
+  ProbTypeChord ->ProbCR -> ProbMR -> KeySignature -> KeySignatureSuggestion -> ProbOutKey -> ProbInKey -> Seed -> (MelodyR, ChordR, Melody, Chord)
+main poc pic ppsa prestc pom paoc prc pac ptc pcr pmr ks kss pok pik se =
+  let mr = melodyRhythm 0 256 se [] pmr in
+  let cr = chordRhythm 0 256 se [] pcr in
+  let m = melodyCreatorMain kss se pok pik ks pom mr [] in
+  let c = chordCreatorMain poc pic se prestc [] m mr paoc prc pac ptc 0 cr kss in
+  (mr, cr, m, c)
 
 
 
