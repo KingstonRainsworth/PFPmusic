@@ -1,0 +1,425 @@
+var _user$project$Main$initialModel = {
+	seed: _elm_lang$core$Random$initialSeed(111),
+	coreval: _user$project$CoreVal$initialModel,
+	probpatternsize: _user$project$ProbPatternSize$initialModel,
+	probpatternization: _user$project$ProbPatternization$initialModel,
+	numpatzise: _user$project$Numpatsize$initialModel,
+	ksp: _user$project$KeySignature$initialModel,
+	probmr: _user$project$ProbMR$initialModel,
+	probcr: _user$project$ProbCR$initialModel,
+	proboctavemelody: _user$project$ProbOctave$initialModel,
+	proboctavechord: _user$project$ProbOctaveChord$initialModel,
+	probtypechord: _user$project$ProbType$initialModel,
+	probappliechord: _user$project$ProbApplied$initialModel,
+	probroot: _user$project$ProbRoot$initialModel,
+	probaddon: _user$project$ProbAddOn$initialModel,
+	results: _user$project$ResultS$initialModel
+};
+var _user$project$Main$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return function (o) {
+															return {seed: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
+														};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$Main$Generate = {ctor: 'Generate'};
+var _user$project$Main$Default = {ctor: 'Default'};
+var _user$project$Main$Randomize = {ctor: 'Randomize'};
+var _user$project$Main$view = function (model) {
+	return A2(
+		_elm_lang$html$Html$div,
+		{ctor: '[]'},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$html$Html$button,
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Randomize),
+					_1: {ctor: '[]'}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$html$Html$text('Randomize'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: A2(
+					_elm_lang$html$Html$p,
+					{ctor: '[]'},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text(
+							_elm_lang$core$Basics$toString(model.results)),
+						_1: {ctor: '[]'}
+					}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$html$Html$button,
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Generate),
+							_1: {ctor: '[]'}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$html$Html$text('Generate'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				}
+			}
+		});
+};
+var _user$project$Main$ResultSMsg = function (a) {
+	return {ctor: 'ResultSMsg', _0: a};
+};
+var _user$project$Main$ProbAddOnMsg = function (a) {
+	return {ctor: 'ProbAddOnMsg', _0: a};
+};
+var _user$project$Main$ProbRootMsg = function (a) {
+	return {ctor: 'ProbRootMsg', _0: a};
+};
+var _user$project$Main$ProbApChordMsg = function (a) {
+	return {ctor: 'ProbApChordMsg', _0: a};
+};
+var _user$project$Main$ProbTypeChordMsg = function (a) {
+	return {ctor: 'ProbTypeChordMsg', _0: a};
+};
+var _user$project$Main$ProbOcChordMsg = function (a) {
+	return {ctor: 'ProbOcChordMsg', _0: a};
+};
+var _user$project$Main$ProbOcMelMsg = function (a) {
+	return {ctor: 'ProbOcMelMsg', _0: a};
+};
+var _user$project$Main$ProbcrMsg = function (a) {
+	return {ctor: 'ProbcrMsg', _0: a};
+};
+var _user$project$Main$ProbmrMsg = function (a) {
+	return {ctor: 'ProbmrMsg', _0: a};
+};
+var _user$project$Main$KSPMsg = function (a) {
+	return {ctor: 'KSPMsg', _0: a};
+};
+var _user$project$Main$NumPatSizeMsg = function (a) {
+	return {ctor: 'NumPatSizeMsg', _0: a};
+};
+var _user$project$Main$ProbPatizeMsg = function (a) {
+	return {ctor: 'ProbPatizeMsg', _0: a};
+};
+var _user$project$Main$ProbPatSizeMsg = function (a) {
+	return {ctor: 'ProbPatSizeMsg', _0: a};
+};
+var _user$project$Main$CoreValMsg = function (a) {
+	return {ctor: 'CoreValMsg', _0: a};
+};
+var _user$project$Main$update = F2(
+	function (msg, model) {
+		update:
+		while (true) {
+			var _p0 = msg;
+			switch (_p0.ctor) {
+				case 'CoreValMsg':
+					var _p1 = A2(_user$project$CoreVal$update, _p0._0, model.coreval);
+					var subMod = _p1._0;
+					var subCmd = _p1._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{coreval: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$CoreValMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbPatSizeMsg':
+					var _p2 = A2(_user$project$ProbPatternSize$update, _p0._0, model.probpatternsize);
+					var subMod = _p2._0;
+					var subCmd = _p2._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probpatternsize: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbPatSizeMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbPatizeMsg':
+					var _p3 = A2(_user$project$ProbPatternization$update, _p0._0, model.probpatternization);
+					var subMod = _p3._0;
+					var subCmd = _p3._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probpatternization: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbPatizeMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'NumPatSizeMsg':
+					var _p4 = A2(_user$project$Numpatsize$update, _p0._0, model.numpatzise);
+					var subMod = _p4._0;
+					var subCmd = _p4._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{numpatzise: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$NumPatSizeMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'KSPMsg':
+					var _p5 = A2(_user$project$KeySignature$update, _p0._0, model.ksp);
+					var subMod = _p5._0;
+					var subCmd = _p5._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{ksp: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$KSPMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbmrMsg':
+					var _p6 = A2(_user$project$ProbMR$update, _p0._0, model.probmr);
+					var subMod = _p6._0;
+					var subCmd = _p6._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probmr: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbmrMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbcrMsg':
+					var _p7 = A2(_user$project$ProbCR$update, _p0._0, model.probcr);
+					var subMod = _p7._0;
+					var subCmd = _p7._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probcr: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbcrMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbOcMelMsg':
+					var _p8 = A2(_user$project$ProbOctave$update, _p0._0, model.proboctavemelody);
+					var subMod = _p8._0;
+					var subCmd = _p8._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{proboctavemelody: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbOcMelMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbOcChordMsg':
+					var _p9 = A2(_user$project$ProbOctaveChord$update, _p0._0, model.proboctavechord);
+					var subMod = _p9._0;
+					var subCmd = _p9._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{proboctavechord: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbOcChordMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbTypeChordMsg':
+					var _p10 = A2(_user$project$ProbType$update, _p0._0, model.probtypechord);
+					var subMod = _p10._0;
+					var subCmd = _p10._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probtypechord: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbTypeChordMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbApChordMsg':
+					var _p11 = A2(_user$project$ProbApplied$update, _p0._0, model.probappliechord);
+					var subMod = _p11._0;
+					var subCmd = _p11._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probappliechord: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbApChordMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbRootMsg':
+					var _p12 = A2(_user$project$ProbRoot$update, _p0._0, model.probroot);
+					var subMod = _p12._0;
+					var subCmd = _p12._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probroot: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbRootMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ProbAddOnMsg':
+					var _p13 = A2(_user$project$ProbAddOn$update, _p0._0, model.probaddon);
+					var subMod = _p13._0;
+					var subCmd = _p13._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{probaddon: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbAddOnMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ResultSMsg':
+					var _p14 = A2(_user$project$ResultS$update, _p0._0, model.results);
+					var subMod = _p14._0;
+					var subCmd = _p14._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{results: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ResultSMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'Randomize':
+					var _v1 = _user$project$Main$ProbAddOnMsg(_user$project$ProbAddOn$Randomize),
+						_v2 = _elm_lang$core$Tuple$first(
+						A2(
+							_user$project$Main$update,
+							_user$project$Main$ProbRootMsg(_user$project$ProbRoot$Randomize),
+							_elm_lang$core$Tuple$first(
+								A2(
+									_user$project$Main$update,
+									_user$project$Main$ProbApChordMsg(_user$project$ProbApplied$Randomize),
+									_elm_lang$core$Tuple$first(
+										A2(
+											_user$project$Main$update,
+											_user$project$Main$ProbTypeChordMsg(_user$project$ProbType$Randomize),
+											_elm_lang$core$Tuple$first(
+												A2(
+													_user$project$Main$update,
+													_user$project$Main$ProbOcChordMsg(_user$project$ProbOctaveChord$Randomize),
+													_elm_lang$core$Tuple$first(
+														A2(
+															_user$project$Main$update,
+															_user$project$Main$ProbOcMelMsg(_user$project$ProbOctave$Randomize),
+															_elm_lang$core$Tuple$first(
+																A2(
+																	_user$project$Main$update,
+																	_user$project$Main$ProbcrMsg(_user$project$ProbCR$Randomize),
+																	_elm_lang$core$Tuple$first(
+																		A2(
+																			_user$project$Main$update,
+																			_user$project$Main$ProbmrMsg(_user$project$ProbMR$Randomize),
+																			_elm_lang$core$Tuple$first(
+																				A2(
+																					_user$project$Main$update,
+																					_user$project$Main$KSPMsg(_user$project$KeySignature$Randomize),
+																					_elm_lang$core$Tuple$first(
+																						A2(
+																							_user$project$Main$update,
+																							_user$project$Main$NumPatSizeMsg(_user$project$Numpatsize$Randomize),
+																							_elm_lang$core$Tuple$first(
+																								A2(
+																									_user$project$Main$update,
+																									_user$project$Main$ProbPatizeMsg(_user$project$ProbPatternization$Randomize),
+																									_elm_lang$core$Tuple$first(
+																										A2(
+																											_user$project$Main$update,
+																											_user$project$Main$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
+																											_elm_lang$core$Tuple$first(
+																												A2(
+																													_user$project$Main$update,
+																													_user$project$Main$CoreValMsg(_user$project$CoreVal$Randomize),
+																													model))))))))))))))))))))))));
+					msg = _v1;
+					model = _v2;
+					continue update;
+				case 'Generate':
+					var t = _user$project$MusicMakerProject$mmk(
+						{oc: model.coreval.oc})(
+						{ic: model.coreval.ic})(model.probpatternsize)(
+						{prc: model.coreval.prc})(model.proboctavemelody)(model.probaddon)(model.probroot)(model.probappliechord)(model.probtypechord)(model.probcr)(model.probmr)(model.ksp)(
+						{ctor: '[]'})(
+						{ok: model.coreval.ok})(
+						{ik: model.coreval.ik})(model.seed);
+					var _v3 = _user$project$Main$ResultSMsg(
+						_user$project$ResultS$Set(t)),
+						_v4 = model;
+					msg = _v3;
+					model = _v4;
+					continue update;
+				default:
+					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+			}
+		}
+	});
+var _user$project$Main$main = _elm_lang$html$Html$program(
+	{
+		init: {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none},
+		view: _user$project$Main$view,
+		update: _user$project$Main$update,
+		subscriptions: function (_p15) {
+			return _elm_lang$core$Platform_Sub$none;
+		}
+	})();
