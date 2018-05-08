@@ -9633,7 +9633,7 @@ var _user$project$CoreVal$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$CoreVal$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(5);
+				var seed = _p4._0;
 				var _p5 = A2(_user$project$CoreVal$floatCreator, seed, _user$project$CoreVal$probability);
 				var okn = _p5._0;
 				var s2 = _p5._1;
@@ -9699,7 +9699,9 @@ var _user$project$CoreVal$Model = function (a) {
 		};
 	};
 };
-var _user$project$CoreVal$Randomize = {ctor: 'Randomize'};
+var _user$project$CoreVal$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$CoreVal$Reset = {ctor: 'Reset'};
 var _user$project$CoreVal$Set = {ctor: 'Set'};
 var _user$project$MusicMakerProject$chordListCreatorAppliedHelper = F4(
@@ -12222,7 +12224,7 @@ var _user$project$KeySignature$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$KeySignature$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(132);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$KeySignature$intCreator, seed, _user$project$KeySignature$intGen);
 				var key1n = _p2._0;
 				var s2 = _p2._1;
@@ -12257,7 +12259,9 @@ var _user$project$KeySignature$update = F2(
 				}
 		}
 	});
-var _user$project$KeySignature$Randomize = {ctor: 'Randomize'};
+var _user$project$KeySignature$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$KeySignature$Reset = {ctor: 'Reset'};
 var _user$project$KeySignature$Set = {ctor: 'Set'};
 var _user$project$ProbPatternSize$getVal = function (_p0) {
@@ -12315,7 +12319,7 @@ var _user$project$ProbPatternSize$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(3221);
+				var seed = _p3._0;
 				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, seed, _user$project$ProbPatternSize$probability);
 				var p4n = _p4._0;
 				var s2 = _p4._1;
@@ -12353,7 +12357,9 @@ var _user$project$ProbPatternSize$Model = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {p4: a, p8: b, p12: c, p16: d, p32: e, p64: f, p128: g, p256: h};
 	});
-var _user$project$ProbPatternSize$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbPatternSize$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbPatternSize$Reset = {ctor: 'Reset'};
 var _user$project$ProbPatternSize$Set = {ctor: 'Set'};
 var _user$project$ProbPatternization$floatCreator = F2(
@@ -12375,7 +12381,7 @@ var _user$project$ProbPatternization$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternization$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(7);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbPatternization$floatCreator, seed, _user$project$ProbPatternization$probability);
 				var pz4n = _p2._0;
 				var s2 = _p2._1;
@@ -12410,7 +12416,9 @@ var _user$project$ProbPatternization$Model = F7(
 	function (a, b, c, d, e, f, g) {
 		return {pz4: a, pz8: b, pz12: c, pz16: d, pz32: e, pz64: f, pz128: g};
 	});
-var _user$project$ProbPatternization$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbPatternization$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbPatternization$Reset = {ctor: 'Reset'};
 var _user$project$ProbPatternization$Set = {ctor: 'Set'};
 var _user$project$Numpatsize$intCreator = F2(
@@ -12432,7 +12440,7 @@ var _user$project$Numpatsize$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(8);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$Numpatsize$intCreator, seed, _user$project$Numpatsize$intGenerator);
 				var n4n = _p2._0;
 				var s2 = _p2._1;
@@ -12470,7 +12478,9 @@ var _user$project$Numpatsize$Model = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {n4: a, n8: b, n12: c, n16: d, n32: e, n64: f, n128: g, n256: h};
 	});
-var _user$project$Numpatsize$Randomize = {ctor: 'Randomize'};
+var _user$project$Numpatsize$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$Numpatsize$Reset = {ctor: 'Reset'};
 var _user$project$Numpatsize$Set = {ctor: 'Set'};
 var _user$project$ProbMR$floatCreator = F2(
@@ -12492,7 +12502,7 @@ var _user$project$ProbMR$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbMR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(30);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbMR$floatCreator, seed, _user$project$ProbMR$probability);
 				var mwn = _p2._0;
 				var s2 = _p2._1;
@@ -12583,7 +12593,9 @@ var _user$project$ProbMR$Model = function (a) {
 		};
 	};
 };
-var _user$project$ProbMR$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbMR$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbMR$Reset = {ctor: 'Reset'};
 var _user$project$ProbMR$Set = {ctor: 'Set'};
 var _user$project$ProbCR$floatCreator = F2(
@@ -12605,7 +12617,7 @@ var _user$project$ProbCR$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(75);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbCR$floatCreator, seed, _user$project$ProbCR$probability);
 				var cwn = _p2._0;
 				var s2 = _p2._1;
@@ -12696,7 +12708,9 @@ var _user$project$ProbCR$Model = function (a) {
 		};
 	};
 };
-var _user$project$ProbCR$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbCR$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbCR$Reset = {ctor: 'Reset'};
 var _user$project$ProbCR$Set = {ctor: 'Set'};
 var _user$project$ProbOctave$floatCreator = F2(
@@ -12718,7 +12732,7 @@ var _user$project$ProbOctave$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbOctave$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(101);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbOctave$floatCreator, seed, _user$project$ProbOctave$probability);
 				var o1n = _p2._0;
 				var s2 = _p2._1;
@@ -12750,7 +12764,9 @@ var _user$project$ProbOctave$Model = F6(
 	function (a, b, c, d, e, f) {
 		return {o1: a, o2: b, o3: c, o4: d, o5: e, o6: f};
 	});
-var _user$project$ProbOctave$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbOctave$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbOctave$Reset = {ctor: 'Reset'};
 var _user$project$ProbOctave$Set = {ctor: 'Set'};
 var _user$project$ProbOctaveChord$floatCreator = F2(
@@ -12772,7 +12788,7 @@ var _user$project$ProbOctaveChord$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbOctaveChord$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(43);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbOctaveChord$floatCreator, seed, _user$project$ProbOctaveChord$probability);
 				var oc1n = _p2._0;
 				var s2 = _p2._1;
@@ -12801,7 +12817,9 @@ var _user$project$ProbOctaveChord$Model = F5(
 	function (a, b, c, d, e) {
 		return {oc1: a, oc2: b, oc3: c, oc4: d, oc5: e};
 	});
-var _user$project$ProbOctaveChord$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbOctaveChord$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbOctaveChord$Reset = {ctor: 'Reset'};
 var _user$project$ProbOctaveChord$Set = {ctor: 'Set'};
 var _user$project$ProbType$floatCreator = F2(
@@ -12823,7 +12841,7 @@ var _user$project$ProbType$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbType$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(94);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbType$floatCreator, seed, _user$project$ProbType$probability);
 				var prootn = _p2._0;
 				var s2 = _p2._1;
@@ -12849,7 +12867,9 @@ var _user$project$ProbType$Model = F4(
 	function (a, b, c, d) {
 		return {proot: a, pseveth: b, pninth: c, peleventh: d};
 	});
-var _user$project$ProbType$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbType$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbType$Reset = {ctor: 'Reset'};
 var _user$project$ProbType$Set = {ctor: 'Set'};
 var _user$project$ProbApplied$floatCreator = F2(
@@ -12871,7 +12891,7 @@ var _user$project$ProbApplied$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbApplied$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(1010);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbApplied$floatCreator, seed, _user$project$ProbApplied$probability);
 				var pac1n = _p2._0;
 				var s2 = _p2._1;
@@ -12897,7 +12917,9 @@ var _user$project$ProbApplied$Model = F4(
 	function (a, b, c, d) {
 		return {pac1: a, pac4: b, pac5: c, pac7: d};
 	});
-var _user$project$ProbApplied$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbApplied$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbApplied$Reset = {ctor: 'Reset'};
 var _user$project$ProbApplied$Set = {ctor: 'Set'};
 var _user$project$ProbRoot$floatCreator = F2(
@@ -12919,7 +12941,7 @@ var _user$project$ProbRoot$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbRoot$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(9713);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbRoot$floatCreator, seed, _user$project$ProbRoot$probability);
 				var prc1n = _p2._0;
 				var s2 = _p2._1;
@@ -12954,7 +12976,9 @@ var _user$project$ProbRoot$Model = F7(
 	function (a, b, c, d, e, f, g) {
 		return {prc1: a, prc2: b, prc3: c, prc4: d, prc5: e, prc6: f, prc7: g};
 	});
-var _user$project$ProbRoot$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbRoot$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbRoot$Reset = {ctor: 'Reset'};
 var _user$project$ProbRoot$Set = {ctor: 'Set'};
 var _user$project$ProbAddOn$floatCreator = F2(
@@ -12976,7 +13000,7 @@ var _user$project$ProbAddOn$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbAddOn$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(885);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbAddOn$floatCreator, seed, _user$project$ProbAddOn$probability);
 				var pnaon = _p2._0;
 				var s2 = _p2._1;
@@ -13005,9 +13029,150 @@ var _user$project$ProbAddOn$Model = F5(
 	function (a, b, c, d, e) {
 		return {pnao: a, psus2: b, psus4: c, pAug: d, pDim: e};
 	});
-var _user$project$ProbAddOn$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbAddOn$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbAddOn$Reset = {ctor: 'Reset'};
 var _user$project$ProbAddOn$Set = {ctor: 'Set'};
+var _user$project$SeedAd$boolCreator = F2(
+	function (seed, bg) {
+		var _p0 = A2(_elm_lang$core$Random$step, bg, seed);
+		var b = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: b, _1: s2};
+	});
+var _user$project$SeedAd$coinFlip = _elm_lang$core$Random$bool;
+var _user$project$SeedAd$initialModel = {
+	ogseed: _elm_lang$core$Random$initialSeed(0),
+	seedcore: _elm_lang$core$Random$initialSeed(0),
+	seedks: _elm_lang$core$Random$initialSeed(0),
+	seednps: _elm_lang$core$Random$initialSeed(0),
+	seedpao: _elm_lang$core$Random$initialSeed(0),
+	seedpa: _elm_lang$core$Random$initialSeed(0),
+	seedpcr: _elm_lang$core$Random$initialSeed(0),
+	seedpmr: _elm_lang$core$Random$initialSeed(0),
+	seedpoc: _elm_lang$core$Random$initialSeed(0),
+	seedpocc: _elm_lang$core$Random$initialSeed(0),
+	seedpap: _elm_lang$core$Random$initialSeed(0),
+	seedpas: _elm_lang$core$Random$initialSeed(0),
+	seedroot: _elm_lang$core$Random$initialSeed(0),
+	seedtype: _elm_lang$core$Random$initialSeed(0)
+};
+var _user$project$SeedAd$update = F2(
+	function (msg, model) {
+		var _p1 = msg;
+		if (_p1.ctor === 'Reset') {
+			return {ctor: '_Tuple2', _0: _user$project$SeedAd$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+		} else {
+			if (_elm_lang$core$Native_Utils.eq(
+				model.ogseed,
+				_elm_lang$core$Random$initialSeed(0))) {
+				var ogseedn = _elm_lang$core$Random$initialSeed(_p1._0);
+				var seedcoren = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, ogseedn, _user$project$SeedAd$coinFlip));
+				var seedksn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedcoren, _user$project$SeedAd$coinFlip));
+				var seednpsn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedksn, _user$project$SeedAd$coinFlip));
+				var seedpaon = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seednpsn, _user$project$SeedAd$coinFlip));
+				var seedpan = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpaon, _user$project$SeedAd$coinFlip));
+				var seedpcrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpan, _user$project$SeedAd$coinFlip));
+				var seedpmrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpcrn, _user$project$SeedAd$coinFlip));
+				var seedpocn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpmrn, _user$project$SeedAd$coinFlip));
+				var seedpoccn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpocn, _user$project$SeedAd$coinFlip));
+				var seedpapn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpoccn, _user$project$SeedAd$coinFlip));
+				var seedpasn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpapn, _user$project$SeedAd$coinFlip));
+				var seedrootn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpasn, _user$project$SeedAd$coinFlip));
+				var seedtypen = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedrootn, _user$project$SeedAd$coinFlip));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{ogseed: seedtypen, seedcore: seedcoren, seedks: seedksn, seednps: seednpsn, seedpao: seedpaon, seedpa: seedpan, seedpcr: seedpcrn, seedpmr: seedpmrn, seedpoc: seedpocn, seedpocc: seedpoccn, seedpap: seedpapn, seedpas: seedpasn, seedroot: seedrootn, seedtype: seedtypen}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			} else {
+				var ogseedn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, model.ogseed, _user$project$SeedAd$coinFlip));
+				var seedcoren = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, ogseedn, _user$project$SeedAd$coinFlip));
+				var seedksn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedcoren, _user$project$SeedAd$coinFlip));
+				var seednpsn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedksn, _user$project$SeedAd$coinFlip));
+				var seedpaon = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seednpsn, _user$project$SeedAd$coinFlip));
+				var seedpan = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpaon, _user$project$SeedAd$coinFlip));
+				var seedpcrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpan, _user$project$SeedAd$coinFlip));
+				var seedpmrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpcrn, _user$project$SeedAd$coinFlip));
+				var seedpocn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpmrn, _user$project$SeedAd$coinFlip));
+				var seedpoccn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpocn, _user$project$SeedAd$coinFlip));
+				var seedpapn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpoccn, _user$project$SeedAd$coinFlip));
+				var seedpasn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpapn, _user$project$SeedAd$coinFlip));
+				var seedrootn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpasn, _user$project$SeedAd$coinFlip));
+				var seedtypen = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedrootn, _user$project$SeedAd$coinFlip));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{ogseed: seedtypen, seedcore: seedcoren, seedks: seedksn, seednps: seednpsn, seedpao: seedpaon, seedpa: seedpan, seedpcr: seedpcrn, seedpmr: seedpmrn, seedpoc: seedpocn, seedpocc: seedpoccn, seedpap: seedpapn, seedpas: seedpasn, seedroot: seedrootn, seedtype: seedtypen}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			}
+		}
+	});
+var _user$project$SeedAd$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return {ogseed: a, seedcore: b, seedks: c, seednps: d, seedpao: e, seedpa: f, seedpcr: g, seedpmr: h, seedpoc: i, seedpocc: j, seedpap: k, seedpas: l, seedroot: m, seedtype: n};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
+};
+var _user$project$SeedAd$Reset = {ctor: 'Reset'};
+var _user$project$SeedAd$GetSeed = function (a) {
+	return {ctor: 'GetSeed', _0: a};
+};
 var _user$project$ResultS$initialModel = {
 	chordr: {ctor: '[]'},
 	melody: {ctor: '[]'},
@@ -13037,23 +13202,29 @@ var _user$project$ResultS$Reset = {ctor: 'Reset'};
 var _user$project$ResultS$Set = function (a) {
 	return {ctor: 'Set', _0: a};
 };
-var _user$project$Main$initialModel = {
-	seed: _elm_lang$core$Random$initialSeed(111),
-	coreval: _user$project$CoreVal$initialModel,
-	probpatternsize: _user$project$ProbPatternSize$initialModel,
-	probpatternization: _user$project$ProbPatternization$initialModel,
-	numpatzise: _user$project$Numpatsize$initialModel,
-	ksp: _user$project$KeySignature$initialModel,
-	probmr: _user$project$ProbMR$initialModel,
-	probcr: _user$project$ProbCR$initialModel,
-	proboctavemelody: _user$project$ProbOctave$initialModel,
-	proboctavechord: _user$project$ProbOctaveChord$initialModel,
-	probtypechord: _user$project$ProbType$initialModel,
-	probappliechord: _user$project$ProbApplied$initialModel,
-	probroot: _user$project$ProbRoot$initialModel,
-	probaddon: _user$project$ProbAddOn$initialModel,
-	results: _user$project$ResultS$initialModel
-};
+var _user$project$Main$myStyle = _elm_lang$html$Html_Attributes$style(
+	{
+		ctor: '::',
+		_0: {ctor: '_Tuple2', _0: 'width', _1: '100%'},
+		_1: {
+			ctor: '::',
+			_0: {ctor: '_Tuple2', _0: 'height', _1: '40px'},
+			_1: {
+				ctor: '::',
+				_0: {ctor: '_Tuple2', _0: 'padding', _1: '10px 0'},
+				_1: {
+					ctor: '::',
+					_0: {ctor: '_Tuple2', _0: 'font-size', _1: '2em'},
+					_1: {
+						ctor: '::',
+						_0: {ctor: '_Tuple2', _0: 'text-align', _1: 'center'},
+						_1: {ctor: '[]'}
+					}
+				}
+			}
+		}
+	});
+var _user$project$Main$initialModel = {seeds: _user$project$SeedAd$initialModel, coreval: _user$project$CoreVal$initialModel, probpatternsize: _user$project$ProbPatternSize$initialModel, probpatternization: _user$project$ProbPatternization$initialModel, numpatzise: _user$project$Numpatsize$initialModel, ksp: _user$project$KeySignature$initialModel, probmr: _user$project$ProbMR$initialModel, probcr: _user$project$ProbCR$initialModel, proboctavemelody: _user$project$ProbOctave$initialModel, proboctavechord: _user$project$ProbOctaveChord$initialModel, probtypechord: _user$project$ProbType$initialModel, probappliechord: _user$project$ProbApplied$initialModel, probroot: _user$project$ProbRoot$initialModel, probaddon: _user$project$ProbAddOn$initialModel, results: _user$project$ResultS$initialModel};
 var _user$project$Main$Model = function (a) {
 	return function (b) {
 		return function (c) {
@@ -13069,7 +13240,7 @@ var _user$project$Main$Model = function (a) {
 												return function (m) {
 													return function (n) {
 														return function (o) {
-															return {seed: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
+															return {seeds: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
 														};
 													};
 												};
@@ -13087,7 +13258,12 @@ var _user$project$Main$Model = function (a) {
 };
 var _user$project$Main$Generate = {ctor: 'Generate'};
 var _user$project$Main$Default = {ctor: 'Default'};
-var _user$project$Main$Randomize = {ctor: 'Randomize'};
+var _user$project$Main$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
+var _user$project$Main$Randin = function (a) {
+	return {ctor: 'Randin', _0: a};
+};
 var _user$project$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -13095,26 +13271,34 @@ var _user$project$Main$view = function (model) {
 		{
 			ctor: '::',
 			_0: A2(
-				_elm_lang$html$Html$button,
+				_elm_lang$html$Html$input,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Randomize),
-					_1: {ctor: '[]'}
+					_0: _elm_lang$html$Html_Attributes$placeholder('Enter a number as seed'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$html$Html_Events$onInput(_user$project$Main$Randin),
+						_1: {
+							ctor: '::',
+							_0: _user$project$Main$myStyle,
+							_1: {ctor: '[]'}
+						}
+					}
 				},
-				{
-					ctor: '::',
-					_0: _elm_lang$html$Html$text('Randomize'),
-					_1: {ctor: '[]'}
-				}),
+				{ctor: '[]'}),
 			_1: {
 				ctor: '::',
 				_0: A2(
-					_elm_lang$html$Html$p,
-					{ctor: '[]'},
+					_elm_lang$html$Html$button,
 					{
 						ctor: '::',
-						_0: _elm_lang$html$Html$text(
-							_elm_lang$core$Basics$toString(model)),
+						_0: _elm_lang$html$Html_Events$onClick(
+							_user$project$Main$Randomize(5)),
+						_1: {ctor: '[]'}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$html$Html$text('Randomize'),
 						_1: {ctor: '[]'}
 					}),
 				_1: {
@@ -13123,18 +13307,52 @@ var _user$project$Main$view = function (model) {
 						_elm_lang$html$Html$button,
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Generate),
+							_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Default),
 							_1: {ctor: '[]'}
 						},
 						{
 							ctor: '::',
-							_0: _elm_lang$html$Html$text('Generate'),
+							_0: _elm_lang$html$Html$text('Default'),
 							_1: {ctor: '[]'}
 						}),
-					_1: {ctor: '[]'}
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$html$Html$p,
+							{
+								ctor: '::',
+								_0: _user$project$Main$myStyle,
+								_1: {ctor: '[]'}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$html$Html$text(
+									_elm_lang$core$Basics$toString(model.results)),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$html$Html$button,
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Generate),
+									_1: {ctor: '[]'}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$html$Html$text('Generate'),
+									_1: {ctor: '[]'}
+								}),
+							_1: {ctor: '[]'}
+						}
+					}
 				}
 			}
 		});
+};
+var _user$project$Main$SeedAdMsg = function (a) {
+	return {ctor: 'SeedAdMsg', _0: a};
 };
 var _user$project$Main$ResultSMsg = function (a) {
 	return {ctor: 'ResultSMsg', _0: a};
@@ -13366,10 +13584,24 @@ var _user$project$Main$update = F2(
 							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbAddOnMsg, subCmd),
 							_1: {ctor: '[]'}
 						});
-				case 'ResultSMsg':
-					var _p14 = A2(_user$project$ResultS$update, _p0._0, model.results);
+				case 'SeedAdMsg':
+					var _p14 = A2(_user$project$SeedAd$update, _p0._0, model.seeds);
 					var subMod = _p14._0;
 					var subCmd = _p14._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{seeds: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$SeedAdMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ResultSMsg':
+					var _p15 = A2(_user$project$ResultS$update, _p0._0, model.results);
+					var subMod = _p15._0;
+					var subCmd = _p15._1;
 					return A2(
 						_elm_lang$core$Platform_Cmd_ops['!'],
 						_elm_lang$core$Native_Utils.update(
@@ -13381,58 +13613,86 @@ var _user$project$Main$update = F2(
 							_1: {ctor: '[]'}
 						});
 				case 'Randomize':
-					var _v1 = _user$project$Main$ProbAddOnMsg(_user$project$ProbAddOn$Randomize),
+					var _v1 = _user$project$Main$ProbAddOnMsg(
+						_user$project$ProbAddOn$Randomize(model.seeds.seedpao)),
 						_v2 = _elm_lang$core$Tuple$first(
 						A2(
 							_user$project$Main$update,
-							_user$project$Main$ProbRootMsg(_user$project$ProbRoot$Randomize),
+							_user$project$Main$ProbRootMsg(
+								_user$project$ProbRoot$Randomize(model.seeds.seedroot)),
 							_elm_lang$core$Tuple$first(
 								A2(
 									_user$project$Main$update,
-									_user$project$Main$ProbApChordMsg(_user$project$ProbApplied$Randomize),
+									_user$project$Main$ProbApChordMsg(
+										_user$project$ProbApplied$Randomize(model.seeds.seedpa)),
 									_elm_lang$core$Tuple$first(
 										A2(
 											_user$project$Main$update,
-											_user$project$Main$ProbTypeChordMsg(_user$project$ProbType$Randomize),
+											_user$project$Main$ProbTypeChordMsg(
+												_user$project$ProbType$Randomize(model.seeds.seedtype)),
 											_elm_lang$core$Tuple$first(
 												A2(
 													_user$project$Main$update,
-													_user$project$Main$ProbOcChordMsg(_user$project$ProbOctaveChord$Randomize),
+													_user$project$Main$ProbOcChordMsg(
+														_user$project$ProbOctaveChord$Randomize(model.seeds.seedpocc)),
 													_elm_lang$core$Tuple$first(
 														A2(
 															_user$project$Main$update,
-															_user$project$Main$ProbOcMelMsg(_user$project$ProbOctave$Randomize),
+															_user$project$Main$ProbOcMelMsg(
+																_user$project$ProbOctave$Randomize(model.seeds.seedpoc)),
 															_elm_lang$core$Tuple$first(
 																A2(
 																	_user$project$Main$update,
-																	_user$project$Main$ProbcrMsg(_user$project$ProbCR$Randomize),
+																	_user$project$Main$ProbcrMsg(
+																		_user$project$ProbCR$Randomize(model.seeds.seedpcr)),
 																	_elm_lang$core$Tuple$first(
 																		A2(
 																			_user$project$Main$update,
-																			_user$project$Main$ProbmrMsg(_user$project$ProbMR$Randomize),
+																			_user$project$Main$ProbmrMsg(
+																				_user$project$ProbMR$Randomize(model.seeds.seedpmr)),
 																			_elm_lang$core$Tuple$first(
 																				A2(
 																					_user$project$Main$update,
-																					_user$project$Main$KSPMsg(_user$project$KeySignature$Randomize),
+																					_user$project$Main$KSPMsg(
+																						_user$project$KeySignature$Randomize(model.seeds.seedks)),
 																					_elm_lang$core$Tuple$first(
 																						A2(
 																							_user$project$Main$update,
-																							_user$project$Main$NumPatSizeMsg(_user$project$Numpatsize$Randomize),
+																							_user$project$Main$NumPatSizeMsg(
+																								_user$project$Numpatsize$Randomize(model.seeds.seednps)),
 																							_elm_lang$core$Tuple$first(
 																								A2(
 																									_user$project$Main$update,
-																									_user$project$Main$ProbPatizeMsg(_user$project$ProbPatternization$Randomize),
+																									_user$project$Main$ProbPatizeMsg(
+																										_user$project$ProbPatternization$Randomize(model.seeds.seedpap)),
 																									_elm_lang$core$Tuple$first(
 																										A2(
 																											_user$project$Main$update,
-																											_user$project$Main$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
+																											_user$project$Main$ProbPatSizeMsg(
+																												_user$project$ProbPatternSize$Randomize(model.seeds.seedpas)),
 																											_elm_lang$core$Tuple$first(
 																												A2(
 																													_user$project$Main$update,
-																													_user$project$Main$CoreValMsg(_user$project$CoreVal$Randomize),
-																													model))))))))))))))))))))))));
+																													_user$project$Main$CoreValMsg(
+																														_user$project$CoreVal$Randomize(model.seeds.seedcore)),
+																													_elm_lang$core$Tuple$first(
+																														A2(
+																															_user$project$Main$update,
+																															_user$project$Main$SeedAdMsg(
+																																_user$project$SeedAd$GetSeed(_p0._0)),
+																															model))))))))))))))))))))))))));
 					msg = _v1;
 					model = _v2;
+					continue update;
+				case 'Randin':
+					var is = A2(
+						_elm_lang$core$Result$withDefault,
+						0,
+						_elm_lang$core$String$toInt(_p0._0));
+					var _v3 = _user$project$Main$Randomize(is),
+						_v4 = model;
+					msg = _v3;
+					model = _v4;
 					continue update;
 				case 'Generate':
 					var t = _user$project$MusicMakerProject$mmk(
@@ -13441,15 +13701,16 @@ var _user$project$Main$update = F2(
 						{prc: model.coreval.prc})(model.proboctavemelody)(model.probaddon)(model.probroot)(model.probappliechord)(model.probtypechord)(model.probcr)(model.probmr)(model.ksp)(
 						{ctor: '[]'})(
 						{ok: model.coreval.ok})(
-						{ik: model.coreval.ik})(model.seed);
-					var _v3 = _user$project$Main$ResultSMsg(
+						{ik: model.coreval.ik})(
+						_elm_lang$core$Random$initialSeed(1));
+					var _v5 = _user$project$Main$ResultSMsg(
 						_user$project$ResultS$Set(t)),
-						_v4 = model;
-					msg = _v3;
-					model = _v4;
+						_v6 = model;
+					msg = _v5;
+					model = _v6;
 					continue update;
 				default:
-					return {ctor: '_Tuple2', _0: model, _1: _elm_lang$core$Platform_Cmd$none};
+					return {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			}
 		}
 	});
@@ -13458,7 +13719,7 @@ var _user$project$Main$main = _elm_lang$html$Html$program(
 		init: {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none},
 		view: _user$project$Main$view,
 		update: _user$project$Main$update,
-		subscriptions: function (_p15) {
+		subscriptions: function (_p16) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();
