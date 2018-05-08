@@ -76,6 +76,7 @@ type Msg
   | ProbAddOnMsg ProbAddOn.Msg
   | ResultSMsg ResultS.Msg
   | SeedAdMsg SeedAd.Msg
+  | Randin String
   | Randomize Int
   | Default
   | Generate
@@ -177,17 +178,33 @@ update msg model = case msg of
     update (ProbApChordMsg (ProbApplied.Randomize model.seeds.seedpa)) |> Tuple.first |>
     update (ProbRootMsg (ProbRoot.Randomize model.seeds.seedroot)) |> Tuple.first |>
     update (ProbAddOnMsg (ProbAddOn.Randomize model.seeds.seedpao))
+  Randin stoint ->
+    let is = Result.withDefault 0 (String.toInt stoint) in
+    update (Randomize is) model
   Generate ->
     let t =
       MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} (Random.initialSeed 1) in
     update (ResultSMsg (ResultS.Set t)) model
-  _ ->
-    (model,Cmd.none)
+  Default ->
+    (initialModel,Cmd.none)
+--  _ ->
+--    (model,Cmd.none)
 
 view : Model -> Html Msg
 view model =
-  Html.div [] [button [ onClick (Randomize 5)] [text "Randomize"]
-              ,Html.p [] [Html.text (toString model)]
+  Html.div [] [input [ placeholder "Enter a number as seed", onInput Randin , myStyle ] []
+              ,button [ onClick (Randomize 5)] [text "Randomize"]
+              ,button [ onClick (Default)] [text "Default"]
+              ,Html.p [myStyle] [Html.text (toString model.results)]
               --,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
               ,button [ onClick Generate ] [text "Generate"]
               ]
+
+myStyle =
+  style
+    [ ("width", "100%")
+    , ("height", "40px")
+    , ("padding", "10px 0")
+    , ("font-size", "2em")
+    , ("text-align", "center")
+    ]
