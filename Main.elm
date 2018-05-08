@@ -16,6 +16,7 @@ import ProbType exposing (..)
 import ProbApplied exposing (..)
 import ProbRoot exposing (..)
 import ProbAddOn exposing (..)
+import SeedAd exposing (..)
 import ResultS exposing (..)
 --
 import Html exposing (..)
@@ -42,7 +43,7 @@ main =
 
 type alias Model =
   {
-    seed : Seed,
+    seeds : SeedAd.Model,
     coreval : CoreVal.Model,
     probpatternsize : ProbPatternSize.Model,
     probpatternization : ProbPatternization.Model,
@@ -74,14 +75,15 @@ type Msg
   | ProbRootMsg ProbRoot.Msg
   | ProbAddOnMsg ProbAddOn.Msg
   | ResultSMsg ResultS.Msg
-  | Randomize
+  | SeedAdMsg SeedAd.Msg
+  | Randomize Int
   | Default
   | Generate
 
 initialModel : Model
 initialModel =
   {
-    seed = Random.initialSeed 111,
+    seeds = SeedAd.initialModel,
     coreval = CoreVal.initialModel,
     probpatternsize = ProbPatternSize.initialModel,
     probpatternization = ProbPatternization.initialModel,
@@ -152,34 +154,39 @@ update msg model = case msg of
     let (subMod,subCmd) = ProbAddOn.update m model.probaddon in
     { model | probaddon = subMod }
                     ! [ Cmd.map ProbAddOnMsg subCmd ]
+  SeedAdMsg m ->
+    let (subMod,subCmd) = SeedAd.update m model.seeds in
+    { model | seeds = subMod }
+                    ! [ Cmd.map SeedAdMsg subCmd ]
   ResultSMsg m ->
     let (subMod,subCmd) = ResultS.update m model.results in
     { model | results = subMod }
                     ! [ Cmd.map ResultSMsg subCmd ]
-  Randomize ->
-    update (CoreValMsg CoreVal.Randomize) model |> Tuple.first |>
-    update (ProbPatSizeMsg ProbPatternSize.Randomize) |> Tuple.first |>
-    update (ProbPatizeMsg ProbPatternization.Randomize) |> Tuple.first |>
-    update (NumPatSizeMsg Numpatsize.Randomize) |> Tuple.first |>
-    update (KSPMsg KeySignature.Randomize) |> Tuple.first |>
-    update (ProbmrMsg ProbMR.Randomize) |> Tuple.first |>
-    update (ProbcrMsg ProbCR.Randomize) |> Tuple.first |>
-    update (ProbOcMelMsg ProbOctave.Randomize) |> Tuple.first |>
-    update (ProbOcChordMsg ProbOctaveChord.Randomize) |> Tuple.first |>
-    update (ProbTypeChordMsg ProbType.Randomize) |> Tuple.first |>
-    update (ProbApChordMsg ProbApplied.Randomize) |> Tuple.first |>
-    update (ProbRootMsg ProbRoot.Randomize) |> Tuple.first |>
-    update (ProbAddOnMsg ProbAddOn.Randomize)
+  Randomize iseed->
+    update (SeedAdMsg (SeedAd.GetSeed iseed)) model |> Tuple.first |>
+    update (CoreValMsg (CoreVal.Randomize model.seeds.seedcore)) |> Tuple.first |>
+    update (ProbPatSizeMsg (ProbPatternSize.Randomize model.seeds.seedpas)) |> Tuple.first |>
+    update (ProbPatizeMsg (ProbPatternization.Randomize model.seeds.seedpap)) |> Tuple.first |>
+    update (NumPatSizeMsg (Numpatsize.Randomize model.seeds.seednps)) |> Tuple.first |>
+    update (KSPMsg (KeySignature.Randomize model.seeds.seedks)) |> Tuple.first |>
+    update (ProbmrMsg (ProbMR.Randomize model.seeds.seedpmr)) |> Tuple.first |>
+    update (ProbcrMsg (ProbCR.Randomize model.seeds.seedpcr)) |> Tuple.first |>
+    update (ProbOcMelMsg (ProbOctave.Randomize model.seeds.seedpoc)) |> Tuple.first |>
+    update (ProbOcChordMsg (ProbOctaveChord.Randomize model.seeds.seedpocc)) |> Tuple.first |>
+    update (ProbTypeChordMsg (ProbType.Randomize model.seeds.seedtype)) |> Tuple.first |>
+    update (ProbApChordMsg (ProbApplied.Randomize model.seeds.seedpa)) |> Tuple.first |>
+    update (ProbRootMsg (ProbRoot.Randomize model.seeds.seedroot)) |> Tuple.first |>
+    update (ProbAddOnMsg (ProbAddOn.Randomize model.seeds.seedpao))
   Generate ->
     let t =
-      MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} model.seed in
+      MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} (Random.initialSeed 1) in
     update (ResultSMsg (ResultS.Set t)) model
   _ ->
     (model,Cmd.none)
 
 view : Model -> Html Msg
 view model =
-  Html.div [] [button [ onClick Randomize ] [text "Randomize"]
+  Html.div [] [button [ onClick (Randomize 5)] [text "Randomize"]
               ,Html.p [] [Html.text (toString model)]
               --,Html.div [] [Html.text (toString (ProbPatternSize.getVal model.probpatternsize))]
               ,button [ onClick Generate ] [text "Generate"]

@@ -18,7 +18,7 @@ init : (Model,Cmd Msg)
 init = (initialModel, Cmd.none)
 
 type Msg =
-  Set | Reset | Randomize
+  Set | Reset | Randomize Seed
 
 intCreator : Seed -> Generator Int -> (Int,Seed)
 intCreator seed ig =
@@ -32,9 +32,9 @@ update : Msg -> Model -> (Model,Cmd Msg)
 update msg model = case msg of
   Set -> (model,Cmd.none)
   Reset -> (initialModel,Cmd.none)
-  Randomize ->
+  Randomize s ->
     let
-      seed = Random.initialSeed 132
+      seed = s
       (key1n,s2) = intCreator seed intGen
     in case key1n of
       1 -> (MMP.A,Cmd.none)

@@ -53,7 +53,7 @@ var _user$project$ProbPatternSize$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternSize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(3221);
+				var seed = _p3._0;
 				var _p4 = A2(_user$project$ProbPatternSize$floatCreator, seed, _user$project$ProbPatternSize$probability);
 				var p4n = _p4._0;
 				var s2 = _p4._1;
@@ -91,6 +91,8 @@ var _user$project$ProbPatternSize$Model = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {p4: a, p8: b, p12: c, p16: d, p32: e, p64: f, p128: g, p256: h};
 	});
-var _user$project$ProbPatternSize$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbPatternSize$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbPatternSize$Reset = {ctor: 'Reset'};
 var _user$project$ProbPatternSize$Set = {ctor: 'Set'};

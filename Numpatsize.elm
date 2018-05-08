@@ -42,15 +42,15 @@ intCreator seed ig =
   (i,s2)
 
 type Msg =
-  Set | Reset | Randomize
+  Set | Reset | Randomize Seed
 
 update : Msg -> Model -> (Model,Cmd Msg)
 update msg model = case msg of
   Set -> (model,Cmd.none)
   Reset -> (initialModel,Cmd.none)
-  Randomize ->
+  Randomize s->
     let
-      seed = Random.initialSeed 8
+      seed = s
       (n4n,s2) = intCreator seed intGenerator
       (n8n,s3) = intCreator s2 intGenerator
       (n12n,s4) = intCreator s3 intGenerator

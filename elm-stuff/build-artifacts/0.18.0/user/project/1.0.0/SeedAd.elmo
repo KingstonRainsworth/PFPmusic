@@ -1,31 +1,139 @@
-var _user$project$SeedAd$view = function (model) {
-	return A2(
-		_elm_lang$html$Html$div,
-		{ctor: '[]'},
-		{
-			ctor: '::',
-			_0: _elm_lang$html$Html$text(
-				_elm_lang$core$Basics$toString(model)),
-			_1: {ctor: '[]'}
-		});
-};
-var _user$project$SeedAd$getTimeF = function (model) {
-	return _elm_lang$core$Basics$round(model);
+var _user$project$SeedAd$boolCreator = F2(
+	function (seed, bg) {
+		var _p0 = A2(_elm_lang$core$Random$step, bg, seed);
+		var b = _p0._0;
+		var s2 = _p0._1;
+		return {ctor: '_Tuple2', _0: b, _1: s2};
+	});
+var _user$project$SeedAd$coinFlip = _elm_lang$core$Random$bool;
+var _user$project$SeedAd$initialModel = {
+	ogseed: _elm_lang$core$Random$initialSeed(0),
+	seedcore: _elm_lang$core$Random$initialSeed(0),
+	seedks: _elm_lang$core$Random$initialSeed(0),
+	seednps: _elm_lang$core$Random$initialSeed(0),
+	seedpao: _elm_lang$core$Random$initialSeed(0),
+	seedpa: _elm_lang$core$Random$initialSeed(0),
+	seedpcr: _elm_lang$core$Random$initialSeed(0),
+	seedpmr: _elm_lang$core$Random$initialSeed(0),
+	seedpoc: _elm_lang$core$Random$initialSeed(0),
+	seedpocc: _elm_lang$core$Random$initialSeed(0),
+	seedpap: _elm_lang$core$Random$initialSeed(0),
+	seedpas: _elm_lang$core$Random$initialSeed(0),
+	seedroot: _elm_lang$core$Random$initialSeed(0),
+	seedtype: _elm_lang$core$Random$initialSeed(0)
 };
 var _user$project$SeedAd$update = F2(
-	function (_p0, model) {
-		var _p1 = _p0;
-		return {ctor: '_Tuple2', _0: _p1._0, _1: _elm_lang$core$Platform_Cmd$none};
+	function (msg, model) {
+		var _p1 = msg;
+		if (_p1.ctor === 'Reset') {
+			return {ctor: '_Tuple2', _0: _user$project$SeedAd$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
+		} else {
+			if (_elm_lang$core$Native_Utils.eq(
+				model.ogseed,
+				_elm_lang$core$Random$initialSeed(0))) {
+				var ogseedn = _elm_lang$core$Random$initialSeed(_p1._0);
+				var seedcoren = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, ogseedn, _user$project$SeedAd$coinFlip));
+				var seedksn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedcoren, _user$project$SeedAd$coinFlip));
+				var seednpsn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedksn, _user$project$SeedAd$coinFlip));
+				var seedpaon = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seednpsn, _user$project$SeedAd$coinFlip));
+				var seedpan = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpaon, _user$project$SeedAd$coinFlip));
+				var seedpcrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpan, _user$project$SeedAd$coinFlip));
+				var seedpmrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpcrn, _user$project$SeedAd$coinFlip));
+				var seedpocn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpmrn, _user$project$SeedAd$coinFlip));
+				var seedpoccn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpocn, _user$project$SeedAd$coinFlip));
+				var seedpapn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpoccn, _user$project$SeedAd$coinFlip));
+				var seedpasn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpapn, _user$project$SeedAd$coinFlip));
+				var seedrootn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpasn, _user$project$SeedAd$coinFlip));
+				var seedtypen = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedrootn, _user$project$SeedAd$coinFlip));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{ogseed: seedtypen, seedcore: seedcoren, seedks: seedksn, seednps: seednpsn, seedpao: seedpaon, seedpa: seedpan, seedpcr: seedpcrn, seedpmr: seedpmrn, seedpoc: seedpocn, seedpocc: seedpoccn, seedpap: seedpapn, seedpas: seedpasn, seedroot: seedrootn, seedtype: seedtypen}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			} else {
+				var ogseedn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, model.ogseed, _user$project$SeedAd$coinFlip));
+				var seedcoren = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, ogseedn, _user$project$SeedAd$coinFlip));
+				var seedksn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedcoren, _user$project$SeedAd$coinFlip));
+				var seednpsn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedksn, _user$project$SeedAd$coinFlip));
+				var seedpaon = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seednpsn, _user$project$SeedAd$coinFlip));
+				var seedpan = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpaon, _user$project$SeedAd$coinFlip));
+				var seedpcrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpan, _user$project$SeedAd$coinFlip));
+				var seedpmrn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpcrn, _user$project$SeedAd$coinFlip));
+				var seedpocn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpmrn, _user$project$SeedAd$coinFlip));
+				var seedpoccn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpocn, _user$project$SeedAd$coinFlip));
+				var seedpapn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpoccn, _user$project$SeedAd$coinFlip));
+				var seedpasn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpapn, _user$project$SeedAd$coinFlip));
+				var seedrootn = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedpasn, _user$project$SeedAd$coinFlip));
+				var seedtypen = _elm_lang$core$Tuple$second(
+					A2(_user$project$SeedAd$boolCreator, seedrootn, _user$project$SeedAd$coinFlip));
+				return {
+					ctor: '_Tuple2',
+					_0: _elm_lang$core$Native_Utils.update(
+						model,
+						{ogseed: seedtypen, seedcore: seedcoren, seedks: seedksn, seednps: seednpsn, seedpao: seedpaon, seedpa: seedpan, seedpcr: seedpcrn, seedpmr: seedpmrn, seedpoc: seedpocn, seedpocc: seedpoccn, seedpap: seedpapn, seedpas: seedpasn, seedroot: seedrootn, seedtype: seedtypen}),
+					_1: _elm_lang$core$Platform_Cmd$none
+				};
+			}
+		}
 	});
-var _user$project$SeedAd$OnTime = function (a) {
-	return {ctor: 'OnTime', _0: a};
+var _user$project$SeedAd$Model = function (a) {
+	return function (b) {
+		return function (c) {
+			return function (d) {
+				return function (e) {
+					return function (f) {
+						return function (g) {
+							return function (h) {
+								return function (i) {
+									return function (j) {
+										return function (k) {
+											return function (l) {
+												return function (m) {
+													return function (n) {
+														return {ogseed: a, seedcore: b, seedks: c, seednps: d, seedpao: e, seedpa: f, seedpcr: g, seedpmr: h, seedpoc: i, seedpocc: j, seedpap: k, seedpas: l, seedroot: m, seedtype: n};
+													};
+												};
+											};
+										};
+									};
+								};
+							};
+						};
+					};
+				};
+			};
+		};
+	};
 };
-var _user$project$SeedAd$getTime = A2(_elm_lang$core$Task$perform, _user$project$SeedAd$OnTime, _elm_lang$core$Time$now);
-var _user$project$SeedAd$initialModel = {ctor: '_Tuple2', _0: 0, _1: _user$project$SeedAd$getTime};
-var _user$project$SeedAd$main = _elm_lang$html$Html$program(
-	{
-		init: _user$project$SeedAd$initialModel,
-		update: _user$project$SeedAd$update,
-		view: _user$project$SeedAd$view,
-		subscriptions: _elm_lang$core$Basics$always(_elm_lang$core$Platform_Sub$none)
-	})();
+var _user$project$SeedAd$Reset = {ctor: 'Reset'};
+var _user$project$SeedAd$GetSeed = function (a) {
+	return {ctor: 'GetSeed', _0: a};
+};

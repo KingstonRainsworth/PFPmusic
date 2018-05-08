@@ -17,7 +17,7 @@ var _user$project$ProbPatternization$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbPatternization$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(7);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbPatternization$floatCreator, seed, _user$project$ProbPatternization$probability);
 				var pz4n = _p2._0;
 				var s2 = _p2._1;
@@ -52,6 +52,8 @@ var _user$project$ProbPatternization$Model = F7(
 	function (a, b, c, d, e, f, g) {
 		return {pz4: a, pz8: b, pz12: c, pz16: d, pz32: e, pz64: f, pz128: g};
 	});
-var _user$project$ProbPatternization$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbPatternization$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbPatternization$Reset = {ctor: 'Reset'};
 var _user$project$ProbPatternization$Set = {ctor: 'Set'};

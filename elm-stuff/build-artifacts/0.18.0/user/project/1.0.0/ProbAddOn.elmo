@@ -17,7 +17,7 @@ var _user$project$ProbAddOn$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbAddOn$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(885);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbAddOn$floatCreator, seed, _user$project$ProbAddOn$probability);
 				var pnaon = _p2._0;
 				var s2 = _p2._1;
@@ -46,6 +46,8 @@ var _user$project$ProbAddOn$Model = F5(
 	function (a, b, c, d, e) {
 		return {pnao: a, psus2: b, psus4: c, pAug: d, pDim: e};
 	});
-var _user$project$ProbAddOn$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbAddOn$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbAddOn$Reset = {ctor: 'Reset'};
 var _user$project$ProbAddOn$Set = {ctor: 'Set'};

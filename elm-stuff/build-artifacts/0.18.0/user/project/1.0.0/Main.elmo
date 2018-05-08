@@ -1,20 +1,4 @@
-var _user$project$Main$initialModel = {
-	seed: _elm_lang$core$Random$initialSeed(111),
-	coreval: _user$project$CoreVal$initialModel,
-	probpatternsize: _user$project$ProbPatternSize$initialModel,
-	probpatternization: _user$project$ProbPatternization$initialModel,
-	numpatzise: _user$project$Numpatsize$initialModel,
-	ksp: _user$project$KeySignature$initialModel,
-	probmr: _user$project$ProbMR$initialModel,
-	probcr: _user$project$ProbCR$initialModel,
-	proboctavemelody: _user$project$ProbOctave$initialModel,
-	proboctavechord: _user$project$ProbOctaveChord$initialModel,
-	probtypechord: _user$project$ProbType$initialModel,
-	probappliechord: _user$project$ProbApplied$initialModel,
-	probroot: _user$project$ProbRoot$initialModel,
-	probaddon: _user$project$ProbAddOn$initialModel,
-	results: _user$project$ResultS$initialModel
-};
+var _user$project$Main$initialModel = {seeds: _user$project$SeedAd$initialModel, coreval: _user$project$CoreVal$initialModel, probpatternsize: _user$project$ProbPatternSize$initialModel, probpatternization: _user$project$ProbPatternization$initialModel, numpatzise: _user$project$Numpatsize$initialModel, ksp: _user$project$KeySignature$initialModel, probmr: _user$project$ProbMR$initialModel, probcr: _user$project$ProbCR$initialModel, proboctavemelody: _user$project$ProbOctave$initialModel, proboctavechord: _user$project$ProbOctaveChord$initialModel, probtypechord: _user$project$ProbType$initialModel, probappliechord: _user$project$ProbApplied$initialModel, probroot: _user$project$ProbRoot$initialModel, probaddon: _user$project$ProbAddOn$initialModel, results: _user$project$ResultS$initialModel};
 var _user$project$Main$Model = function (a) {
 	return function (b) {
 		return function (c) {
@@ -30,7 +14,7 @@ var _user$project$Main$Model = function (a) {
 												return function (m) {
 													return function (n) {
 														return function (o) {
-															return {seed: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
+															return {seeds: a, coreval: b, probpatternsize: c, probpatternization: d, numpatzise: e, ksp: f, probmr: g, probcr: h, proboctavemelody: i, proboctavechord: j, probtypechord: k, probappliechord: l, probroot: m, probaddon: n, results: o};
 														};
 													};
 												};
@@ -48,7 +32,9 @@ var _user$project$Main$Model = function (a) {
 };
 var _user$project$Main$Generate = {ctor: 'Generate'};
 var _user$project$Main$Default = {ctor: 'Default'};
-var _user$project$Main$Randomize = {ctor: 'Randomize'};
+var _user$project$Main$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$Main$view = function (model) {
 	return A2(
 		_elm_lang$html$Html$div,
@@ -59,7 +45,8 @@ var _user$project$Main$view = function (model) {
 				_elm_lang$html$Html$button,
 				{
 					ctor: '::',
-					_0: _elm_lang$html$Html_Events$onClick(_user$project$Main$Randomize),
+					_0: _elm_lang$html$Html_Events$onClick(
+						_user$project$Main$Randomize(5)),
 					_1: {ctor: '[]'}
 				},
 				{
@@ -96,6 +83,9 @@ var _user$project$Main$view = function (model) {
 				}
 			}
 		});
+};
+var _user$project$Main$SeedAdMsg = function (a) {
+	return {ctor: 'SeedAdMsg', _0: a};
 };
 var _user$project$Main$ResultSMsg = function (a) {
 	return {ctor: 'ResultSMsg', _0: a};
@@ -327,10 +317,24 @@ var _user$project$Main$update = F2(
 							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$ProbAddOnMsg, subCmd),
 							_1: {ctor: '[]'}
 						});
-				case 'ResultSMsg':
-					var _p14 = A2(_user$project$ResultS$update, _p0._0, model.results);
+				case 'SeedAdMsg':
+					var _p14 = A2(_user$project$SeedAd$update, _p0._0, model.seeds);
 					var subMod = _p14._0;
 					var subCmd = _p14._1;
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{seeds: subMod}),
+						{
+							ctor: '::',
+							_0: A2(_elm_lang$core$Platform_Cmd$map, _user$project$Main$SeedAdMsg, subCmd),
+							_1: {ctor: '[]'}
+						});
+				case 'ResultSMsg':
+					var _p15 = A2(_user$project$ResultS$update, _p0._0, model.results);
+					var subMod = _p15._0;
+					var subCmd = _p15._1;
 					return A2(
 						_elm_lang$core$Platform_Cmd_ops['!'],
 						_elm_lang$core$Native_Utils.update(
@@ -342,56 +346,74 @@ var _user$project$Main$update = F2(
 							_1: {ctor: '[]'}
 						});
 				case 'Randomize':
-					var _v1 = _user$project$Main$ProbAddOnMsg(_user$project$ProbAddOn$Randomize),
+					var _v1 = _user$project$Main$ProbAddOnMsg(
+						_user$project$ProbAddOn$Randomize(model.seeds.seedpao)),
 						_v2 = _elm_lang$core$Tuple$first(
 						A2(
 							_user$project$Main$update,
-							_user$project$Main$ProbRootMsg(_user$project$ProbRoot$Randomize),
+							_user$project$Main$ProbRootMsg(
+								_user$project$ProbRoot$Randomize(model.seeds.seedroot)),
 							_elm_lang$core$Tuple$first(
 								A2(
 									_user$project$Main$update,
-									_user$project$Main$ProbApChordMsg(_user$project$ProbApplied$Randomize),
+									_user$project$Main$ProbApChordMsg(
+										_user$project$ProbApplied$Randomize(model.seeds.seedpa)),
 									_elm_lang$core$Tuple$first(
 										A2(
 											_user$project$Main$update,
-											_user$project$Main$ProbTypeChordMsg(_user$project$ProbType$Randomize),
+											_user$project$Main$ProbTypeChordMsg(
+												_user$project$ProbType$Randomize(model.seeds.seedtype)),
 											_elm_lang$core$Tuple$first(
 												A2(
 													_user$project$Main$update,
-													_user$project$Main$ProbOcChordMsg(_user$project$ProbOctaveChord$Randomize),
+													_user$project$Main$ProbOcChordMsg(
+														_user$project$ProbOctaveChord$Randomize(model.seeds.seedpocc)),
 													_elm_lang$core$Tuple$first(
 														A2(
 															_user$project$Main$update,
-															_user$project$Main$ProbOcMelMsg(_user$project$ProbOctave$Randomize),
+															_user$project$Main$ProbOcMelMsg(
+																_user$project$ProbOctave$Randomize(model.seeds.seedpoc)),
 															_elm_lang$core$Tuple$first(
 																A2(
 																	_user$project$Main$update,
-																	_user$project$Main$ProbcrMsg(_user$project$ProbCR$Randomize),
+																	_user$project$Main$ProbcrMsg(
+																		_user$project$ProbCR$Randomize(model.seeds.seedpcr)),
 																	_elm_lang$core$Tuple$first(
 																		A2(
 																			_user$project$Main$update,
-																			_user$project$Main$ProbmrMsg(_user$project$ProbMR$Randomize),
+																			_user$project$Main$ProbmrMsg(
+																				_user$project$ProbMR$Randomize(model.seeds.seedpmr)),
 																			_elm_lang$core$Tuple$first(
 																				A2(
 																					_user$project$Main$update,
-																					_user$project$Main$KSPMsg(_user$project$KeySignature$Randomize),
+																					_user$project$Main$KSPMsg(
+																						_user$project$KeySignature$Randomize(model.seeds.seedks)),
 																					_elm_lang$core$Tuple$first(
 																						A2(
 																							_user$project$Main$update,
-																							_user$project$Main$NumPatSizeMsg(_user$project$Numpatsize$Randomize),
+																							_user$project$Main$NumPatSizeMsg(
+																								_user$project$Numpatsize$Randomize(model.seeds.seednps)),
 																							_elm_lang$core$Tuple$first(
 																								A2(
 																									_user$project$Main$update,
-																									_user$project$Main$ProbPatizeMsg(_user$project$ProbPatternization$Randomize),
+																									_user$project$Main$ProbPatizeMsg(
+																										_user$project$ProbPatternization$Randomize(model.seeds.seedpap)),
 																									_elm_lang$core$Tuple$first(
 																										A2(
 																											_user$project$Main$update,
-																											_user$project$Main$ProbPatSizeMsg(_user$project$ProbPatternSize$Randomize),
+																											_user$project$Main$ProbPatSizeMsg(
+																												_user$project$ProbPatternSize$Randomize(model.seeds.seedpas)),
 																											_elm_lang$core$Tuple$first(
 																												A2(
 																													_user$project$Main$update,
-																													_user$project$Main$CoreValMsg(_user$project$CoreVal$Randomize),
-																													model))))))))))))))))))))))));
+																													_user$project$Main$CoreValMsg(
+																														_user$project$CoreVal$Randomize(model.seeds.seedcore)),
+																													_elm_lang$core$Tuple$first(
+																														A2(
+																															_user$project$Main$update,
+																															_user$project$Main$SeedAdMsg(
+																																_user$project$SeedAd$GetSeed(_p0._0)),
+																															model))))))))))))))))))))))))));
 					msg = _v1;
 					model = _v2;
 					continue update;
@@ -402,7 +424,8 @@ var _user$project$Main$update = F2(
 						{prc: model.coreval.prc})(model.proboctavemelody)(model.probaddon)(model.probroot)(model.probappliechord)(model.probtypechord)(model.probcr)(model.probmr)(model.ksp)(
 						{ctor: '[]'})(
 						{ok: model.coreval.ok})(
-						{ik: model.coreval.ik})(model.seed);
+						{ik: model.coreval.ik})(
+						_elm_lang$core$Random$initialSeed(1));
 					var _v3 = _user$project$Main$ResultSMsg(
 						_user$project$ResultS$Set(t)),
 						_v4 = model;
@@ -419,7 +442,7 @@ var _user$project$Main$main = _elm_lang$html$Html$program(
 		init: {ctor: '_Tuple2', _0: _user$project$Main$initialModel, _1: _elm_lang$core$Platform_Cmd$none},
 		view: _user$project$Main$view,
 		update: _user$project$Main$update,
-		subscriptions: function (_p15) {
+		subscriptions: function (_p16) {
 			return _elm_lang$core$Platform_Sub$none;
 		}
 	})();

@@ -40,7 +40,7 @@ initialModel = {
   cw = 0}
 
 type Msg =
-  Set | Reset | Randomize
+  Set | Reset | Randomize Seed
 
 probability : Generator Float
 probability =
@@ -69,9 +69,9 @@ update msg model =
   case msg of
     Set -> (model,Cmd.none)
     Reset -> (initialModel, Cmd.none)
-    Randomize ->
+    Randomize s ->
       let
-        seed = Random.initialSeed 5
+        seed = s
         (okn,s2) =  (floatCreator seed probability)
         (ikn,s3) =  (floatCreator s2 probability)
         (ocn,s4) =  (floatCreator s3 probability)

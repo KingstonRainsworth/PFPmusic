@@ -17,7 +17,7 @@ var _user$project$ProbCR$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$ProbCR$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(75);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$ProbCR$floatCreator, seed, _user$project$ProbCR$probability);
 				var cwn = _p2._0;
 				var s2 = _p2._1;
@@ -108,6 +108,8 @@ var _user$project$ProbCR$Model = function (a) {
 		};
 	};
 };
-var _user$project$ProbCR$Randomize = {ctor: 'Randomize'};
+var _user$project$ProbCR$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$ProbCR$Reset = {ctor: 'Reset'};
 var _user$project$ProbCR$Set = {ctor: 'Set'};

@@ -17,7 +17,7 @@ var _user$project$Numpatsize$update = F2(
 			case 'Reset':
 				return {ctor: '_Tuple2', _0: _user$project$Numpatsize$initialModel, _1: _elm_lang$core$Platform_Cmd$none};
 			default:
-				var seed = _elm_lang$core$Random$initialSeed(8);
+				var seed = _p1._0;
 				var _p2 = A2(_user$project$Numpatsize$intCreator, seed, _user$project$Numpatsize$intGenerator);
 				var n4n = _p2._0;
 				var s2 = _p2._1;
@@ -55,6 +55,8 @@ var _user$project$Numpatsize$Model = F8(
 	function (a, b, c, d, e, f, g, h) {
 		return {n4: a, n8: b, n12: c, n16: d, n32: e, n64: f, n128: g, n256: h};
 	});
-var _user$project$Numpatsize$Randomize = {ctor: 'Randomize'};
+var _user$project$Numpatsize$Randomize = function (a) {
+	return {ctor: 'Randomize', _0: a};
+};
 var _user$project$Numpatsize$Reset = {ctor: 'Reset'};
 var _user$project$Numpatsize$Set = {ctor: 'Set'};
