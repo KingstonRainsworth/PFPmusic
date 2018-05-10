@@ -497,8 +497,7 @@ var _user$project$Main$update = F2(
 						{prc: model.coreval.prc})(model.proboctavemelody)(model.probaddon)(model.probroot)(model.probappliechord)(model.probtypechord)(model.probcr)(model.probmr)(model.ksp)(
 						{ctor: '[]'})(
 						{ok: model.coreval.ok})(
-						{ik: model.coreval.ik})(
-						_elm_lang$core$Random$initialSeed(1));
+						{ik: model.coreval.ik})(model.seeds.ogseed);
 					var _v5 = _user$project$Main$ResultSMsg(
 						_user$project$ResultS$Set(t)),
 						_v6 = model;

@@ -183,7 +183,7 @@ update msg model = case msg of
     update (Randomize is) model
   Generate ->
     let t =
-      MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} (Random.initialSeed 1) in
+      MMP.mmk {oc = model.coreval.oc} {ic = model.coreval.ic} model.probpatternsize {prc = model.coreval.prc} model.proboctavemelody model.probaddon model.probroot model.probappliechord model.probtypechord model.probcr model.probmr model.ksp [] {ok = model.coreval.ok} {ik = model.coreval.ik} (model.seeds.ogseed) in
     update (ResultSMsg (ResultS.Set t)) model
   Default ->
     (initialModel,Cmd.none)
